@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="Email could not be found.">
+                <source>Email could not be found.</source>
+                <target>There is no existing account associated to this e-mail address!</target>
+            </trans-unit>
+            <trans-unit id="Invalid credentials.">
+                <source>Invalid credentials.</source>
+                <target>The password you entered was invalid!</target>
+            </trans-unit>
+            <trans-unit id="account.not_found">
+                <source>account.not_found</source>
+                <target>The user account could not be found</target>
+            </trans-unit>
+            <trans-unit id="account.already_activated">
+                <source>account.already_activated</source>
+                <target>The user account has already been activated</target>
+            </trans-unit>
+            <trans-unit id="account.invalid_key">
+                <source>account.invalid_key</source>
+                <target>The validation key provided is not correct</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

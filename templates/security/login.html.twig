@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'account.authentication' | trans }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger"
+                             role="alert">{{ error.messageKey | trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% if app.user %}
+                        <div class="mb-3">
+                            {{ 'account.logged_in' | trans }}
+                            {{ app.user.username }}, <a
+                                    href="{{ path('app_logout') }}">{{ 'account.logout' | trans }}</a>
+                        </div>
+                    {% endif %}
+                    <h1 class="h3 mb-3 font-weight-normal">{{ 'account.authentication' | trans }}</h1>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputEmail">{{ 'account.email' | trans }}</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                       class="form-control"
+                                       required
+                                       autofocus>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputPassword">{{ 'account.password' | trans }}</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me">{{ 'account.remember' | trans }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-lg btn-primary" type="submit">
+                                {{ 'account.submit' | trans }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal fade" id="passwordForgottenModal" tabindex="-1" role="dialog"
+                     aria-labelledby="passwordForgottenModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"
+                                    id="passwordForgottenModalTitle">TODO</h5>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                                    {{ 'account.cancel' | trans }}
+                                </button>
+                                <button class="btn btn-primary" type="submit">
+                                    {{ 'account.submit' | trans }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-secondary" type="button" data-toggle="modal"
+                                data-target="#passwordForgottenModal">TODO ?
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

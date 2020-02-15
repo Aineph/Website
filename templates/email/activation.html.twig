@@ -1,0 +1,18 @@
+<p>
+    {{ 'email.greetings' | trans }}
+    {{ firstName }},
+</p>
+<p>
+    {{ 'email.activation' | trans }}
+</p>
+<p>
+    <a href="https://localhost:8000/{{ app.request.locale }}/activate/{{ userID }}?key={{ activationKey }}">
+        https://localhost:8000/{{ app.request.locale }}/activate/{{ userID }}?key={{ activationKey }}
+    </a>
+</p>
+<p>
+    {{ 'email.politeness' | trans }}
+</p>
+<p>
+    {{ 'email.signature' | trans }}
+</p>

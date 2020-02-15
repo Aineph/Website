@@ -1,0 +1,41 @@
+{% block navbar %}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">{{ 'nav.title' | trans }}</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('portfolio_index') }}">{{ 'nav.portfolio' | trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ 'nav.projects' | trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ 'nav.contact' | trans }}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'nav.language' | trans }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for locale in locales() %}
+                            <a class="dropdown-item"
+                                    {% if app.request.locale == locale.code %}
+                                        aria-checked="true"
+                                    {% endif %}
+                               href="{{ path(app.request.get('_route', 'website_index'), app.request.get('_route_params', []) | merge({_locale: locale.code})) }}">
+                                {{ locale.name | capitalize }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="{{ 'nav.search' | trans }}"
+                       aria-label="{{ 'nav.search' | trans }}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{ 'nav.search' | trans }}</button>
+            </form>
+        </div>
+    </nav>
+{% endblock %}

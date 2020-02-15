@@ -1,3 +1,8 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+homepage:
+  path: /{_locale}
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  requirements:
+    _locale: '%app_locales%'
+  defaults:
+    template: website/index.html.twig
+    _locale: '%locale%'

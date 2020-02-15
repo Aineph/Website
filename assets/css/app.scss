@@ -1,0 +1,30 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  background-color: white;
+  color: black;
+}
+
+header {
+  background-color: white;
+}
+
+section {
+  background-color: green;
+}
+
+/**
+ * HTML Classes Custom Style
+ */
+
+.navbar {
+  background-color: red;
+  opacity: 0;
+  transition: all .5s;
+}
+
+.navbar:hover {
+  background-color: blue;
+  opacity: 1;
+  transition: all .5s;
+}

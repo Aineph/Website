@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="base.title">
+                <source>base.title</source>
+                <target>Bienvenue !</target>
+            </trans-unit>
+            <trans-unit id="nav.title">
+                <source>nav.title</source>
+                <target>Mon Site</target>
+            </trans-unit>
+            <trans-unit id="website.greetings">
+                <source>website.greetings</source>
+                <target>
+                    Besoin d'un outil logiciel ?
+                    D'une bande son originale ?
+                    Donnez vie à vos projets grâce aux services d'un professionel passioné !
+                </target>
+            </trans-unit>
+            <trans-unit id="nav.portfolio">
+                <source>nav.portfolio</source>
+                <target>Portfolio</target>
+            </trans-unit>
+            <trans-unit id="nav.projects">
+                <source>nav.projects</source>
+                <target>Projets</target>
+            </trans-unit>
+            <trans-unit id="nav.contact">
+                <source>nav.contact</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="nav.language">
+                <source>nav.language</source>
+                <target>Langue</target>
+            </trans-unit>
+            <trans-unit id="nav.search">
+                <source>nav.search</source>
+                <target>Rechercher</target>
+            </trans-unit>
+            <trans-unit id="portfolio.title">
+                <source>portfolio.title</source>
+                <target>Nicolas FEZ</target>
+            </trans-unit>
+            <trans-unit id="portfolio.projects">
+                <source>portfolio.projects</source>
+                <target>Projets</target>
+            </trans-unit>
+            <trans-unit id="portfolio.resume">
+                <source>portfolio.resume</source>
+                <target>CV</target>
+            </trans-unit>
+            <trans-unit id="portfolio.about_me">
+                <source>portfolio.about_me</source>
+                <target>À propos de moi</target>
+            </trans-unit>
+            <trans-unit id="account.authentication">
+                <source>account.authentication</source>
+                <target>Connexion</target>
+            </trans-unit>
+            <trans-unit id="account.registration">
+                <source>account.registration</source>
+                <target>Inscription</target>
+            </trans-unit>
+            <trans-unit id="account.first_name">
+                <source>account.first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="account.last_name">
+                <source>account.last_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="account.email">
+                <source>account.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="account.country">
+                <source>account.country</source>
+                <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="account.phone_number">
+                <source>account.phone_number</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+            <trans-unit id="account.old_password">
+                <source>account.old_password</source>
+                <target>Ancien mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account.password">
+                <source>account.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account.new_password">
+                <source>account.new_password</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account.password_confirmation">
+                <source>account.password_confirmation</source>
+                <target>Confirmation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account.remember">
+                <source>account.remember</source>
+                <target>Se souvenir de moi</target>
+            </trans-unit>
+            <trans-unit id="account.cancel">
+                <source>account.cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="account.submit">
+                <source>account.submit</source>
+                <target>Valider</target>
+            </trans-unit>
+            <trans-unit id="account.logged_in">
+                <source>account.logged_in</source>
+                <target>Vous êtes connecté en tant que</target>
+            </trans-unit>
+            <trans-unit id="account.profile">
+                <source>account.profile</source>
+                <target>Profil</target>
+            </trans-unit>
+            <trans-unit id="account.edit_email">
+                <source>account.edit_email</source>
+                <target>Changer l'adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="account.change_email">
+                <source>account.change_email</source>
+                <target>Changement de l'adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="account.edit_password">
+                <source>account.edit_password</source>
+                <target>Changer le mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account.change_password">
+                <source>account.change_password</source>
+                <target>Changement du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="account.delete">
+                <source>account.delete</source>
+                <target>Supprimer le compte</target>
+            </trans-unit>
+            <trans-unit id="account.deletion">
+                <source>account.deletion</source>
+                <target>Votre compte sera définitivement supprimé. Veuillez saisir votre mot de passe avant de continuer.</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>account.logout</source>
+                <target>Se déconnecter</target>
+            </trans-unit>
+            <trans-unit id="account.activation">
+                <source>account.activation</source>
+                <target>Activation du compte</target>
+            </trans-unit>
+            <trans-unit id="email.greetings">
+                <source>email.greetings</source>
+                <target>Bonjour</target>
+            </trans-unit>
+            <trans-unit id="email.activation">
+                <source>email.activation</source>
+                <target>Votre compte a bien été créé. Veuillez cliquer sur le lien suivant pour l'activer:</target>
+            </trans-unit>
+            <trans-unit id="email.politeness">
+                <source>email.politeness</source>
+                <target>Bien cordialement,</target>
+            </trans-unit>
+            <trans-unit id="email.signature">
+                <source>email.signature</source>
+                <target>Nicolas FEZ</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
