@@ -34,7 +34,7 @@ class AccountDeletionFormType extends AbstractType
     {
         $builder
             ->add(self::PASSWORD_FIELD, PasswordType::class, [
-                'label' => 'account.password',
+                'label' => 'security.profile.password',
                 'translation_domain' => 'messages',
                 'mapped' => false,
                 'constraints' => [

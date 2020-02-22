@@ -1,18 +1,16 @@
 <p>
-    {{ 'email.greetings' | trans }}
+    {{ 'email.activation.introduction' | trans }}
     {{ firstName }},
 </p>
 <p>
-    {{ 'email.activation' | trans }}
+    {{ 'email.activation.message' | trans }}
 </p>
 <p>
-    <a href="https://localhost:8000/{{ app.request.locale }}/activate/{{ userID }}?key={{ activationKey }}">
-        https://localhost:8000/{{ app.request.locale }}/activate/{{ userID }}?key={{ activationKey }}
-    </a>
+    <a href="{{ activationUrl }}">{{ activationUrl }}</a>
 </p>
 <p>
-    {{ 'email.politeness' | trans }}
+    {{ 'email.activation.signature' | trans }}
 </p>
 <p>
-    {{ 'email.signature' | trans }}
+    {{ 'email.activation.name' | trans }}
 </p>

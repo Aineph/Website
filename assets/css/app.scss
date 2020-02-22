@@ -1,16 +1,15 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-body {
-  background-color: white;
-  color: black;
+/**
+ * HTML Tags Custom Style
+ */
+
+html {
+  scroll-behavior: smooth;
 }
 
-header {
-  background-color: white;
-}
-
-section {
-  background-color: green;
+section:nth-of-type(2n + 1) {
+  background-color: black;
 }
 
 /**
@@ -18,13 +17,27 @@ section {
  */
 
 .navbar {
-  background-color: red;
   opacity: 0;
-  transition: all .5s;
+  transition: opacity .5s;
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .navbar:hover {
-  background-color: blue;
-  opacity: 1;
-  transition: all .5s;
+  opacity: 1 !important;
+}
+
+.card-body img {
+  transition: transform .3s;
+}
+
+.card-body img:hover {
+  transform: scale(1.3);
+}
+
+.prestation {
+  transition: transform .3s;
+}
+
+.prestation:hover {
+  transform: scale(1.1);
 }

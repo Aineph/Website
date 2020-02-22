@@ -2,168 +2,335 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
+
+            <!-- base.html.twig -->
+
             <trans-unit id="base.title">
                 <source>base.title</source>
                 <target>Bienvenue !</target>
             </trans-unit>
-            <trans-unit id="nav.title">
-                <source>nav.title</source>
-                <target>Mon Site</target>
-            </trans-unit>
-            <trans-unit id="website.greetings">
-                <source>website.greetings</source>
+
+            <!--     Website     -->
+            <!-- index.html.twig -->
+
+            <!-- header.html.twig -->
+
+            <trans-unit id="website.header.introduction">
+                <source>website.header.introduction</source>
                 <target>
                     Besoin d'un outil logiciel ?
                     D'une bande son originale ?
                     Donnez vie à vos projets grâce aux services d'un professionel passioné !
                 </target>
             </trans-unit>
-            <trans-unit id="nav.portfolio">
-                <source>nav.portfolio</source>
+            <trans-unit id="website.header.authenticate">
+                <source>website.header.authenticate</source>
+                <target>Accéder à mon espace client</target>
+            </trans-unit>
+            <trans-unit id="website.header.register">
+                <source>website.header.register</source>
+                <target>Créer mon espace client</target>
+            </trans-unit>
+
+            <!-- navigation.html.twig -->
+
+            <trans-unit id="website.navigation.title">
+                <source>website.navigation.title</source>
+                <target>Mon Site Web</target>
+            </trans-unit>
+            <trans-unit id="website.navigation.portfolio">
+                <source>website.navigation.portfolio</source>
                 <target>Portfolio</target>
             </trans-unit>
-            <trans-unit id="nav.projects">
-                <source>nav.projects</source>
-                <target>Projets</target>
+            <trans-unit id="website.navigation.services">
+                <source>website.navigation.services</source>
+                <target>Prestations</target>
             </trans-unit>
-            <trans-unit id="nav.contact">
-                <source>nav.contact</source>
-                <target>Contact</target>
+            <trans-unit id="website.navigation.contact">
+                <source>website.navigation.contact</source>
+                <target>Me contacter</target>
             </trans-unit>
-            <trans-unit id="nav.language">
-                <source>nav.language</source>
+            <trans-unit id="website.navigation.language">
+                <source>website.navigation.language</source>
                 <target>Langue</target>
             </trans-unit>
-            <trans-unit id="nav.search">
-                <source>nav.search</source>
+            <trans-unit id="website.navigation.profile">
+                <source>website.navigation.profile</source>
+                <target>Mon espace client</target>
+            </trans-unit>
+            <trans-unit id="website.navigation.search">
+                <source>website.navigation.search</source>
                 <target>Rechercher</target>
             </trans-unit>
-            <trans-unit id="portfolio.title">
-                <source>portfolio.title</source>
+
+            <!-- prestation.html.twig -->
+
+            <trans-unit id="website.prestation.services">
+                <source>website.prestation.services</source>
+                <target>Prestations</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.software">
+                <source>website.prestation.software</source>
+                <target>Ingénierie logicielle</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.system">
+                <source>website.prestation.system</source>
+                <target>Programmation Système</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.system_detail">
+                <source>website.prestation.system_detail</source>
+                <target>Améliorez la qualité de vos logiciels applicatifs</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.embedded">
+                <source>website.prestation.embedded</source>
+                <target>Programmation Embarquée</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.embedded_detail">
+                <source>website.prestation.embedded_detail</source>
+                <target>Repoussez les limites des systèmes embarqués</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.security">
+                <source>website.prestation.security</source>
+                <target>Sécurité Informatique</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.security_detail">
+                <source>website.prestation.security_detail</source>
+                <target>Sécurisez vos applications des attaquants potentielles</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.website">
+                <source>website.prestation.website</source>
+                <target>Intégration Web</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.website_detail">
+                <source>website.prestation.website_detail</source>
+                <target>Personnalisez intégralement votre site web</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.mobile">
+                <source>website.prestation.mobile</source>
+                <target>Développement Mobile</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.mobile_detail">
+                <source>website.prestation.mobile_detail</source>
+                <target>Tirez profit des capacités proposées par chaque plateforme</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.database">
+                <source>website.prestation.database</source>
+                <target>Gestion de Base de Données</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.database_detail">
+                <source>website.prestation.database_detail</source>
+                <target>Boostez vos applications en optimisant votre gestion de données</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.music">
+                <source>website.prestation.music</source>
+                <target>Composition Musicale</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.audio">
+                <source>website.prestation.audio</source>
+                <target>Enregistrement Audio</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.audio_detail">
+                <source>website.prestation.audio_detail</source>
+                <target>Profitez d'une bande son de très haute qualité sonore</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.score">
+                <source>website.prestation.score</source>
+                <target>Écriture de Partition</target>
+            </trans-unit>
+            <trans-unit id="website.prestation.score_detail">
+                <source>website.prestation.score_detail</source>
+                <target>Faites jouer vos morceaux par un orchestre</target>
+            </trans-unit>
+
+            <!-- contact.html.twig -->
+
+            <trans-unit id="website.contact.contact">
+                <source>website.contact.contact</source>
+                <target>Contact</target>
+            </trans-unit>
+
+            <!--    Portfolio    -->
+            <!-- index.html.twig -->
+
+            <trans-unit id="portfolio.index.title">
+                <source>portfolio.index.title</source>
                 <target>Nicolas FEZ</target>
             </trans-unit>
-            <trans-unit id="portfolio.projects">
-                <source>portfolio.projects</source>
+            <trans-unit id="portfolio.index.projects">
+                <source>portfolio.index.projects</source>
                 <target>Projets</target>
             </trans-unit>
-            <trans-unit id="portfolio.resume">
-                <source>portfolio.resume</source>
+            <trans-unit id="portfolio.index.resume">
+                <source>portfolio.index.resume</source>
                 <target>CV</target>
             </trans-unit>
-            <trans-unit id="portfolio.about_me">
-                <source>portfolio.about_me</source>
+            <trans-unit id="portfolio.index.about">
+                <source>portfolio.index.about</source>
                 <target>À propos de moi</target>
             </trans-unit>
-            <trans-unit id="account.authentication">
-                <source>account.authentication</source>
-                <target>Connexion</target>
-            </trans-unit>
-            <trans-unit id="account.registration">
-                <source>account.registration</source>
+
+            <!--      Security      -->
+            <!-- register.html.twig -->
+
+            <trans-unit id="security.register.registration">
+                <source>security.register.registration</source>
                 <target>Inscription</target>
             </trans-unit>
-            <trans-unit id="account.first_name">
-                <source>account.first_name</source>
+            <trans-unit id="security.register.first_name">
+                <source>security.register.first_name</source>
                 <target>Prénom</target>
             </trans-unit>
-            <trans-unit id="account.last_name">
-                <source>account.last_name</source>
+            <trans-unit id="security.register.last_name">
+                <source>security.register.last_name</source>
                 <target>Nom</target>
             </trans-unit>
-            <trans-unit id="account.email">
-                <source>account.email</source>
-                <target>E-mail</target>
-            </trans-unit>
-            <trans-unit id="account.country">
-                <source>account.country</source>
+            <trans-unit id="security.register.country">
+                <source>security.register.country</source>
                 <target>Pays</target>
             </trans-unit>
-            <trans-unit id="account.phone_number">
-                <source>account.phone_number</source>
+            <trans-unit id="security.register.phone">
+                <source>security.register.phone</source>
                 <target>Numéro de téléphone</target>
             </trans-unit>
-            <trans-unit id="account.old_password">
-                <source>account.old_password</source>
-                <target>Ancien mot de passe</target>
+            <trans-unit id="security.register.email">
+                <source>security.register.email</source>
+                <target>E-mail</target>
             </trans-unit>
-            <trans-unit id="account.password">
-                <source>account.password</source>
+            <trans-unit id="security.register.password">
+                <source>security.register.password</source>
                 <target>Mot de passe</target>
             </trans-unit>
-            <trans-unit id="account.new_password">
-                <source>account.new_password</source>
-                <target>Nouveau mot de passe</target>
-            </trans-unit>
-            <trans-unit id="account.password_confirmation">
-                <source>account.password_confirmation</source>
+            <trans-unit id="security.register.confirm_password">
+                <source>security.register.confirm_password</source>
                 <target>Confirmation du mot de passe</target>
             </trans-unit>
-            <trans-unit id="account.remember">
-                <source>account.remember</source>
-                <target>Se souvenir de moi</target>
+            <trans-unit id="security.register.submit">
+                <source>security.register.submit</source>
+                <target>Créer mon compte</target>
             </trans-unit>
-            <trans-unit id="account.cancel">
-                <source>account.cancel</source>
-                <target>Annuler</target>
+
+            <!-- profile.html.twig -->
+
+            <trans-unit id="security.profile.profile">
+                <source>security.profile.profile</source>
+                <target>Édition du profil</target>
             </trans-unit>
-            <trans-unit id="account.submit">
-                <source>account.submit</source>
-                <target>Valider</target>
+            <trans-unit id="security.profile.first_name">
+                <source>security.profile.first_name</source>
+                <target>Prénom</target>
             </trans-unit>
-            <trans-unit id="account.logged_in">
-                <source>account.logged_in</source>
-                <target>Vous êtes connecté en tant que</target>
+            <trans-unit id="security.profile.last_name">
+                <source>security.profile.last_name</source>
+                <target>Nom</target>
             </trans-unit>
-            <trans-unit id="account.profile">
-                <source>account.profile</source>
-                <target>Profil</target>
+            <trans-unit id="security.profile.country">
+                <source>security.profile.country</source>
+                <target>Pays</target>
             </trans-unit>
-            <trans-unit id="account.edit_email">
-                <source>account.edit_email</source>
+            <trans-unit id="security.profile.phone">
+                <source>security.profile.phone</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+            <trans-unit id="security.profile.email">
+                <source>security.profile.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="security.profile.password">
+                <source>security.profile.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="security.profile.old_password">
+                <source>security.profile.old_password</source>
+                <target>Ancien mot de passe</target>
+            </trans-unit>
+            <trans-unit id="security.profile.new_password">
+                <source>security.profile.new_password</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="security.profile.confirm_password">
+                <source>security.profile.confirm_password</source>
+                <target>Confirmation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="security.profile.edit_email">
+                <source>security.profile.edit_email</source>
                 <target>Changer l'adresse e-mail</target>
             </trans-unit>
-            <trans-unit id="account.change_email">
-                <source>account.change_email</source>
-                <target>Changement de l'adresse e-mail</target>
-            </trans-unit>
-            <trans-unit id="account.edit_password">
-                <source>account.edit_password</source>
+            <trans-unit id="security.profile.edit_password">
+                <source>security.profile.edit_password</source>
                 <target>Changer le mot de passe</target>
             </trans-unit>
-            <trans-unit id="account.change_password">
-                <source>account.change_password</source>
-                <target>Changement du mot de passe</target>
-            </trans-unit>
-            <trans-unit id="account.delete">
-                <source>account.delete</source>
+            <trans-unit id="security.profile.delete">
+                <source>security.profile.delete</source>
                 <target>Supprimer le compte</target>
             </trans-unit>
-            <trans-unit id="account.deletion">
-                <source>account.deletion</source>
-                <target>Votre compte sera définitivement supprimé. Veuillez saisir votre mot de passe avant de continuer.</target>
+            <trans-unit id="security.profile.delete_warning">
+                <source>security.profile.delete_warning</source>
+                <target>
+                    Votre compte sera définitivement supprimé. Veuillez saisir votre mot de passe avant de
+                    continuer.
+                </target>
             </trans-unit>
-            <trans-unit id="account.logout">
-                <source>account.logout</source>
+            <trans-unit id="security.profile.submit">
+                <source>security.profile.submit</source>
+                <target>Mettre à jour</target>
+            </trans-unit>
+            <trans-unit id="security.profile.cancel">
+                <source>security.profile.cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="security.profile.logout">
+                <source>security.profile.logout</source>
                 <target>Se déconnecter</target>
             </trans-unit>
-            <trans-unit id="account.activation">
-                <source>account.activation</source>
-                <target>Activation du compte</target>
+
+            <!-- login.html.twig -->
+
+            <trans-unit id="security.login.authentication">
+                <source>security.login.authentication</source>
+                <target>Connexion</target>
             </trans-unit>
-            <trans-unit id="email.greetings">
-                <source>email.greetings</source>
+            <trans-unit id="security.login.email">
+                <source>security.login.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="security.login.password">
+                <source>security.login.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="security.login.remember">
+                <source>security.login.remember</source>
+                <target>Se souvenir de moi</target>
+            </trans-unit>
+            <trans-unit id="security.login.submit">
+                <source>security.login.submit</source>
+                <target>Valider</target>
+            </trans-unit>
+            <trans-unit id="security.login.cancel">
+                <source>security.login.cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="security.login.register">
+                <source>security.login.register</source>
+                <target>Créer un compte</target>
+            </trans-unit>
+
+            <!--         Email        -->
+            <!-- activation.html.twig -->
+
+            <trans-unit id="email.activation.introduction">
+                <source>email.activation.introduction</source>
                 <target>Bonjour</target>
             </trans-unit>
-            <trans-unit id="email.activation">
-                <source>email.activation</source>
+            <trans-unit id="email.activation.message">
+                <source>email.activation.message</source>
                 <target>Votre compte a bien été créé. Veuillez cliquer sur le lien suivant pour l'activer:</target>
             </trans-unit>
-            <trans-unit id="email.politeness">
-                <source>email.politeness</source>
+            <trans-unit id="email.activation.signature">
+                <source>email.activation.signature</source>
                 <target>Bien cordialement,</target>
             </trans-unit>
-            <trans-unit id="email.signature">
-                <source>email.signature</source>
+            <trans-unit id="email.activation.name">
+                <source>email.activation.name</source>
                 <target>Nicolas FEZ</target>
             </trans-unit>
         </body>

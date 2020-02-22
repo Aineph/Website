@@ -21,12 +21,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class PortfolioController extends AbstractController
 {
     /**
+     * @var string
+     */
+    const ROUTE_PORTFOLIO_INDEX = 'portfolio_index';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_PORTFOLIO_INDEX = 'portfolio/index.html.twig';
+
+    /**
      * @param Request $request
      * @return Response
      * @Route("/", methods="GET", name="portfolio_index")
      */
     public function index(Request $request): Response
     {
-        return $this->render('portfolio/index.html.twig');
+        return $this->render(self::TEMPLATE_PORTFOLIO_INDEX);
     }
 }

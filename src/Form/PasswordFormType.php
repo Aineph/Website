@@ -40,9 +40,10 @@ class PasswordFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // TODO: Add Translation.
         $builder
             ->add(self::OLD_PASSWORD_FIELD, PasswordType::class, [
-                'label' => 'account.old_password',
+                'label' => 'security.profile.old_password',
                 'translation_domain' => 'messages',
                 'mapped' => false,
                 'constraints' => [
@@ -52,11 +53,11 @@ class PasswordFormType extends AbstractType
             ->add(self::PASSWORD_FIELD, RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
-                    'label' => 'account.new_password',
+                    'label' => 'security.profile.new_password',
                     'translation_domain' => 'messages'
                 ],
                 'second_options' => [
-                    'label' => 'account.password_confirmation',
+                    'label' => 'security.profile.confirm_password',
                     'translation_domain' => 'messages'
                 ],
                 'mapped' => false,

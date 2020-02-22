@@ -16,17 +16,13 @@ use App\Form\ProfileFormType;
 use App\Form\RegistrationFormType;
 use App\Service\AccountManager;
 use Exception;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class SecurityController
@@ -36,51 +32,89 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class SecurityController extends AbstractController
 {
     /**
+     * @var string
+     */
+    const ROUTE_APP_LOGIN = 'security_login';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_APP_LOGIN = 'security/login.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_APP_REGISTER = 'security_register';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_APP_REGISTER = 'security/register.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_APP_ACTIVATE = 'security_activate';
+
+    /**
+     * @var string
+     */
+    const ACTIVATE_KEY_PARAMETER = 'activation_key';
+
+    /**
+     * @var string
+     */
+    const ROUTE_APP_PROFILE = 'security_profile';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_APP_PROFILE = 'security/profile.html.twig';
+
+    /**
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
-     * @Route("/login", name="app_login")
+     * @Route("/login", name="security_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('website_index');
+            return $this->redirectToRoute(WebsiteController::ROUTE_WEBSITE_INDEX);
         }
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render(self::TEMPLATE_APP_LOGIN, ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register", name="security_register")
      * @param Request $request
-     * @param UserPasswordEncoderInterface $userPasswordEncoder
-     * @param MailerInterface $mailer
-     * @param TranslatorInterface $translator
      * @param AccountManager $accountManager
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder,
-                             MailerInterface $mailer, TranslatorInterface $translator,
-                             AccountManager $accountManager): Response
+    public function register(Request $request, AccountManager $accountManager): Response
     {
         $accountManager->setUser(new User());
         $registrationForm = $this->createForm(RegistrationFormType::class, $accountManager->getUser());
 
         $registrationForm->handleRequest($request);
         if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
-            $accountManager->setUserPasswordEncoder($userPasswordEncoder);
             $accountManager->setEntityManager($this->getDoctrine()->getManager());
-            $accountManager->setMailer($mailer);
+            $accountManager->register($registrationForm);
             try {
-                $accountManager->register($registrationForm, $translator);
+                $activationUrl = $this->generateUrl(self::ROUTE_APP_ACTIVATE, [
+                    'id' => $accountManager->getUser()->getId(),
+                    self::ACTIVATE_KEY_PARAMETER => $accountManager->getUser()->getActivationKey()
+                ], UrlGeneratorInterface::ABSOLUTE_URL);
+                $accountManager->sendActivationEmail($activationUrl);
             } catch (TransportExceptionInterface $transportException) {
-                return $this->redirectToRoute('app_register', [
+                return $this->redirectToRoute(self::ROUTE_APP_REGISTER, [
                     'error' => $transportException->getMessage()
                 ]);
             }
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute(self::ROUTE_APP_LOGIN);
         }
-        return $this->render('registration/register.html.twig', [
+        return $this->render(self::TEMPLATE_APP_REGISTER, [
             'registrationForm' => $registrationForm->createView(),
         ]);
     }
@@ -90,104 +124,71 @@ class SecurityController extends AbstractController
      * @param Request $request
      * @param AccountManager $accountManager
      * @return Response
-     * @Route("/activate/{id}", name="app_activate")
+     * @Route("/activate/{id}", name="security_activate")
      */
-    public function activate(string $id, Request $request, AuthenticationUtils $authenticationUtils, AccountManager $accountManager)
+    public function activate(string $id, Request $request, AccountManager $accountManager)
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->find(intval($id));
-        $lastUsername = $authenticationUtils->getLastUsername();
-        $error = $authenticationUtils->getLastAuthenticationError();
+        $accountManager->setUser($this->getDoctrine()->getRepository(User::class)->find(intval($id)));
 
         $accountManager->setEntityManager($this->getDoctrine()->getManager());
         try {
-            // TODO: Replace 'key' by constant.
-            $accountManager->activate($user, $request->get('key'));
+            $accountManager->activate($request->get(self::ACTIVATE_KEY_PARAMETER));
         } catch (AccountValidationException $accountValidationException) {
-            return $this->render('security/login.html.twig', [
-                'last_username' => $lastUsername,
-                'error' => $accountValidationException
-            ]);
+            // TODO: Handle error message.
+            return $this->redirectToRoute(self::ROUTE_APP_LOGIN);
         }
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error
-        ]);
+        return $this->redirectToRoute(self::ROUTE_APP_LOGIN);
     }
 
     /**
      * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param MailerInterface $mailer
-     * @param SessionInterface $session
      * @param AccountManager $accountManager
      * @return Response
-     * @throws TransportExceptionInterface
-     * @Route("/profile", name="app_profile")
+     * @Route("/profile", name="security_profile")
      */
-    public function profile(Request $request, UserPasswordEncoderInterface $passwordEncoder,
-                            MailerInterface $mailer, SessionInterface $session,
-                            AccountManager $accountManager): Response
+    public function profile(Request $request, AccountManager $accountManager): Response
     {
-        $user = $this->getUser();
-        $profileForm = $this->createForm(ProfileFormType::class, $user);
-        $passwordForm = $this->createForm(PasswordFormType::class, $user);
-        $accountDeletionForm = $this->createForm(AccountDeletionFormType::class, $user);
+        $accountManager->setUser($this->getUser());
+        $currentEmailAddress = $accountManager->getUser()->getUsername();
+        $updateProfileForm = $this->createForm(ProfileFormType::class, $accountManager->getUser());
+        $updatePasswordForm = $this->createForm(PasswordFormType::class, $accountManager->getUser());
+        $deleteAccountForm = $this->createForm(AccountDeletionFormType::class, $accountManager->getUser());
 
-        $profileForm->handleRequest($request);
-        $passwordForm->handleRequest($request);
-        $accountDeletionForm->handleRequest($request);
-        if ($profileForm->isSubmitted() && $profileForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+        $updateProfileForm->handleRequest($request);
+        $updatePasswordForm->handleRequest($request);
+        $deleteAccountForm->handleRequest($request);
+        $accountManager->setEntityManager($this->getDoctrine()->getManager());
+        if ($updateProfileForm->isSubmitted() && $updateProfileForm->isValid()) {
+            $accountManager->updateProfile($currentEmailAddress);
+            return $this->redirectToRoute(WebsiteController::ROUTE_WEBSITE_INDEX);
+        } elseif ($updatePasswordForm->isSubmitted() && $updatePasswordForm->isValid()) {
+            try {
+                $accountManager->updatePassword($updatePasswordForm);
+            } catch (TransportExceptionInterface $transportException) {
+                return $this->redirectToRoute(self::ROUTE_APP_PROFILE, [
+                    'error' => $transportException->getMessage()
+                ]);
+            }
         }
-        if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $passwordForm->get('plainPassword')->getData()
-                )
-            );
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-            $email = (new TemplatedEmail())
-                ->from('dev@feznicolas.com')
-                ->to($user->getEmail())
-                ->subject('Security alert')
-                ->htmlTemplate('email/security.html.twig');
-            $mailer->send($email);
+        if ($deleteAccountForm->isSubmitted() && $deleteAccountForm->isValid()) {
+            $accountManager->delete();
+            return $this->redirectToRoute(WebsiteController::ROUTE_WEBSITE_INDEX);
         }
-        if ($accountDeletionForm->isSubmitted() && $accountDeletionForm->isValid()) {
-            $this->get('security.token_storage')->setToken(null);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
-            $entityManager->flush();
-            $session->invalidate();
-
-            /*
-             * TODO: Correctly delete user and flush
-             */
-
-            /*
-             * TODO: Send a goodbye e-mail
-             */
-
-            return $this->redirectToRoute('website_index');
-        }
-        return $this->render('security/profile.html.twig', [
-            'profileForm' => $profileForm->createView(),
-            'passwordForm' => $passwordForm->createView(),
-            'accountDeletionForm' => $accountDeletionForm->createView()
+        return $this->render(self::TEMPLATE_APP_PROFILE, [
+            'profileForm' => $updateProfileForm->createView(),
+            'passwordForm' => $updatePasswordForm->createView(),
+            'accountDeletionForm' => $deleteAccountForm->createView()
         ]);
     }
 
     /**
      * @throws Exception
-     * @Route("/logout", name="app_logout")
+     * @Route("/logout", name="security_logout")
      */
     public function logout()
     {
-        throw new Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
+        throw new Exception(
+            'This method can be blank - it will be intercepted by the logout key on your firewall'
+        );
     }
 }

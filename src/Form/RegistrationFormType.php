@@ -65,15 +65,15 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add(self::FIRST_NAME_FIELD, TextType::class, [
-                'label' => 'account.first_name',
+                'label' => 'security.register.first_name',
                 'translation_domain' => 'messages'
             ])
             ->add(self::LAST_NAME_FIELD, TextType::class, [
-                'label' => 'account.last_name',
+                'label' => 'security.register.last_name',
                 'translation_domain' => 'messages'
             ])
             ->add(self::EMAIL_FIELD, EmailType::class, [
-                'label' => 'account.email',
+                'label' => 'security.register.email',
                 'translation_domain' => 'messages'
             ])
             ->add(self::COUNTRY_FIELD, ChoiceType::class, [
@@ -83,21 +83,21 @@ class RegistrationFormType extends AbstractType
                     'United Kingdom' => 'United Kingdom',
                     'United States' => 'United States'
                 ],
-                'label' => 'account.country',
+                'label' => 'security.register.country',
                 'translation_domain' => 'messages'
             ])
             ->add(self::PHONE_NUMBER_FIELD, TelType::class, [
-                'label' => 'account.phone_number',
+                'label' => 'security.register.phone',
                 'translation_domain' => 'messages'
             ])
             ->add(self::PASSWORD_FIELD, RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
-                    'label' => 'account.password',
+                    'label' => 'security.register.password',
                     'translation_domain' => 'messages'
                 ],
                 'second_options' => [
-                    'label' => 'account.password_confirmation',
+                    'label' => 'security.register.confirm_password',
                     'translation_domain' => 'messages'
                 ],
                 'mapped' => false,

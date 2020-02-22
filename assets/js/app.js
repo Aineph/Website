@@ -11,7 +11,16 @@ import 'bootstrap';
 import '../css/app.scss';
 
 $(document).ready(function () {
-    console.log("DOM is ready !");
+    let $window = $(window);
+    let $navigationBar = $(".navbar");
+
+    $window.scroll(() => {
+        if ($window.scrollTop() === 0)
+            $navigationBar.css("opacity", 1);
+        else
+            $navigationBar.css("opacity", 0);
+    });
+    $window.trigger("scroll")
 });
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

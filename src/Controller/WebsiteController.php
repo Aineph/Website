@@ -20,6 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class WebsiteController extends AbstractController
 {
     /**
+     * @var string
+     */
+    const ROUTE_WEBSITE_INDEX = 'website_index';
+
+    /**
      * @return Response
      * @Route("/", methods="GET", name="website_index")
      */

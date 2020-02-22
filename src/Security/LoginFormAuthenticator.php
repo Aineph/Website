@@ -8,6 +8,7 @@
 
 namespace App\Security;
 
+use App\Controller\SecurityController;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -48,7 +49,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator,
+                                CsrfTokenManagerInterface $csrfTokenManager,
+                                UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
@@ -62,7 +65,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      */
     public function supports(Request $request)
     {
-        return 'app_login' === $request->attributes->get('_route')
+        return SecurityController::ROUTE_APP_LOGIN === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -97,7 +100,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy([
+            'email' => $credentials['email']
+        ]);
 
         if (!$user) {
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
@@ -145,6 +150,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      */
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('app_login');
+        return $this->urlGenerator->generate(SecurityController::ROUTE_APP_LOGIN);
     }
 }

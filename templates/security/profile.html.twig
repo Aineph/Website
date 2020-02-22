@@ -1,54 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'account.profile' | trans }}{% endblock %}
+{% block title %}{{ 'security.profile.profile' | trans }}{% endblock %}
 
 {% block body %}
     <div class="container">
-        <div class="card">
+        <div class="card min-vh-100 vh-100">
             <div class="card-body">
-                {% if not passwordForm.vars.valid %}
+                {% if
+                    error is defined or
+                    not passwordForm.vars.valid or
+                    not profileForm.vars.valid or
+                    not accountDeletionForm.vars.valid %}
                     <div class="alert alert-danger">
+                        {% if error is defined %}
+                            {{ error }}
+                        {% endif %}
                         {{ form_errors(passwordForm.oldPassword) }}
                         {{ form_errors(passwordForm.plainPassword.first) }}
                         {{ form_errors(passwordForm.plainPassword.second) }}
-                    </div>
-                {% endif %}
-                {% if not profileForm.vars.valid %}
-                    <div class="alert alert-danger">
                         {{ form_errors(profileForm.firstName) }}
                         {{ form_errors(profileForm.lastName) }}
                         {{ form_errors(profileForm.country) }}
                         {{ form_errors(profileForm.phoneNumber) }}
-                    </div>
-                {% endif %}
-                {% if not accountDeletionForm.vars.valid %}
-                    <div class="alert alert-danger">
                         {{ form_errors(accountDeletionForm.password) }}
                     </div>
                 {% endif %}
+
                 {{ form_start(profileForm) }}
-                <h1 class="h3 mb-3 font-weight-normal">{{ 'account.profile' | trans }}</h1>
+                <h1 class="h3 mb-3 font-weight-normal">{{ 'security.profile.profile' | trans }}</h1>
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
                             {{ form_label(profileForm.firstName) }}
-                            {{ form_widget(profileForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(profileForm.firstName, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
                         </div>
                         <div class="col">
                             {{ form_label(profileForm.lastName) }}
-                            {{ form_widget(profileForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(profileForm.lastName, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             {{ form_label(profileForm.country) }}
-                            {{ form_widget(profileForm.country, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(profileForm.country, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             {{ form_label(profileForm.phoneNumber) }}
-                            {{ form_widget(profileForm.phoneNumber, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(profileForm.phoneNumber, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
                         </div>
                     </div>
                 </div>
@@ -58,22 +74,26 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title"
-                                    id="changeEmailModalTitle">{{ 'account.change_email' | trans }}</h5>
+                                    id="changeEmailModalTitle">{{ 'security.profile.edit_email' | trans }}</h5>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col">
                                         {{ form_label(profileForm.email) }}
-                                        {{ form_widget(profileForm.email, {'attr': {'class': 'form-control'}}) }}
+                                        {{ form_widget(profileForm.email, {
+                                            'attr': {
+                                                'class': 'form-control'
+                                            }
+                                        }) }}
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                                    {{ 'account.cancel' | trans }}
+                                    {{ 'security.profile.cancel' | trans }}
                                 </button>
                                 <button class="btn btn-primary" type="submit">
-                                    {{ 'account.submit' | trans }}
+                                    {{ 'security.profile.submit' | trans }}
                                 </button>
                             </div>
                         </div>
@@ -82,8 +102,11 @@
                 <div class="row">
                     <div class="col">
                         <button class="btn btn-lg btn-primary" type="submit">
-                            {{ 'account.submit' | trans }}
+                            {{ 'security.profile.submit' | trans }}
                         </button>
+                        <a href="{{ path('security_logout') }}" class="btn btn-lg btn-secondary">
+                            {{ 'security.profile.logout' | trans }}
+                        </a>
                     </div>
                 </div>
                 {{ form_end(profileForm) }}
@@ -95,34 +118,46 @@
                         {{ form_start(passwordForm) }}
                         <div class="modal-header">
                             <h5 class="modal-title"
-                                id="changePasswordModalTitle">{{ 'account.change_password' | trans }}</h5>
+                                id="changePasswordModalTitle">{{ 'security.profile.edit_password' | trans }}</h5>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col">
                                     {{ form_label(passwordForm.oldPassword) }}
-                                    {{ form_widget(passwordForm.oldPassword, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(passwordForm.oldPassword, {
+                                        'attr': {
+                                            'class': 'form-control'
+                                        }
+                                    }) }}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     {{ form_label(passwordForm.plainPassword.first) }}
-                                    {{ form_widget(passwordForm.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(passwordForm.plainPassword.first, {
+                                        'attr': {
+                                            'class': 'form-control'
+                                        }
+                                    }) }}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     {{ form_label(passwordForm.plainPassword.second) }}
-                                    {{ form_widget(passwordForm.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(passwordForm.plainPassword.second, {
+                                        'attr': {
+                                            'class': 'form-control'
+                                        }
+                                    }) }}
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                                {{ 'account.cancel' | trans }}
+                                {{ 'security.profile.cancel' | trans }}
                             </button>
                             <button class="btn btn-primary" type="submit">
-                                {{ 'account.submit' | trans }}
+                                {{ 'security.profile.submit' | trans }}
                             </button>
                         </div>
                         {{ form_end(passwordForm) }}
@@ -134,13 +169,13 @@
                     <div class="col-3">
                         <button class="btn btn-outline-danger" type="button" data-toggle="modal"
                                 data-target="#changeEmailModal">
-                            {{ 'account.edit_email' | trans }}
+                            {{ 'security.profile.edit_email' | trans }}
                         </button>
                     </div>
                     <div class="col-3">
                         <button class="btn btn-outline-danger" type="button" data-toggle="modal"
                                 data-target="#changePasswordModal">
-                            {{ 'account.edit_password' | trans }}
+                            {{ 'security.profile.edit_password' | trans }}
                         </button>
                     </div>
                 </div>
@@ -151,27 +186,31 @@
                             {{ form_start(accountDeletionForm) }}
                             <div class="modal-header">
                                 <h5 class="modal-title"
-                                    id="deleteAccountModalTitle">{{ 'account.delete' | trans }}</h5>
+                                    id="deleteAccountModalTitle">{{ 'security.profile.delete' | trans }}</h5>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="text-danger">{{ 'account.deletion' | trans }}</p>
+                                        <p class="text-danger">{{ 'security.profile.delete_warning' | trans }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         {{ form_label(accountDeletionForm.password) }}
-                                        {{ form_widget(accountDeletionForm.password, {'attr': {'class': 'form-control'}}) }}
+                                        {{ form_widget(accountDeletionForm.password, {
+                                            'attr': {
+                                                'class': 'form-control'
+                                            }
+                                        }) }}
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                                    {{ 'account.cancel' | trans }}
+                                    {{ 'security.profile.cancel' | trans }}
                                 </button>
                                 <button class="btn btn-primary" type="submit">
-                                    {{ 'account.submit' | trans }}
+                                    {{ 'security.profile.submit' | trans }}
                                 </button>
                             </div>
                             {{ form_end(accountDeletionForm) }}
@@ -182,7 +221,7 @@
                     <div class="col">
                         <button class="btn btn-block btn-danger" type="button" data-toggle="modal"
                                 data-target="#deleteAccountModal">
-                            {{ 'account.delete' | trans }}
+                            {{ 'security.profile.delete' | trans }}
                         </button>
                     </div>
                 </div>

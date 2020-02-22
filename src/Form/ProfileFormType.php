@@ -56,15 +56,15 @@ class ProfileFormType extends AbstractType
     {
         $builder
             ->add(self::EMAIL_FIELD, EmailType::class, [
-                'label' => 'account.email',
+                'label' => 'security.profile.email',
                 'translation_domain' => 'messages'
             ])
             ->add(self::FIRST_NAME_FIELD, TextType::class, [
-                'label' => 'account.first_name',
+                'label' => 'security.profile.first_name',
                 'translation_domain' => 'messages'
             ])
             ->add(self::LAST_NAME, TextType::class, [
-                'label' => 'account.last_name',
+                'label' => 'security.profile.last_name',
                 'translation_domain' => 'messages'
             ])
             ->add(self::COUNTRY_FIELD, ChoiceType::class, [
@@ -74,11 +74,11 @@ class ProfileFormType extends AbstractType
                     'United Kingdom' => 'United Kingdom',
                     'United States' => 'United States'
                 ],
-                'label' => 'account.country',
+                'label' => 'security.profile.country',
                 'translation_domain' => 'messages'
             ])
             ->add(self::PHONE_NUMBER_FIELD, TelType::class, [
-                'label' => 'account.phone_number',
+                'label' => 'security.profile.phone',
                 'translation_domain' => 'messages'
             ]);
     }

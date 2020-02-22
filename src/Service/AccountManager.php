@@ -10,12 +10,15 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Exception\AccountValidationException;
+use App\Form\PasswordFormType;
 use App\Form\RegistrationFormType;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -26,14 +29,24 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class AccountManager
 {
     /**
-     * @var array
-     */
-    const DEFAULT_ROLES = ['ROLE_ADMIN'];
-
-    /**
      * @var User
      */
     private $user;
+
+    /**
+     * @var string
+     */
+    private $accountEmail;
+
+    /**
+     * @var string
+     */
+    private $securityEmail;
+
+    /**
+     * @var SessionInterface
+     */
+    private $session;
 
     /**
      * @var UserPasswordEncoderInterface
@@ -41,9 +54,19 @@ class AccountManager
     private $userPasswordEncoder;
 
     /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
+
+    /**
      * @var ObjectManager
      */
     private $entityManager;
+
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
 
     /**
      * @var MailerInterface
@@ -51,12 +74,48 @@ class AccountManager
     private $mailer;
 
     /**
-     * @param FormInterface $registerForm
-     * @param TranslatorInterface $translator
-     * @param array $roles
-     * @throws TransportExceptionInterface
+     * @var array
      */
-    public function register(FormInterface $registerForm, TranslatorInterface $translator, array $roles = self::DEFAULT_ROLES)
+    const DEFAULT_ROLES = ['ROLE_ADMIN'];
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_EMAIL_ACTIVATION = 'email/activation.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_EMAIL_SECURITY = 'email/security.html.twig';
+
+    /**
+     * AccountManager constructor.
+     * @param SessionInterface $session
+     * @param TranslatorInterface $translator
+     * @param MailerInterface $mailer
+     * @param UserPasswordEncoderInterface $userPasswordEncoder
+     * @param TokenStorageInterface $tokenStorage
+     * @param string $accountEmail
+     * @param string $securityEmail
+     */
+    public function __construct(SessionInterface $session, TranslatorInterface $translator, MailerInterface $mailer,
+                                UserPasswordEncoderInterface $userPasswordEncoder, TokenStorageInterface $tokenStorage,
+                                string $accountEmail, string $securityEmail)
+    {
+        $this->setSession($session);
+        $this->setTranslator($translator);
+        $this->setMailer($mailer);
+        $this->setUserPasswordEncoder($userPasswordEncoder);
+        $this->setTokenStorage($tokenStorage);
+        $this->setAccountEmail($accountEmail);
+        $this->setSecurityEmail($securityEmail);
+    }
+
+    /**
+     * @param FormInterface $registerForm
+     * @param array $roles
+     */
+    public function register(FormInterface $registerForm, array $roles = self::DEFAULT_ROLES)
     {
         $this->getUser()->setPassword(
             $this->getUserPasswordEncoder()->encodePassword(
@@ -69,41 +128,97 @@ class AccountManager
         $this->getUser()->setIsActivated(false);
         $this->getEntityManager()->persist($this->getUser());
         $this->getEntityManager()->flush();
-        // TODO: Remove hard coded addresses.
+    }
+
+    /**
+     * @param $activationUrl
+     * @throws TransportExceptionInterface
+     */
+    public function sendActivationEmail($activationUrl)
+    {
         $activationMail = (new TemplatedEmail())
-            ->from('registration@feznicolas.com')
+            ->from($this->getAccountEmail())
             ->to($this->getUser()->getEmail())
-            ->subject($translator->trans('account.activation'))
-            ->htmlTemplate('email/activation.html.twig')
+            ->subject($this->getTranslator()->trans('account.activation'))
+            ->htmlTemplate(self::TEMPLATE_EMAIL_ACTIVATION)
             ->context([
                 'firstName' => $this->getUser()->getFirstName(),
-                'userID' => $this->getUser()->getId(),
-                'activationKey' => $this->getUser()->getActivationKey()
+                'activationUrl' => $activationUrl,
             ]);
         $this->getMailer()->send($activationMail);
     }
 
     /**
-     * @param object $user
      * @param string $activationKey
      */
-    public function activate($user, string $activationKey)
+    public function activate(?string $activationKey)
     {
-        if ($user == null) {
+        if ($this->getUser() == null) {
             throw new AccountValidationException('account.not_found');
         }
-        if ($user->getIsActivated()) {
+
+        if ($this->getUser()->getIsActivated()) {
             throw new AccountValidationException('account.already_activated');
         }
-        if (KeyManager::verify($user->getActivationKey(), $activationKey)) {
-            $user->setIsActivated(true);
+        if (KeyManager::verify($this->getUser()->getActivationKey(), $activationKey)) {
+            $this->getUser()->setIsActivated(true);
             // TODO: Set Activation Key to NULL.
 //            $user->setActivationKey(null);
-            $this->getEntityManager()->persist($user);
+            $this->getEntityManager()->persist($this->getUser());
             $this->getEntityManager()->flush();
         } else {
             throw new AccountValidationException('account.invalid_key');
         }
+    }
+
+    /**
+     * @param string $oldEmailAddress
+     */
+    public function updateProfile(string $oldEmailAddress)
+    {
+        if ($this->getUser()->getUsername() !== $oldEmailAddress) {
+            $this->getTokenStorage()->setToken(null);
+            $this->getUser()->setActivationKey(KeyManager::generate());
+            $this->getUser()->setIsActivated(false);
+            $this->getSession()->invalidate();
+        }
+        $this->getEntityManager()->persist($this->getUser());
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @param FormInterface $updatePasswordForm
+     * @throws TransportExceptionInterface
+     */
+    public function updatePassword(FormInterface $updatePasswordForm)
+    {
+        $this->getUser()->setPassword(
+            $this->getUserPasswordEncoder()->encodePassword(
+                $this->getUser(),
+                $updatePasswordForm->get(PasswordFormType::PASSWORD_FIELD)->getData()
+            )
+        );
+        $this->getEntityManager()->persist($this->getUser());
+        $this->getEntityManager()->flush();
+        // TODO: Add translation.
+        $securityMail = (new TemplatedEmail())
+            ->from($this->getSecurityEmail())
+            ->to($this->getUser()->getEmail())
+            ->subject('Security Alert')
+            ->htmlTemplate(self::TEMPLATE_EMAIL_SECURITY);
+        $this->getMailer()->send($securityMail);
+    }
+
+    /**
+     *
+     */
+    public function delete()
+    {
+        $this->getTokenStorage()->setToken(null);
+        $this->getEntityManager()->remove($this->getUser());
+        $this->getEntityManager()->flush();
+        $this->getSession()->invalidate();
+        // TODO: Send a goodbye e-mail
     }
 
     /**
@@ -115,11 +230,59 @@ class AccountManager
     }
 
     /**
-     * @param User $user
+     * @param object $user
      */
-    public function setUser(User $user): void
+    public function setUser(object $user): void
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountEmail(): string
+    {
+        return $this->accountEmail;
+    }
+
+    /**
+     * @param string $accountEmail
+     */
+    public function setAccountEmail(string $accountEmail): void
+    {
+        $this->accountEmail = $accountEmail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSecurityEmail(): string
+    {
+        return $this->securityEmail;
+    }
+
+    /**
+     * @param string $securityEmail
+     */
+    public function setSecurityEmail(string $securityEmail): void
+    {
+        $this->securityEmail = $securityEmail;
+    }
+
+    /**
+     * @return SessionInterface
+     */
+    public function getSession(): SessionInterface
+    {
+        return $this->session;
+    }
+
+    /**
+     * @param SessionInterface $session
+     */
+    public function setSession(SessionInterface $session): void
+    {
+        $this->session = $session;
     }
 
     /**
@@ -139,6 +302,22 @@ class AccountManager
     }
 
     /**
+     * @return TokenStorageInterface
+     */
+    public function getTokenStorage(): TokenStorageInterface
+    {
+        return $this->tokenStorage;
+    }
+
+    /**
+     * @param TokenStorageInterface $tokenStorage
+     */
+    public function setTokenStorage(TokenStorageInterface $tokenStorage): void
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
+
+    /**
      * @return ObjectManager
      */
     public function getEntityManager(): ObjectManager
@@ -152,6 +331,22 @@ class AccountManager
     public function setEntityManager(ObjectManager $entityManager): void
     {
         $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @return TranslatorInterface
+     */
+    public function getTranslator(): TranslatorInterface
+    {
+        return $this->translator;
+    }
+
+    /**
+     * @param TranslatorInterface $translator
+     */
+    public function setTranslator(TranslatorInterface $translator): void
+    {
+        $this->translator = $translator;
     }
 
     /**
