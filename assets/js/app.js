@@ -10,17 +10,37 @@ import $ from 'jquery';
 import 'bootstrap';
 import '../css/app.scss';
 
+/*
+ * TODO: Remove Logs.
+ */
+
+let $window = $(window);
+
+/*
+ * TODO: Add Bootstrap Loader while $window is loading.
+ */
+
 $(document).ready(function () {
-    let $window = $(window);
     let $navigationBar = $(".navbar");
 
     $window.scroll(() => {
-        if ($window.scrollTop() === 0)
-            $navigationBar.css("opacity", 1);
-        else
-            $navigationBar.css("opacity", 0);
-    });
-    $window.trigger("scroll")
-});
+        let $animatedElements = $("[class*='element-fade-in-']:not(.element-animated)");
+        let scrollTop = $window.scrollTop();
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+        if (scrollTop === 0) {
+            $navigationBar.css("opacity", 1);
+        } else {
+            $navigationBar.css("opacity", 0);
+        }
+        $animatedElements.map((index) => {
+                let $element = $($animatedElements[index]);
+
+                if ($element.offset().top < $window.height() + scrollTop) {
+                    $element.addClass("element-animated");
+                }
+            }
+        )
+        ;
+    });
+    $window.trigger("scroll");
+});

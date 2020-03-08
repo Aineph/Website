@@ -36,7 +36,7 @@ class ProfileFormType extends AbstractType
     /**
      * @var string
      */
-    public const LAST_NAME = 'lastName';
+    public const LAST_NAME_FIELD = 'lastName';
 
     /**
      * @var string
@@ -63,7 +63,7 @@ class ProfileFormType extends AbstractType
                 'label' => 'security.profile.first_name',
                 'translation_domain' => 'messages'
             ])
-            ->add(self::LAST_NAME, TextType::class, [
+            ->add(self::LAST_NAME_FIELD, TextType::class, [
                 'label' => 'security.profile.last_name',
                 'translation_domain' => 'messages'
             ])

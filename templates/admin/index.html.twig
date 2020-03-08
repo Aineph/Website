@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'admin.index.title' | trans }}
+{% endblock %}
+{% block body %}
+    <nav id="website-navigation">
+        {% include 'website/navigation.html.twig' %}
+    </nav>
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-12 col-sm-6 p-3">
+                <div class="card text-center element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/admin/index/user.svg') }}"
+                             alt="{{ 'admin.index.users' | trans }}" width="50px"
+                             height="50px"/>
+                        <div class="card-text">{{ 'admin.index.users' | trans }}</div>
+                        <a href="{{ path('admin_users') }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 p-3">
+                <div class="card text-center element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/admin/index/message.svg') }}"
+                             alt="{{ 'admin.index.messages' | trans }}" width="50px"
+                             height="50px"/>
+                        <div class="card-text">{{ 'admin.index.messages' | trans }}</div>
+                        <a href="{{ path('admin_messages') }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,22 +1,37 @@
 {% block navbar %}
-    <div class="navbar fixed-top navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="{{ path('website_index') }}">{{ 'website.navigation.title' | trans }}</a>
+    <div class="navbar navbar-dark navbar-expand-lg fixed-top">
+        <a class="navbar-brand" href="{{ path('website_index') }}">{{ 'website.navigation.home' | trans }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-navbar"
-                aria-controls="navigation-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navigation-navbar" aria-expanded="false"
+                aria-label="{{ 'website.navigation.toggle' | trans }}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navigation-navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ path('portfolio_index') }}">{{ 'website.navigation.portfolio' | trans }}</a>
+                    <a class="nav-link" href="{{ path('portfolio_index') }}">
+                        {{ 'website.navigation.portfolio' | trans }}
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#website-prestation">{{ 'website.navigation.services' | trans }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#website-contact">{{ 'website.navigation.contact' | trans }}</a>
-                </li>
+                {% if app.request.attributes.get('_route') is same as('website_index') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#index-prestation">{{ 'website.navigation.services' | trans }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#index-contact">{{ 'website.navigation.contact' | trans }}</a>
+                    </li>
+                {% endif %}
+                {% if app.user %}
+                    {% for role in app.user.roles %}
+                        {% if role is same as('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('admin_index') }}">
+                                    {{ 'website.navigation.admin' | trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navigation-dropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,10 +50,6 @@
                             </a>
                         {% endfor %}
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ path('security_profile') }}">{{ 'website.navigation.profile' | trans }}</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

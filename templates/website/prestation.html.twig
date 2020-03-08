@@ -1,109 +1,126 @@
 {% block prestation %}
-    <div class="container-fluid min-vh-100 vh-100">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row m-3">
             <div class="col-12">
-                <div class="h1 text-white">
+                <h1 class="h1 text-white">
                     {{ 'website.prestation.services' | trans }}
-                </div>
+                </h1>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-9">
+        <div class="row m-3">
+            <div class="col-12 col-lg-8 col-xl-9 p-3">
                 <div class="container align-items-center">
-                    <div class="row mt-3">
+                    <div class="row m-3">
                         <div class="col-12 text-center">
-                            <div class="h3 text-white">
+                            <h3 class="h3 text-white element-fade-in-fix">
                                 {{ 'website.prestation.software' | trans }}
-                            </div>
+                            </h3>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <div class="card text-center prestation">
+                    <div class="row m-3">
+                        <div class="col-12 col-md-6 col-xl-4 p-3">
+                            <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/system.svg') }}"
                                          alt="{{ 'website.prestation.system' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.system_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.system' | trans }}
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card text-center prestation">
+                        <div class="col-12 col-md-6 col-xl-4 p-3">
+                            <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/embedded.svg') }}"
                                          alt="{{ 'website.prestation.embedded' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.embedded_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.embedded' | trans }}
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card text-center prestation">
+                        <div class="col-12 col-md-6 col-xl-4 p-3">
+                            <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/security.svg') }}"
                                          alt="{{ 'website.prestation.security' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.security_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.security' | trans }}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <div class="card text-center prestation">
+                        <div class="col-12 col-md-6 col-xl-4 p-3">
+                            <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/website.svg') }}"
                                          alt="{{ 'website.prestation.website' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.website_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link"
+                                       href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.website' | trans }}
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card text-center prestation">
+                        <div class="col-12 col-md-6 col-xl-4 p-3">
+                            <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/mobile.svg') }}"
                                          alt="{{ 'website.prestation.mobile' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.mobile_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.mobile' | trans }}
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card text-center prestation">
+                        <div class="col-12 col-md-6 col-xl-4 p-3">
+                            <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/database.svg') }}"
                                          alt="{{ 'website.prestation.database' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.database_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.database' | trans }}
@@ -113,25 +130,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-lg-4 col-xl-3 p-3">
                 <div class="container align-items-center">
-                    <div class="row mt-3">
+                    <div class="row m-3">
                         <div class="col-12 text-center">
-                            <div class="h3 text-white">
+                            <div class="h3 text-white element-fade-in-fix">
                                 {{ 'website.prestation.music' | trans }}
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <div class="card text-center prestation">
+                    <div class="row m-3">
+                        <div class="col-12 p-3">
+                            <div class="card h-100 text-center element-fade-in-right element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/audio.svg') }}"
                                          alt="{{ 'website.prestation.audio' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.audio_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.audio' | trans }}
@@ -139,16 +159,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            <div class="card text-center prestation">
+                    <div class="row m-3">
+                        <div class="col-12 p-3">
+                            <div class="card h-100 text-center element-fade-in-right element-grow">
                                 <div class="card-body">
                                     <img src="{{ asset('build/website/prestation/score.svg') }}"
                                          alt="{{ 'website.prestation.score' | trans }}" width="50px"
                                          height="50px"/>
-                                    <div class="card-text text-muted">
+                                    <p class="card-text text-muted">
                                         {{ 'website.prestation.score_detail' | trans }}
-                                    </div>
+                                    </p>
+                                    <a class="stretched-link" href="{{ path('website_index') }}">
+                                        {{ 'website.prestation.more' | trans }}
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                     {{ 'website.prestation.score' | trans }}

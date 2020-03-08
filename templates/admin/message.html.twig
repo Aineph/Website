@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'admin.index.title' | trans }}
+{% endblock %}
+{% block body %}
+    <!-- TODO: Add Labels -->
+    <nav id="website-navigation" aria-label="TODO">
+        {% include 'website/navigation.html.twig' %}
+    </nav>
+    <div class="container-fluid pt-5 pb-5">
+        <div class="row pt-5 pb-5 border-bottom">
+            <div class="col-10">
+                <div class="h1 text-white">
+                    {{ message.object }}
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="btn btn-warning">{{ 'admin.message.reply' | trans }}</div>
+            </div>
+        </div>
+        <div class="row pt-5 pb-5 border-bottom">
+            <div class="col-12">
+                <div class="h5 text-white">
+                    {{ message.content | nl2br }}
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5 pb-5">
+            <div class="col-12">
+                <div class="text-white">
+                    {{ 'admin.message.sent_by' | trans }}
+                    <a href="{{ path('admin_user', {'user': message.user}) }}">{{ message.name }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

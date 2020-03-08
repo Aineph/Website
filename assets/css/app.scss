@@ -1,6 +1,72 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 /**
+ * @mixin keyframes
+ * @param name
+ */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content
+  }
+  @-moz-keyframes #{$name} {
+    @content
+  }
+  @-ms-keyframes #{$name} {
+    @content
+  }
+  @keyframes #{$name} {
+    @content
+  }
+}
+
+/**
+ * @mixin fade-in-animation
+ * @param direction
+ * @param distance
+ */
+@mixin fade-in-animation($direction, $distance) {
+  0% {
+    opacity: 0;
+    @if ($direction == "fix") {
+      transform: translateY(0px);
+    } @else if ($direction == "top") {
+      transform: translateY(- $distance);
+    } @else if ($direction == "right") {
+      transform: translateX($distance);
+    } @else if ($direction == "left") {
+      transform: translateX(- $distance);
+    } @else if ("bottom") {
+      transform: translateY($distance);
+    }
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/*
+ * CSS Animations
+ */
+
+$directions: "fix", "top", "right", "bottom", "left";
+$defaultDistance: 50px;
+
+@each $direction in $directions {
+  @include keyframes(fade-in-#{$direction}) {
+    @include fade-in-animation($direction, $defaultDistance);
+  }
+  .element-fade-in-#{$direction}:not(.element-animated) {
+    opacity: 0;
+  }
+  .element-fade-in-#{$direction}.element-animated {
+    animation: fade-in-#{$direction};
+    animation-duration: 1s;
+  }
+}
+
+
+/*
  * HTML Tags Custom Style
  */
 
@@ -8,11 +74,15 @@ html {
   scroll-behavior: smooth;
 }
 
-section:nth-of-type(2n + 1) {
+body {
   background-color: black;
 }
 
-/**
+section:nth-of-type(2n) {
+  background-color: white;
+}
+
+/*
  * HTML Classes Custom Style
  */
 
@@ -26,18 +96,10 @@ section:nth-of-type(2n + 1) {
   opacity: 1 !important;
 }
 
-.card-body img {
+.element-grow {
   transition: transform .3s;
 }
 
-.card-body img:hover {
-  transform: scale(1.3);
-}
-
-.prestation {
-  transition: transform .3s;
-}
-
-.prestation:hover {
+.element-grow:hover {
   transform: scale(1.1);
 }

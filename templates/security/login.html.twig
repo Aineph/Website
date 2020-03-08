@@ -3,7 +3,10 @@
 {% block title %}{{ 'security.login.authentication' | trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <nav id="website-navigation">
+        {% include 'website/navigation.html.twig' %}
+    </nav>
+    <div class="container pt-5 pb-5">
         <div class="card min-vh-100 vh-100">
             <div class="card-body">
                 <form method="post">

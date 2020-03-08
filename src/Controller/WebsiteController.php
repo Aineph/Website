@@ -8,7 +8,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Message;
+use App\Form\ContactFormType;
+use App\Service\MessageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -25,11 +29,23 @@ class WebsiteController extends AbstractController
     const ROUTE_WEBSITE_INDEX = 'website_index';
 
     /**
+     * @param Request $request
+     * @param MessageManager $messageManager
      * @return Response
-     * @Route("/", methods="GET", name="website_index")
+     * @Route("/", name="website_index")
      */
-    public function index(): Response
+    public function index(Request $request, MessageManager $messageManager): Response
     {
-        return $this->render('website/index.html.twig');
+        $messageManager->setMessage(new Message());
+        $contactForm = $this->createForm(ContactFormType::class, $messageManager->getMessage());
+
+        $contactForm->handleRequest($request);
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $messageManager->setEntityManager($this->getDoctrine()->getManager());
+            $messageManager->save($this->getUser());
+        }
+        return $this->render('website/index.html.twig', [
+            'contactForm' => $contactForm->createView()
+        ]);
     }
 }

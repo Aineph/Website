@@ -1,2 +1,56 @@
-{% block footer %}
-{% endblock %}
+<div class="container-fluid">
+    <div class="row m-3">
+        <div class="col-12 col-md-8">
+            <div class="row">
+                <div class="col-12">
+                    <a class="text-white element-fade-in-fix"
+                       href="{{ path('website_index') }}">{{ 'website.footer.home' | trans }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a class="text-white element-fade-in-fix"
+                       href="{{ path('security_profile') }}">{{ 'website.footer.profile' | trans }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a class="text-white element-fade-in-fix"
+                       href="{{ asset('build/website/Nicolas_FEZ_CV.pdf') }}">{{ 'website.footer.resume' | trans }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="h1 text-white">{{ 'website.footer.follow' | trans }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <a class="element-fade-in-fix" href="https://github.com/Aineph">
+                        <img class="d-inline-block"
+                             src="{{ asset('build/website/footer/GitHub-Mark-Light-120px-plus.png') }}" width="25px"
+                             height="25px">
+                        <p class="d-inline-block text-white">{{ 'website.footer.github' | trans }}</p>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a class="element-fade-in-fix" href="https://www.linkedin.com/in/nicolas-fez/">
+                        <img class="d-inline-block" src="{{ asset('build/website/footer/LI-In-Bug.png') }}" width="25px"
+                             height="25px">
+                        <p class="d-inline-block text-white">{{ 'website.footer.linkedin' | trans }}</p>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a class="element-fade-in-fix" href="https://www.malt.fr/profile/nicolasfez">
+                        <img class="d-inline-block" src="{{ asset('build/website/footer/malt_picto_color.png') }}"
+                             width="25px"
+                             height="25px">
+                        <p class="d-inline-block text-white">{{ 'website.footer.malt' | trans }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

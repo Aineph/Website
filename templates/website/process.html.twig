@@ -1,0 +1,43 @@
+{% block process %}
+    <div class="container-fluid">
+        <div class="row m-3">
+            <div class="col-12">
+                <h1 class="h1 text-white">
+                    {{ 'website.process.collaborate' | trans }}
+                </h1>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-12 col-xl-4 p-3">
+                <div class="card h-100 text-center element-fade-in-bottom element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/website/process/quote.svg') }}"
+                             alt="{{ 'website.process.quote' | trans }}" width="50px"
+                             height="50px"/>
+                        <p class="card-text">{{ 'website.process.quote' | trans }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-4 p-3">
+                <div class="card h-100 text-center element-fade-in-bottom element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/website/process/agreement.svg') }}"
+                             alt="{{ 'website.process.agreement' | trans }}" width="50px"
+                             height="50px"/>
+                        <p class="card-text">{{ 'website.process.agreement' | trans }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-4 p-3">
+                <div class="card h-100 text-center element-fade-in-bottom element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/website/process/work.svg') }}"
+                             alt="{{ 'website.process.work' | trans }}" width="50px"
+                             height="50px"/>
+                        <p class="card-text">{{ 'website.process.work' | trans }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

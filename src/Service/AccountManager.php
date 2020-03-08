@@ -11,7 +11,10 @@ namespace App\Service;
 use App\Entity\User;
 use App\Exception\AccountValidationException;
 use App\Form\PasswordFormType;
+use App\Form\ProfileFormType;
 use App\Form\RegistrationFormType;
+use App\Pagination\Paginator;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\FormInterface;
@@ -57,6 +60,11 @@ class AccountManager
      * @var TokenStorageInterface
      */
     private $tokenStorage;
+
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
 
     /**
      * @var ObjectManager
@@ -117,6 +125,8 @@ class AccountManager
      */
     public function register(FormInterface $registerForm, array $roles = self::DEFAULT_ROLES)
     {
+        $this->getUser()->setFirstName(ucfirst($registerForm->get(RegistrationFormType::FIRST_NAME_FIELD)->getData()));
+        $this->getUser()->setLastName(strtoupper($registerForm->get(RegistrationFormType::LAST_NAME_FIELD)->getData()));
         $this->getUser()->setPassword(
             $this->getUserPasswordEncoder()->encodePassword(
                 $this->getUser(),
@@ -156,14 +166,12 @@ class AccountManager
         if ($this->getUser() == null) {
             throw new AccountValidationException('account.not_found');
         }
-
         if ($this->getUser()->getIsActivated()) {
             throw new AccountValidationException('account.already_activated');
         }
         if (KeyManager::verify($this->getUser()->getActivationKey(), $activationKey)) {
             $this->getUser()->setIsActivated(true);
-            // TODO: Set Activation Key to NULL.
-//            $user->setActivationKey(null);
+            $this->getUser()->setActivationKey(null);
             $this->getEntityManager()->persist($this->getUser());
             $this->getEntityManager()->flush();
         } else {
@@ -172,10 +180,13 @@ class AccountManager
     }
 
     /**
+     * @param FormInterface $profileForm
      * @param string $oldEmailAddress
      */
-    public function updateProfile(string $oldEmailAddress)
+    public function updateProfile(FormInterface $profileForm, string $oldEmailAddress)
     {
+        $this->getUser()->setFirstName(ucfirst($profileForm->get(ProfileFormType::FIRST_NAME_FIELD)->getData()));
+        $this->getUser()->setLastName(strtoupper($profileForm->get(ProfileFormType::LAST_NAME_FIELD)->getData()));
         if ($this->getUser()->getUsername() !== $oldEmailAddress) {
             $this->getTokenStorage()->setToken(null);
             $this->getUser()->setActivationKey(KeyManager::generate());
@@ -207,6 +218,15 @@ class AccountManager
             ->subject('Security Alert')
             ->htmlTemplate(self::TEMPLATE_EMAIL_SECURITY);
         $this->getMailer()->send($securityMail);
+    }
+
+    /**
+     * @param int $page
+     * @return Paginator
+     */
+    public function getUserPage(int $page)
+    {
+        return $this->getUserRepository()->findLatest($page);
     }
 
     /**
@@ -315,6 +335,22 @@ class AccountManager
     public function setTokenStorage(TokenStorageInterface $tokenStorage): void
     {
         $this->tokenStorage = $tokenStorage;
+    }
+
+    /**
+     * @return UserRepository
+     */
+    public function getUserRepository(): UserRepository
+    {
+        return $this->userRepository;
+    }
+
+    /**
+     * @param object $userRepository
+     */
+    public function setUserRepository(object $userRepository): void
+    {
+        $this->userRepository = $userRepository;
     }
 
     /**

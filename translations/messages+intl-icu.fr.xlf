@@ -31,12 +31,20 @@
                 <source>website.header.register</source>
                 <target>Créer mon espace client</target>
             </trans-unit>
+            <trans-unit id="website.header.first">
+                <source>website.header.first</source>
+                <target>Première diapositive</target>
+            </trans-unit>
+            <trans-unit id="website.header.second">
+                <source>website.header.second</source>
+                <target>Seconde diapositive</target>
+            </trans-unit>
 
             <!-- navigation.html.twig -->
 
-            <trans-unit id="website.navigation.title">
-                <source>website.navigation.title</source>
-                <target>Mon Site Web</target>
+            <trans-unit id="website.navigation.home">
+                <source>website.navigation.home</source>
+                <target>Accueil</target>
             </trans-unit>
             <trans-unit id="website.navigation.portfolio">
                 <source>website.navigation.portfolio</source>
@@ -50,17 +58,22 @@
                 <source>website.navigation.contact</source>
                 <target>Me contacter</target>
             </trans-unit>
+            <trans-unit id="website.navigation.admin">
+                <source>website.navigation.admin</source>
+                <target>Administration</target>
+            </trans-unit>
             <trans-unit id="website.navigation.language">
                 <source>website.navigation.language</source>
                 <target>Langue</target>
             </trans-unit>
-            <trans-unit id="website.navigation.profile">
-                <source>website.navigation.profile</source>
-                <target>Mon espace client</target>
-            </trans-unit>
             <trans-unit id="website.navigation.search">
                 <source>website.navigation.search</source>
                 <target>Rechercher</target>
+            </trans-unit>
+            <!-- Aria -->
+            <trans-unit id="website.navigation.toggle">
+                <source>website.navigation.toggle</source>
+                <target>Déclencher la navigation</target>
             </trans-unit>
 
             <!-- prestation.html.twig -->
@@ -141,12 +154,104 @@
                 <source>website.prestation.score_detail</source>
                 <target>Faites jouer vos morceaux par un orchestre</target>
             </trans-unit>
+            <trans-unit id="website.prestation.more">
+                <source>website.prestation.more</source>
+                <target>Plus de détails...</target>
+            </trans-unit>
+
+            <!-- proficiency.html.twig -->
+
+            <trans-unit id="website.proficiency.skills">
+                <source>website.proficiency.skills</source>
+                <target>Skills</target>
+            </trans-unit>
+            <trans-unit id="website.proficiency.autonomous">
+                <source>website.proficiency.autonomous</source>
+                <target>Autonome</target>
+            </trans-unit>
+            <trans-unit id="website.proficiency.rigorous">
+                <source>website.proficiency.rigorous</source>
+                <target>Rigoureux</target>
+            </trans-unit>
+            <trans-unit id="website.proficiency.creative">
+                <source>website.proficiency.creative</source>
+                <target>Créatif</target>
+            </trans-unit>
+
+            <!-- process.html.twig -->
+            <trans-unit id="website.process.collaborate">
+                <source>website.process.collaborate</source>
+                <target>Processus de collaboration</target>
+            </trans-unit>
+            <trans-unit id="website.process.quote">
+                <source>website.process.quote</source>
+                <target>Établir le devis</target>
+            </trans-unit>
+            <trans-unit id="website.process.agreement">
+                <source>website.process.agreement</source>
+                <target>Se mettre d'accord sur les procédés et les délais</target>
+            </trans-unit>
+            <trans-unit id="website.process.work">
+                <source>website.process.work</source>
+                <target>Commencer à construire vos projets ensemble</target>
+            </trans-unit>
 
             <!-- contact.html.twig -->
 
             <trans-unit id="website.contact.contact">
                 <source>website.contact.contact</source>
                 <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="website.contact.name">
+                <source>website.contact.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="website.contact.email">
+                <source>website.contact.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="website.contact.object">
+                <source>website.contact.object</source>
+                <target>Objet</target>
+            </trans-unit>
+            <trans-unit id="website.contact.content">
+                <source>website.contact.content</source>
+                <target>Contenu</target>
+            </trans-unit>
+            <trans-unit id="website.contact.submit">
+                <source>website.contact.submit</source>
+                <target>Envoyer</target>
+            </trans-unit>
+
+            <!-- footer.html.twig -->
+
+            <trans-unit id="website.footer.home">
+                <source>website.footer.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+            <trans-unit id="website.footer.profile">
+                <source>website.footer.profile</source>
+                <target>Mon espace client</target>
+            </trans-unit>
+            <trans-unit id="website.footer.resume">
+                <source>website.footer.resume</source>
+                <target>CV</target>
+            </trans-unit>
+            <trans-unit id="website.footer.follow">
+                <source>website.footer.follow</source>
+                <target>Continuez à me suivre...</target>
+            </trans-unit>
+            <trans-unit id="website.footer.github">
+                <source>website.footer.github</source>
+                <target>@Aineph</target>
+            </trans-unit>
+            <trans-unit id="website.footer.linkedin">
+                <source>website.footer.linkedin</source>
+                <target>@nicolas-fez</target>
+            </trans-unit>
+            <trans-unit id="website.footer.malt">
+                <source>website.footer.malt</source>
+                <target>@nicolasfez</target>
             </trans-unit>
 
             <!--    Portfolio    -->
@@ -312,6 +417,111 @@
             <trans-unit id="security.login.register">
                 <source>security.login.register</source>
                 <target>Créer un compte</target>
+            </trans-unit>
+
+            <!--      Admin      -->
+            <!-- index.html.twig -->
+
+            <trans-unit id="admin.index.title">
+                <source>admin.index.title</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="admin.index.users">
+                <source>admin.index.users</source>
+                <target>Gestion des utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="admin.index.messages">
+                <source>admin.index.messages</source>
+                <target>Gestion des messages</target>
+            </trans-unit>
+
+            <!-- users.html.twig -->
+
+            <trans-unit id="admin.users.users">
+                <source>admin.users.users</source>
+                <target>Utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="admin.users.id">
+                <source>admin.users.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="admin.users.first_name">
+                <source>admin.users.first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="admin.users.last_name">
+                <source>admin.users.last_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="admin.users.email">
+                <source>admin.users.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="admin.users.on">
+                <source>admin.users.on</source>
+                <target>sur</target>
+            </trans-unit>
+            <trans-unit id="admin.users.prev">
+                <source>admin.users.prev</source>
+                <target>Précédent</target>
+            </trans-unit>
+            <trans-unit id="admin.users.next">
+                <source>admin.users.next</source>
+                <target>Suivant</target>
+            </trans-unit>
+
+            <!-- messages.html.twig -->
+
+            <trans-unit id="admin.messages.messages">
+                <source>admin.messages.messages</source>
+                <target>Messages</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.sent_by">
+                <source>admin.messages.sent_by</source>
+                <target>Envoyé par</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.object">
+                <source>admin.messages.object</source>
+                <target>Objet</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.sent_at">
+                <source>admin.messages.sent_at</source>
+                <target>Envoyé à</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.actions">
+                <source>admin.messages.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.open">
+                <source>admin.messages.open</source>
+                <target>Ouvrir</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.delete">
+                <source>admin.messages.delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.on">
+                <source>admin.messages.on</source>
+                <target>sur</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.prev">
+                <source>admin.messages.prev</source>
+                <target>Précédent</target>
+            </trans-unit>
+            <trans-unit id="admin.messages.next">
+                <source>admin.messages.next</source>
+                <target>Suivant</target>
+            </trans-unit>
+
+            <!-- message.html.twig -->
+
+            <trans-unit id="admin.message.sent_by">
+                <source>admin.message.sent_by</source>
+                <target>Envoyé par</target>
+            </trans-unit>
+            <trans-unit id="admin.message.reply">
+                <source>admin.message.reply</source>
+                <target>Répondre</target>
             </trans-unit>
 
             <!--         Email        -->

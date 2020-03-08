@@ -120,15 +120,15 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @param string $id
+     * @param int $id
      * @param Request $request
      * @param AccountManager $accountManager
      * @return Response
-     * @Route("/activate/{id}", name="security_activate")
+     * @Route("/activate/{id}", name="security_activate", requirements={"id"="\d+"})
      */
-    public function activate(string $id, Request $request, AccountManager $accountManager)
+    public function activate(int $id, Request $request, AccountManager $accountManager)
     {
-        $accountManager->setUser($this->getDoctrine()->getRepository(User::class)->find(intval($id)));
+        $accountManager->setUser($this->getDoctrine()->getRepository(User::class)->find($id));
 
         $accountManager->setEntityManager($this->getDoctrine()->getManager());
         try {
@@ -159,8 +159,7 @@ class SecurityController extends AbstractController
         $deleteAccountForm->handleRequest($request);
         $accountManager->setEntityManager($this->getDoctrine()->getManager());
         if ($updateProfileForm->isSubmitted() && $updateProfileForm->isValid()) {
-            $accountManager->updateProfile($currentEmailAddress);
-            return $this->redirectToRoute(WebsiteController::ROUTE_WEBSITE_INDEX);
+            $accountManager->updateProfile($updateProfileForm, $currentEmailAddress);
         } elseif ($updatePasswordForm->isSubmitted() && $updatePasswordForm->isValid()) {
             try {
                 $accountManager->updatePassword($updatePasswordForm);
@@ -169,8 +168,7 @@ class SecurityController extends AbstractController
                     'error' => $transportException->getMessage()
                 ]);
             }
-        }
-        if ($deleteAccountForm->isSubmitted() && $deleteAccountForm->isValid()) {
+        } else if ($deleteAccountForm->isSubmitted() && $deleteAccountForm->isValid()) {
             $accountManager->delete();
             return $this->redirectToRoute(WebsiteController::ROUTE_WEBSITE_INDEX);
         }

@@ -1,17 +1,23 @@
 {% extends 'base.html.twig' %}
 {% block header %}
-    <header id="website-header">
+    <header id="index-header">
         {% include 'website/header.html.twig' %}
     </header>
 {% endblock %}
 {% block body %}
-    <nav id="website-navigation">
+    <nav id="index-navigation">
         {% include 'website/navigation.html.twig' %}
     </nav>
-    <section id="website-prestation">
+    <section id="index-prestation">
         {% include 'website/prestation.html.twig' %}
     </section>
-    <section id="website-contact">
+    <section id="index-proficiency">
+        {% include 'website/proficiency.html.twig' %}
+    </section>
+    <section id="index-process">
+        {% include 'website/process.html.twig' %}
+    </section>
+    <section id="index-contact">
         {% include 'website/contact.html.twig' %}
     </section>
 {% endblock %}
