@@ -1,0 +1,41 @@
+{% block articles %}
+    <div class="container-fluid">
+        <div class="row m-3">
+            <div class="col-10">
+                {% if app.user %}
+                    <button class="btn btn-info">{{ 'blog.articles.create' | trans }}</button>
+                {% endif %}
+            </div>
+            <div class="col-2">
+                <!-- TODO: Add Pagination -->
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-12">
+                {% if articlePaginator.resultsCount <= 0 %}
+                    <p class="text-white">{{ 'blog.articles.empty' | trans }}</p>
+                {% endif %}
+                {% for article in articlePaginator.results %}
+                    <article>
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <h2 class="h2 text-white">{{ article.title }}</h2>
+                                <p class="text-small text-white">
+                                    {{ 'blog.articles.author' | trans }}
+                                    {{ article.user }}
+                                    {{ 'blog.articles.date' | trans }}
+                                    {{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a class="btn btn-primary">
+                                    {{ 'blog.articles.read' | trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

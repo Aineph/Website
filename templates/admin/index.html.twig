@@ -4,8 +4,8 @@
     {{ 'admin.index.title' | trans }}
 {% endblock %}
 {% block body %}
-    <nav id="website-navigation">
-        {% include 'website/navigation.html.twig' %}
+    <nav id="admin-navigation">
+        {% include 'navigation.html.twig' %}
     </nav>
     <div class="container">
         <div class="row m-5">
@@ -28,6 +28,39 @@
                              height="50px"/>
                         <div class="card-text">{{ 'admin.index.messages' | trans }}</div>
                         <a href="{{ path('admin_messages') }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 p-3">
+                <div class="card text-center element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/admin/index/article.svg') }}"
+                             alt="{{ 'admin.index.articles' | trans }}" width="50px"
+                             height="50px"/>
+                        <div class="card-text">{{ 'admin.index.articles' | trans }}</div>
+                        <a href="{{ path('admin_articles') }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 p-3">
+                <div class="card text-center element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/admin/index/task.svg') }}"
+                             alt="{{ 'admin.index.tasks' | trans }}" width="50px"
+                             height="50px"/>
+                        <div class="card-text">{{ 'admin.index.tasks' | trans }}</div>
+                        <a href="{{ path('admin_missions') }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 p-3">
+                <div class="card text-center element-grow">
+                    <div class="card-body">
+                        <img src="{{ asset('build/admin/index/project.svg') }}"
+                             alt="{{ 'admin.index.projects' | trans }}" width="50px"
+                             height="50px"/>
+                        <div class="card-text">{{ 'admin.index.projects' | trans }}</div>
+                        <a href="{{ path('admin_projects') }}" class="stretched-link"></a>
                     </div>
                 </div>
             </div>

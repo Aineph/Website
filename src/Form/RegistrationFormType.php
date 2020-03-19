@@ -11,7 +11,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -30,32 +32,52 @@ class RegistrationFormType extends AbstractType
     /**
      * @var string
      */
-    public const FIRST_NAME_FIELD = 'firstName';
-
-    /**
-     * @var string
-     */
-    public const LAST_NAME_FIELD = 'lastName';
-
-    /**
-     * @var string
-     */
-    public const COUNTRY_FIELD = 'country';
-
-    /**
-     * @var string
-     */
-    public const PHONE_NUMBER_FIELD = 'phoneNumber';
-
-    /**
-     * @var string
-     */
     public const EMAIL_FIELD = 'email';
 
     /**
      * @var string
      */
     public const PASSWORD_FIELD = 'plainPassword';
+
+    /**
+     * @var string
+     */
+    const FIRST_NAME_FIELD = 'firstName';
+
+    /**
+     * @var string
+     */
+    const LAST_NAME_FIELD = 'lastName';
+
+    /**
+     * @var string
+     */
+    const COMPANY_FIELD = 'company';
+
+    /**
+     * @var string
+     */
+    const ADDRESS_FIELD = 'address';
+
+    /**
+     * @var string
+     */
+    const CITY_FIELD = 'city';
+
+    /**
+     * @var string
+     */
+    const ZIP_FIELD = 'zip';
+
+    /**
+     * @var string
+     */
+    const COUNTRY_FIELD = 'country';
+
+    /**
+     * @var string
+     */
+    public const PHONE_NUMBER_FIELD = 'phoneNumber';
 
     /**
      * @param FormBuilderInterface $builder
@@ -74,20 +96,6 @@ class RegistrationFormType extends AbstractType
             ])
             ->add(self::EMAIL_FIELD, EmailType::class, [
                 'label' => 'security.register.email',
-                'translation_domain' => 'messages'
-            ])
-            ->add(self::COUNTRY_FIELD, ChoiceType::class, [
-                'choices' => [
-                    'France' => 'France',
-                    'Germany' => 'Germany',
-                    'United Kingdom' => 'United Kingdom',
-                    'United States' => 'United States'
-                ],
-                'label' => 'security.register.country',
-                'translation_domain' => 'messages'
-            ])
-            ->add(self::PHONE_NUMBER_FIELD, TelType::class, [
-                'label' => 'security.register.phone',
                 'translation_domain' => 'messages'
             ])
             ->add(self::PASSWORD_FIELD, RepeatedType::class, [
@@ -111,6 +119,30 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096
                     ])
                 ]
+            ])
+            ->add(self::COMPANY_FIELD, TextType::class, [
+                'label' => 'security.register.company',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::ADDRESS_FIELD, TextType::class, [
+                'label' => 'security.register.address',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::CITY_FIELD, TextType::class, [
+                'label' => 'security.register.city',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::ZIP_FIELD, NumberType::class, [
+                'label' => 'security.register.zip',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::COUNTRY_FIELD, CountryType::class, [
+                'label' => 'security.register.country',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::PHONE_NUMBER_FIELD, TelType::class, [
+                'label' => 'security.register.phone',
+                'translation_domain' => 'messages'
             ]);
     }
 

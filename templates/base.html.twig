@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="{{ 'base.description' | trans }}">
     <meta name="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="og:title" content="{{ 'base.title' | trans }}">
     <meta name="og:type" content="website">
     <meta name="og:locale" content="{{ app.request.locale }}_{{ app.request.locale | upper }}">
     <meta name="og:url" content="{{ app.request.uri }}">
-    <!-- TODO: Add SEO Optimization -->
     <title>
         {% block title %}
             {{ 'base.title' | trans }}

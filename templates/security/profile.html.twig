@@ -3,14 +3,13 @@
 {% block title %}{{ 'security.profile.profile' | trans }}{% endblock %}
 
 {% block body %}
-    <nav id="website-navigation">
-        {% include 'website/navigation.html.twig' %}
+    <nav id="profile-navigation">
+        {% include 'navigation.html.twig' %}
     </nav>
-    <div class="container pt-5 pb-5">
-        <div class="card min-vh-100 vh-100">
+    <div class="container">
+        <div class="card min-vh-100 m-5">
             <div class="card-body">
-                {% if
-                    error is defined or
+                {% if error is defined or
                     not passwordForm.vars.valid or
                     not profileForm.vars.valid or
                     not accountDeletionForm.vars.valid %}
@@ -28,12 +27,11 @@
                         {{ form_errors(accountDeletionForm.password) }}
                     </div>
                 {% endif %}
-
+                <h1 class="h1 font-weight-normal">{{ 'security.profile.profile' | trans }}</h1>
                 {{ form_start(profileForm) }}
-                <h1 class="h3 mb-3 font-weight-normal">{{ 'security.profile.profile' | trans }}</h1>
                 <div class="form-group">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row m-5">
+                        <div class="col-12 col-md-6">
                             {{ form_label(profileForm.firstName) }}
                             {{ form_widget(profileForm.firstName, {
                                 'attr': {
@@ -41,7 +39,7 @@
                                 }
                             }) }}
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             {{ form_label(profileForm.lastName) }}
                             {{ form_widget(profileForm.lastName, {
                                 'attr': {
@@ -49,9 +47,39 @@
                                 }
                             }) }}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
+                            {{ form_label(profileForm.company) }}
+                            {{ form_widget(profileForm.company, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.address) }}
+                            {{ form_widget(profileForm.address, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.city) }}
+                            {{ form_widget(profileForm.city, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.zip) }}
+                            {{ form_widget(profileForm.zip, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
                             {{ form_label(profileForm.country) }}
                             {{ form_widget(profileForm.country, {
                                 'attr': {
@@ -59,9 +87,7 @@
                                 }
                             }) }}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             {{ form_label(profileForm.phoneNumber) }}
                             {{ form_widget(profileForm.phoneNumber, {
                                 'attr': {
@@ -107,9 +133,6 @@
                         <button class="btn btn-lg btn-primary" type="submit">
                             {{ 'security.profile.submit' | trans }}
                         </button>
-                        <a href="{{ path('security_logout') }}" class="btn btn-lg btn-secondary">
-                            {{ 'security.profile.logout' | trans }}
-                        </a>
                     </div>
                 </div>
                 {{ form_end(profileForm) }}

@@ -7,7 +7,15 @@
 
             <trans-unit id="base.title">
                 <source>base.title</source>
-                <target>Bienvenue !</target>
+                <target>Nicolas FEZ - Freelance</target>
+            </trans-unit>
+            <trans-unit id="base.description">
+                <source>base.description</source>
+                <target>
+                    Je suis Nicolas FEZ un ingénieur logiciel diplômé de l'école Epitech, en France.
+                    Je suis devenu indépendant en 2020. Depuis, je réalise plusieurs missions en tant que freelance.
+                    Si vous avez besoin d'un Développeur Web ou d'un Développeur Mobile, n'hésitez pas à me contacter.
+                </target>
             </trans-unit>
 
             <!--     Website     -->
@@ -56,7 +64,11 @@
             </trans-unit>
             <trans-unit id="website.navigation.contact">
                 <source>website.navigation.contact</source>
-                <target>Me contacter</target>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="website.navigation.blog">
+                <source>website.navigation.blog</source>
+                <target>Blog</target>
             </trans-unit>
             <trans-unit id="website.navigation.admin">
                 <source>website.navigation.admin</source>
@@ -136,7 +148,7 @@
             </trans-unit>
             <trans-unit id="website.prestation.music">
                 <source>website.prestation.music</source>
-                <target>Composition Musicale</target>
+                <target>Musique</target>
             </trans-unit>
             <trans-unit id="website.prestation.audio">
                 <source>website.prestation.audio</source>
@@ -144,7 +156,7 @@
             </trans-unit>
             <trans-unit id="website.prestation.audio_detail">
                 <source>website.prestation.audio_detail</source>
-                <target>Profitez d'une bande son de très haute qualité sonore</target>
+                <target>Profitez d'une bande son de très haute qualité</target>
             </trans-unit>
             <trans-unit id="website.prestation.score">
                 <source>website.prestation.score</source>
@@ -152,7 +164,7 @@
             </trans-unit>
             <trans-unit id="website.prestation.score_detail">
                 <source>website.prestation.score_detail</source>
-                <target>Faites jouer vos morceaux par un orchestre</target>
+                <target>Obtenez la partition pour votre bande son</target>
             </trans-unit>
             <trans-unit id="website.prestation.more">
                 <source>website.prestation.more</source>
@@ -163,19 +175,31 @@
 
             <trans-unit id="website.proficiency.skills">
                 <source>website.proficiency.skills</source>
-                <target>Skills</target>
+                <target>Compétences</target>
             </trans-unit>
             <trans-unit id="website.proficiency.autonomous">
                 <source>website.proficiency.autonomous</source>
                 <target>Autonome</target>
             </trans-unit>
+            <trans-unit id="website.proficiency.autonomous_detail">
+                <source>website.proficiency.autonomous_detail</source>
+                <target>Trouver des solutions simples et fiables pour résoudre des problèmes complexes.</target>
+            </trans-unit>
             <trans-unit id="website.proficiency.rigorous">
                 <source>website.proficiency.rigorous</source>
                 <target>Rigoureux</target>
             </trans-unit>
+            <trans-unit id="website.proficiency.rigorous_detail">
+                <source>website.proficiency.rigorous_detail</source>
+                <target>Produire du code propre et facilement compréhensible pour plus d'efficacité.</target>
+            </trans-unit>
             <trans-unit id="website.proficiency.creative">
                 <source>website.proficiency.creative</source>
                 <target>Créatif</target>
+            </trans-unit>
+            <trans-unit id="website.proficiency.creative_detail">
+                <source>website.proficiency.creative_detail</source>
+                <target>Apporter des idées et des retours pour améliorer votre projet.</target>
             </trans-unit>
 
             <!-- process.html.twig -->
@@ -233,6 +257,10 @@
                 <source>website.footer.profile</source>
                 <target>Mon espace client</target>
             </trans-unit>
+            <trans-unit id="website.footer.portfolio">
+                <source>website.footer.portfolio</source>
+                <target>Portfolio</target>
+            </trans-unit>
             <trans-unit id="website.footer.resume">
                 <source>website.footer.resume</source>
                 <target>CV</target>
@@ -257,21 +285,241 @@
             <!--    Portfolio    -->
             <!-- index.html.twig -->
 
-            <trans-unit id="portfolio.index.title">
-                <source>portfolio.index.title</source>
+            <trans-unit id="portfolio.index.name">
+                <source>portfolio.index.name</source>
                 <target>Nicolas FEZ</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.job">
+                <source>portfolio.index.job</source>
+                <target>Artisan Logiciel</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.address">
+                <source>portfolio.index.address</source>
+                <target>Saint-Germain-sur-Avre, France</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.email">
+                <source>portfolio.index.email</source>
+                <target>nicolasfez27@gmail.com</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.phone">
+                <source>portfolio.index.phone</source>
+                <target>+33 6 10 16 18 39</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.birth_date">
+                <source>portfolio.index.birth_date</source>
+                <target>Nov. 1996</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.birth">
+                <source>portfolio.index.birth</source>
+                <target>Naissance.</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.epitech_date">
+                <source>portfolio.index.epitech_date</source>
+                <target>Sept. 2014</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.epitech">
+                <source>portfolio.index.epitech</source>
+                <target>
+                    Première année à Epitech après un baccalauréat scientifique. Apprentissage de plusieurs langages
+                    élémentaires comme le C et le C++, ainsi que de plusieurs concepts de programmation.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.orchestra_date">
+                <source>portfolio.index.orchestra_date</source>
+                <target>Sept. 2015 - Jan. 2016</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.orchestra">
+                <source>portfolio.index.orchestra</source>
+                <target>
+                    Premier stage en tant qu'Ingénieur Logiciel à Orchestra Travelsoft.
+                    Intégration, optimisation et maintenance des applications de la plateforme.
+                    Développement de scripts de sécurité.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.cadageo_date">
+                <source>portfolio.index.cadageo_date</source>
+                <target>Avr. 2017 - Oct. 2017</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.cadageo">
+                <source>portfolio.index.cadageo</source>
+                <target>
+                    Stage en tant que Développeur Open-Source chez Cadageo.
+                    Création de Splicy, extension du logiciel Qgis visant à faciliter le déploiement du Très Haut Débit
+                    en France.
+                    Optimisation de requêtes SQL.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.abroad_date">
+                <source>portfolio.index.abroad_date</source>
+                <target>Jan. 2018 - Sept. 2018</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.abroad">
+                <source>portfolio.index.abroad</source>
+                <target>
+                    Études à l'étranger, au California State University San Marcos.
+                    Étude de la programmation de jeux avec Unity, des communications de données et des réseaux
+                    informatiques, des concepts de programmation embarquée en temps réel, ainsi que l'entrepreunariat.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.webacademie_date">
+                <source>portfolio.index.webacademie_date</source>
+                <target>Sept. 2018 - Mar. 2019</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.webacademie">
+                <source>portfolio.index.webacademie</source>
+                <target>
+                    Assistant pédagogique pour la Web@cademie by Epitech.
+                    Enseignement des technologies Web aux étudiants de la Web@cadémie.
+                    Correction des projets et notation des soutenances.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.sopra_date">
+                <source>portfolio.index.sopra_date</source>
+                <target>Mar. 2018 - Sept. 2019</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.sopra">
+                <source>portfolio.index.sopra</source>
+                <target>
+                    Stage en tant qu'Ingénieur en Informatique Décisionnelle.
+                    Tierce Maintenance Applicative sur les applications de BI de l’Assurance Maladie.
+                    Optimisations et corrections de l’outil CAMEL, sécurisant les flux de la Cnam vers l’informationnel
+                    national (SNIIRAM).
+                    Réalisation d'un script de mise à jour d'une cartographie des applications du SNIIRAM sous Neo4J.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.graduation_date">
+                <source>portfolio.index.graduation_date</source>
+                <target>2019</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.graduation">
+                <source>portfolio.index.graduation</source>
+                <target>Obtention du diplôme Epitech Expert en Technologies de l’Information.</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.capgemini_date">
+                <source>portfolio.index.capgemini_date</source>
+                <target>Oct. 2019 - Maintenant</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.capgemini">
+                <source>portfolio.index.capgemini</source>
+                <target>
+                    Premier emploi en tant que Concepteur à Capgemini.
+                    Intégration d'un algorithme de géolocalisation sur le Rafale F4.
+                </target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.freelance_date">
+                <source>portfolio.index.freelance_date</source>
+                <target>Jun. 2020 - Maintenant</target>
+            </trans-unit>
+            <trans-unit id="portfolio.index.freelance">
+                <source>portfolio.index.freelance</source>
+                <target>Démarrage de mes activités d'auto-entrepreneur.</target>
             </trans-unit>
             <trans-unit id="portfolio.index.projects">
                 <source>portfolio.index.projects</source>
                 <target>Projets</target>
             </trans-unit>
-            <trans-unit id="portfolio.index.resume">
-                <source>portfolio.index.resume</source>
-                <target>CV</target>
+            <trans-unit id="portfolio.index.projects_empty">
+                <source>portfolio.index.projects_empty</source>
+                <target>Il n'y a encore aucun projet ici.</target>
             </trans-unit>
-            <trans-unit id="portfolio.index.about">
-                <source>portfolio.index.about</source>
-                <target>À propos de moi</target>
+            <trans-unit id="portfolio.index.link">
+                <source>portfolio.index.link</source>
+                <target>Cliquez pour accéder au projet</target>
+            </trans-unit>
+
+            <!--       Blog      -->
+            <!-- index.html.twig -->
+
+            <trans-unit id="blog.index.blog">
+                <source>blog.index.blog</source>
+                <target>Blog</target>
+            </trans-unit>
+
+            <!-- articles.html.twig -->
+
+            <trans-unit id="blog.articles.create">
+                <source>blog.articles.create</source>
+                <target>Créer un article</target>
+            </trans-unit>
+            <trans-unit id="blog.articles.empty">
+                <source>blog.articles.empty</source>
+                <target>Il n'y a actuellement aucun article.</target>
+            </trans-unit>
+            <trans-unit id="blog.articles.author">
+                <source>blog.articles.author</source>
+                <target>Créé par</target>
+            </trans-unit>
+            <trans-unit id="blog.articles.date">
+                <source>blog.articles.date</source>
+                <target>à</target>
+            </trans-unit>
+            <trans-unit id="blog.articles.read">
+                <source>blog.articles.read</source>
+                <target>Lire</target>
+            </trans-unit>
+
+            <!--      Profile      -->
+            <!-- profile.html.twig -->
+
+            <trans-unit id="profile.index.welcome">
+                <source>profile.index.welcome</source>
+                <target>Bienvenue</target>
+            </trans-unit>
+            <trans-unit id="profile.index.edit">
+                <source>profile.index.edit</source>
+                <target>Éditer mon profil</target>
+            </trans-unit>
+            <trans-unit id="profile.index.logout">
+                <source>profile.index.logout</source>
+                <target>Me déconnecter</target>
+            </trans-unit>
+            <trans-unit id="profile.index.activity">
+                <source>profile.index.activity</source>
+                <target>Mon activité</target>
+            </trans-unit>
+            <trans-unit id="profile.index.activity_empty">
+                <source>profile.index.activity_empty</source>
+                <target>Vous n'avez encore aucune activité.</target>
+            </trans-unit>
+            <trans-unit id="profile.index.tasks">
+                <source>profile.index.tasks</source>
+                <target>Missions</target>
+            </trans-unit>
+            <trans-unit id="profile.index.hire">
+                <source>profile.index.hire</source>
+                <target>Proposer un projet</target>
+            </trans-unit>
+            <trans-unit id="profile.index.accomplished">
+                <source>profile.index.accomplished</source>
+                <target>mission réalisée ensemble.</target>
+            </trans-unit>
+            <trans-unit id="profile.index.accomplished_several">
+                <source>profile.index.accomplished_several</source>
+                <target>missions réalisées ensemble.</target>
+            </trans-unit>
+            <trans-unit id="profile.index.task">
+                <source>profile.index.task</source>
+                <target>Mission</target>
+            </trans-unit>
+            <trans-unit id="profile.index.task_detail">
+                <source>profile.index.task_detail</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="profile.index.task_status">
+                <source>profile.index.task_status</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="profile.index.done">
+                <source>profile.index.done</source>
+                <target>Fini</target>
+            </trans-unit>
+            <trans-unit id="profile.index.todo">
+                <source>profile.index.todo</source>
+                <target>En cours</target>
+            </trans-unit>
+            <trans-unit id="profile.index.task_empty">
+                <source>profile.index.task_empty</source>
+                <target>Proposez des projets pour ajouter des missions ici.</target>
             </trans-unit>
 
             <!--      Security      -->
@@ -327,6 +575,22 @@
             <trans-unit id="security.profile.last_name">
                 <source>security.profile.last_name</source>
                 <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="security.profile.company">
+                <source>security.profile.company</source>
+                <target>Entreprise</target>
+            </trans-unit>
+            <trans-unit id="security.profile.address">
+                <source>security.profile.address</source>
+                <target>Addresse</target>
+            </trans-unit>
+            <trans-unit id="security.profile.city">
+                <source>security.profile.city</source>
+                <target>Ville</target>
+            </trans-unit>
+            <trans-unit id="security.profile.zip">
+                <source>security.profile.zip</source>
+                <target>Code postal</target>
             </trans-unit>
             <trans-unit id="security.profile.country">
                 <source>security.profile.country</source>
@@ -406,6 +670,17 @@
                 <source>security.login.remember</source>
                 <target>Se souvenir de moi</target>
             </trans-unit>
+            <trans-unit id="security.login.forgotten">
+                <source>security.login.forgotten</source>
+                <target>Mot de passe oublié</target>
+            </trans-unit>
+            <trans-unit id="security.login.forgotten_detail">
+                <source>security.login.forgotten_detail</source>
+                <target>
+                    Veuillez entrer votre adresse e-mail.
+                    Vous receverez un lien, qui vous permettra de réinitialiser votre mot de passe.
+                </target>
+            </trans-unit>
             <trans-unit id="security.login.submit">
                 <source>security.login.submit</source>
                 <target>Valider</target>
@@ -434,6 +709,18 @@
                 <source>admin.index.messages</source>
                 <target>Gestion des messages</target>
             </trans-unit>
+            <trans-unit id="admin.index.articles">
+                <source>admin.index.articles</source>
+                <target>Gestion des articles</target>
+            </trans-unit>
+            <trans-unit id="admin.index.tasks">
+                <source>admin.index.tasks</source>
+                <target>Gestion des missions</target>
+            </trans-unit>
+            <trans-unit id="admin.index.projects">
+                <source>admin.index.projects</source>
+                <target>Gestion des projets</target>
+            </trans-unit>
 
             <!-- users.html.twig -->
 
@@ -457,17 +744,84 @@
                 <source>admin.users.email</source>
                 <target>E-mail</target>
             </trans-unit>
+            <trans-unit id="admin.users.actions">
+                <source>admin.users.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="admin.users.view">
+                <source>admin.users.view</source>
+                <target>Voir</target>
+            </trans-unit>
             <trans-unit id="admin.users.on">
                 <source>admin.users.on</source>
                 <target>sur</target>
             </trans-unit>
-            <trans-unit id="admin.users.prev">
-                <source>admin.users.prev</source>
+            <trans-unit id="admin.users.previous">
+                <source>admin.users.previous</source>
                 <target>Précédent</target>
             </trans-unit>
             <trans-unit id="admin.users.next">
                 <source>admin.users.next</source>
                 <target>Suivant</target>
+            </trans-unit>
+
+            <!-- user.html.twig -->
+
+            <trans-unit id="admin.user.contact">
+                <source>admin.user.contact</source>
+                <target>Contacter</target>
+            </trans-unit>
+            <trans-unit id="admin.user.company">
+                <source>admin.user.company</source>
+                <target>Entreprise</target>
+            </trans-unit>
+            <trans-unit id="admin.user.address">
+                <source>admin.user.address</source>
+                <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="admin.user.email">
+                <source>admin.user.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="admin.user.phone">
+                <source>admin.user.phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="admin.user.missions">
+                <source>admin.user.missions</source>
+                <target>Missions</target>
+            </trans-unit>
+            <trans-unit id="admin.user.missions_empty">
+                <source>admin.user.missions_empty</source>
+                <target>Il n'y a encore aucune mission pour cet utilisateur.</target>
+            </trans-unit>
+            <trans-unit id="admin.user.articles">
+                <source>admin.user.articles</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="admin.user.articles_empty">
+                <source>admin.user.articles_empty</source>
+                <target>Il n'y a encore aucun article pour cet utilisateur.</target>
+            </trans-unit>
+            <trans-unit id="admin.user.article_title">
+                <source>admin.user.article_title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="admin.user.article_date">
+                <source>admin.user.article_date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="admin.user.article_actions">
+                <source>admin.user.article_actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="admin.user.article_view">
+                <source>admin.user.article_view</source>
+                <target>Voir</target>
+            </trans-unit>
+            <trans-unit id="admin.user.article_delete">
+                <source>admin.user.article_delete</source>
+                <target>Supprimer</target>
             </trans-unit>
 
             <!-- messages.html.twig -->
@@ -492,9 +846,9 @@
                 <source>admin.messages.actions</source>
                 <target>Actions</target>
             </trans-unit>
-            <trans-unit id="admin.messages.open">
-                <source>admin.messages.open</source>
-                <target>Ouvrir</target>
+            <trans-unit id="admin.messages.view">
+                <source>admin.messages.view</source>
+                <target>Voir</target>
             </trans-unit>
             <trans-unit id="admin.messages.delete">
                 <source>admin.messages.delete</source>
@@ -504,8 +858,8 @@
                 <source>admin.messages.on</source>
                 <target>sur</target>
             </trans-unit>
-            <trans-unit id="admin.messages.prev">
-                <source>admin.messages.prev</source>
+            <trans-unit id="admin.messages.previous">
+                <source>admin.messages.previous</source>
                 <target>Précédent</target>
             </trans-unit>
             <trans-unit id="admin.messages.next">
@@ -524,9 +878,135 @@
                 <target>Répondre</target>
             </trans-unit>
 
+            <!-- missions.html.twig -->
+
+            <trans-unit id="admin.missions.missions">
+                <source>admin.missions.missions</source>
+                <target>Missions</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.create">
+                <source>admin.missions.create</source>
+                <target>Créer une mission</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.user">
+                <source>admin.missions.user</source>
+                <target>Utilisateur</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.title">
+                <source>admin.missions.title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.status">
+                <source>admin.missions.status</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.actions">
+                <source>admin.missions.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.view">
+                <source>admin.missions.view</source>
+                <target>Voir</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.on">
+                <source>admin.missions.on</source>
+                <target>sur</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.previous">
+                <source>admin.missions.previous</source>
+                <target>Précédent</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.next">
+                <source>admin.missions.next</source>
+                <target>Suivant</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.description">
+                <source>admin.missions.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.link">
+                <source>admin.missions.link</source>
+                <target>Lien</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.submit">
+                <source>admin.missions.submit</source>
+                <target>Créer</target>
+            </trans-unit>
+            <trans-unit id="admin.missions.cancel">
+                <source>admin.missions.cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+
+            <!-- projects.html.twig -->
+
+            <trans-unit id="admin.projects.projects">
+                <source>admin.projects.projects</source>
+                <target>Projets</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.create">
+                <source>admin.projects.create</source>
+                <target>Ajouter un projet</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.name">
+                <source>admin.projects.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.description">
+                <source>admin.projects.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.link">
+                <source>admin.projects.link</source>
+                <target>Lien</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.type">
+                <source>admin.projects.type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.actions">
+                <source>admin.projects.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.programming">
+                <source>admin.projects.programming</source>
+                <target>Programmation</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.music">
+                <source>admin.projects.music</source>
+                <target>Musique</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.view">
+                <source>admin.projects.view</source>
+                <target>Voir</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.on">
+                <source>admin.projects.on</source>
+                <target>sur</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.previous">
+                <source>admin.projects.previous</source>
+                <target>Précédent</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.next">
+                <source>admin.projects.next</source>
+                <target>Suivant</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.cancel">
+                <source>admin.projects.cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="admin.projects.submit">
+                <source>admin.projects.submit</source>
+                <target>Ajouter</target>
+            </trans-unit>
+
             <!--         Email        -->
             <!-- activation.html.twig -->
 
+            <trans-unit id="email.activation.subject">
+                <source>email.activation.subject</source>
+                <target>Bienvenue !</target>
+            </trans-unit>
             <trans-unit id="email.activation.introduction">
                 <source>email.activation.introduction</source>
                 <target>Bonjour</target>

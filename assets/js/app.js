@@ -8,11 +8,30 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import $ from 'jquery';
 import 'bootstrap';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 import '../css/app.scss';
 
-/*
- * TODO: Remove Logs.
+/**
+ *
  */
+window.updateArticleAreaContent = () => {
+    let $postContent = $("#post-content");
+    let $postArea = $("#article_form_content");
+
+    $postArea.val($postContent.html());
+};
+
+/**
+ *
+ */
+window.changeStyle = (style, argument) => {
+    let $postContent = $("#post-content");
+
+    $postContent.focus();
+    document.execCommand(style, false, argument);
+    $postContent.focus();
+};
 
 let $window = $(window);
 

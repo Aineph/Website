@@ -3,17 +3,17 @@
 {% block title %}{{ 'security.register.registration' | trans }}{% endblock %}
 
 {% block body %}
-    <nav id="website-navigation">
-        {% include 'website/navigation.html.twig' %}
+    <nav id="register-navigation">
+        {% include 'navigation.html.twig' %}
     </nav>
-    <div class="container pt-5 pb-5">
-        <div class="card min-vh-100 vh-100">
+    <div class="container">
+        <div class="card min-vh-100 m-5">
             <div class="card-body">
-                {{ form_start(registrationForm) }}
+                {{ form_start(registrationForm, {'action': path('security_registration')}) }}
                 <h1 class="h3 mb-3 font-weight-normal">{{ 'security.register.registration' | trans }}</h1>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             {{ form_label(registrationForm.firstName) }}
                             {{ form_widget(registrationForm.firstName, {
                                 'attr': {
@@ -21,16 +21,14 @@
                                 }
                             }) }}
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             {{ form_label(registrationForm.lastName) }}
                             {{ form_widget(registrationForm.lastName, {
                                 'attr': {'class': 'form-control'
                                 }
                             }) }}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             {{ form_label(registrationForm.email) }}
                             {{ form_widget(registrationForm.email, {
                                 'attr': {
@@ -38,28 +36,7 @@
                                 }
                             }) }}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            {{ form_label(registrationForm.country) }}
-                            {{ form_widget(registrationForm.country, {
-                                'attr': {
-                                    'class': 'form-control'
-                                }
-                            }) }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            {{ form_label(registrationForm.phoneNumber) }}
-                            {{ form_widget(registrationForm.phoneNumber, {
-                                'attr': {
-                                    'class': 'form-control'}
-                            }) }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             {{ form_label(registrationForm.plainPassword.first) }}
                             {{ form_widget(registrationForm.plainPassword.first, {
                                 'attr': {
@@ -67,14 +44,59 @@
                                 }
                             }) }}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             {{ form_label(registrationForm.plainPassword.second) }}
                             {{ form_widget(registrationForm.plainPassword.second, {
                                 'attr': {
                                     'class': 'form-control'
                                 }
+                            }) }}
+                        </div>
+                        <div class="col-12">
+                            {{ form_label(registrationForm.company) }}
+                            {{ form_widget(registrationForm.company, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.address) }}
+                            {{ form_widget(registrationForm.address, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.city) }}
+                            {{ form_widget(registrationForm.city, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.zip) }}
+                            {{ form_widget(registrationForm.zip, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.country) }}
+                            {{ form_widget(registrationForm.country, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="col">
+                            {{ form_label(registrationForm.phoneNumber) }}
+                            {{ form_widget(registrationForm.phoneNumber, {
+                                'attr': {
+                                    'class': 'form-control'}
                             }) }}
                         </div>
                     </div>

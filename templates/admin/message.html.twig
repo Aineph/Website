@@ -5,8 +5,8 @@
 {% endblock %}
 {% block body %}
     <!-- TODO: Add Labels -->
-    <nav id="website-navigation" aria-label="TODO">
-        {% include 'website/navigation.html.twig' %}
+    <nav id="admin-navigation" aria-label="TODO">
+        {% include 'navigation.html.twig' %}
     </nav>
     <div class="container-fluid pt-5 pb-5">
         <div class="row pt-5 pb-5 border-bottom">
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-2">
-                <div class="btn btn-warning">{{ 'admin.message.reply' | trans }}</div>
+                <a class="btn btn-warning" href="mailto:{{ message.email }}">{{ 'admin.message.reply' | trans }}</a>
             </div>
         </div>
         <div class="row pt-5 pb-5 border-bottom">
@@ -29,8 +29,14 @@
         <div class="row pt-5 pb-5">
             <div class="col-12">
                 <div class="text-white">
-                    {{ 'admin.message.sent_by' | trans }}
-                    <a href="{{ path('admin_user', {'user': message.user}) }}">{{ message.name }}</a>
+                    <p>
+                        {{ 'admin.message.sent_by' | trans }}
+                        {% if message.user %}
+                            <a href="{{ path('admin_user', {'user': message.user}) }}">{{ message.name }}</a>
+                        {% else %}
+                            {{ message.name }}
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>

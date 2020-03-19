@@ -9,6 +9,7 @@
 namespace App\Security;
 
 use App\Controller\SecurityController;
+use App\Controller\WebsiteController;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -65,7 +66,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      */
     public function supports(Request $request)
     {
-        return SecurityController::ROUTE_APP_LOGIN === $request->attributes->get('_route')
+        return SecurityController::ROUTE_SECURITY_LOGIN === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -142,7 +143,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-        return new RedirectResponse($this->urlGenerator->generate('website_index'));
+        return new RedirectResponse($this->urlGenerator->generate(WebsiteController::ROUTE_WEBSITE_INDEX));
     }
 
     /**
@@ -150,6 +151,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      */
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate(SecurityController::ROUTE_APP_LOGIN);
+        return $this->urlGenerator->generate(SecurityController::ROUTE_SECURITY_LOGIN);
     }
 }

@@ -1,4 +1,4 @@
-{% block navbar %}
+{% block navigation %}
     <div class="navbar navbar-dark navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="{{ path('website_index') }}">{{ 'website.navigation.home' | trans }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-navbar"
@@ -8,17 +8,22 @@
         </button>
         <div id="navigation-navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('portfolio_index') }}">
-                        {{ 'website.navigation.portfolio' | trans }}
-                    </a>
-                </li>
                 {% if app.request.attributes.get('_route') is same as('website_index') %}
                     <li class="nav-item">
                         <a class="nav-link" href="#index-prestation">{{ 'website.navigation.services' | trans }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#index-contact">{{ 'website.navigation.contact' | trans }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('blog_index') }}">
+                            {{ 'website.navigation.blog' | trans }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('portfolio_index') }}">
+                            {{ 'website.navigation.portfolio' | trans }}
+                        </a>
                     </li>
                 {% endif %}
                 {% if app.user %}

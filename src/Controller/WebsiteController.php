@@ -10,8 +10,9 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\ContactFormType;
-use App\Service\MessageManager;
+use App\Service\MessageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,23 +30,38 @@ class WebsiteController extends AbstractController
     const ROUTE_WEBSITE_INDEX = 'website_index';
 
     /**
-     * @param Request $request
-     * @param MessageManager $messageManager
-     * @return Response
-     * @Route("/", name="website_index")
+     * @var string
      */
-    public function index(Request $request, MessageManager $messageManager): Response
+    const TEMPLATE_WEBSITE_INDEX = 'website/index.html.twig';
+
+    /**
+     * @param MessageService $messageService
+     * @return Response
+     * @Route("/", methods="GET", name="website_index")
+     */
+    public function index(MessageService $messageService): Response
     {
-        $messageManager->setMessage(new Message());
-        $contactForm = $this->createForm(ContactFormType::class, $messageManager->getMessage());
+        $contactForm = $this->createForm(ContactFormType::class, $messageService->getMessage());
+
+        return $this->render(self::TEMPLATE_WEBSITE_INDEX, [
+            'contactForm' => $contactForm->createView()
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param MessageService $messageService
+     * @return RedirectResponse
+     * @Route("/contact", methods="POST", name="website_contact")
+     */
+    public function contact(Request $request, MessageService $messageService)
+    {
+        $contactForm = $this->createForm(ContactFormType::class, $messageService->getMessage());
 
         $contactForm->handleRequest($request);
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $messageManager->setEntityManager($this->getDoctrine()->getManager());
-            $messageManager->save($this->getUser());
+            $messageService->create();
         }
-        return $this->render('website/index.html.twig', [
-            'contactForm' => $contactForm->createView()
-        ]);
+        return $this->redirectToRoute(self::ROUTE_WEBSITE_INDEX);
     }
 }

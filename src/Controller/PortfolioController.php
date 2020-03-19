@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Service\ProjectService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,12 +32,14 @@ class PortfolioController extends AbstractController
     const TEMPLATE_PORTFOLIO_INDEX = 'portfolio/index.html.twig';
 
     /**
-     * @param Request $request
+     * @param ProjectService $projectService
      * @return Response
      * @Route("/", methods="GET", name="portfolio_index")
      */
-    public function index(Request $request): Response
+    public function index(ProjectService $projectService): Response
     {
-        return $this->render(self::TEMPLATE_PORTFOLIO_INDEX);
+        return $this->render(self::TEMPLATE_PORTFOLIO_INDEX, [
+            'projects' => $projectService->getAll()
+        ]);
     }
 }

@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'admin.index.title' | trans }}
+{% endblock %}
+{% block body %}
+    <!-- TODO: Add Labels -->
+    <nav id="admin-navigation" aria-label="TODO">
+        {% include 'navigation.html.twig' %}
+    </nav>
+    <div class="container-fluid">
+        <div class="row m-5">
+            <div class="col-12">
+                <h1 class="h1 text-white">
+                    {{ 'admin.missions.missions' | trans }}
+                </h1>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-12 p-3">
+                <button class="btn btn-info" data-toggle="modal"
+                        data-target="#missions-modal">{{ 'admin.missions.create' | trans }}</button>
+            </div>
+            <div class="col-12">
+                <table class="table text-center text-white">
+                    <thead>
+                    <tr>
+                        <th scope="col">{{ 'admin.missions.user' | trans }}</th>
+                        <th scope="col">{{ 'admin.missions.title' | trans }}</th>
+                        <th scope="col">{{ 'admin.missions.status' | trans }}</th>
+                        <th scope="col">{{ 'admin.missions.actions' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody class="">
+                    {% for mission in missionPaginator.results %}
+                        <tr>
+                            <td><a href="mailto:{{ mission.user.email }}">{{ mission.user }}</a></td>
+                            <td>{{ mission.title }}</td>
+                            <td>{{ mission.done }}</td>
+                            <td>
+                                <a class="btn btn-primary"
+                                   href="{{ path('admin_mission', {'message': mission.id}) }}">
+                                    {{ 'admin.missions.view' | trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- TODO: Add Label -->
+        <div class="row m-3">
+            <div class="col-10">
+                <p class="text-white">
+                    {{ missionPaginator.firstResult }}-{{ missionPaginator.lastResult }}
+                    {{ 'admin.missions.on' | trans }}
+                    {{ missionPaginator.resultsCount }}
+                </p>
+            </div>
+            <div class="col-2">
+                <nav aria-label="TODO">
+                    <ul class="pagination">
+                        {% if missionPaginator.hasPreviousPage %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="{{ path('admin_missions', {
+                                       'page': missionPaginator.getPreviousPage
+                                   }) }}"
+                                   aria-label="{{ 'admin.missions.previous' | trans }}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">{{ 'admin.missions.previous' | trans }}</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#"
+                                   aria-label="{{ 'admin.missions.previous' | trans }}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">{{ 'admin.missions.previous' | trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if missionPaginator.hasNextPage %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="{{ path('admin_missions', {
+                                       'page': missionPaginator.getNextPage
+                                   }) }}"
+                                   aria-label="{{ 'admin.missions.next' | trans }}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">{{ 'admin.missions.next' | trans }}</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#"
+                                   aria-label="{{ 'admin.missions.next' | trans }}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">{{ 'admin.missions.next' | trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="missions-modal" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="missions-modal-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    {{ form_start(missionForm, {'action': path('admin_mission_create')}) }}
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="missions-modal-title">{{ 'admin.missions.create' | trans }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                {{ form_label(missionForm.title) }}
+                                {{ form_widget(missionForm.title, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+                            <div class="col-12">
+                                {{ form_label(missionForm.description) }}
+                                {{ form_widget(missionForm.description, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+                            <div class="col-12">
+                                {{ form_label(missionForm.user) }}
+                                {{ form_widget(missionForm.user, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+                            <div class="col-12">
+                                {{ form_label(missionForm.link) }}
+                                {{ form_widget(missionForm.link, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                            {{ 'admin.missions.cancel' | trans }}
+                        </button>
+                        <button class="btn btn-primary" type="submit">
+                            {{ 'admin.missions.submit' | trans }}
+                        </button>
+                    </div>
+                    {{ form_end(missionForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

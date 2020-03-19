@@ -24,7 +24,7 @@ class Paginator
      *
      * @var int
      */
-    private const PAGE_SIZE = 10;
+    public const PAGE_SIZE = 10;
 
     /**
      * The query builder.
@@ -98,7 +98,7 @@ class Paginator
      * @param int $page
      * @return $this
      */
-    public function paginate(int $page = 1)
+    public function paginate(int $page = 1): Paginator
     {
         $this->setCurrentPage(max(1, $page));
         $this->setFirstResult(($this->getCurrentPage() - 1) * $this->getPageSize());

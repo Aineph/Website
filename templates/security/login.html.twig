@@ -3,21 +3,21 @@
 {% block title %}{{ 'security.login.authentication' | trans }}{% endblock %}
 
 {% block body %}
-    <nav id="website-navigation">
-        {% include 'website/navigation.html.twig' %}
+    <nav id="login-navigation">
+        {% include 'navigation.html.twig' %}
     </nav>
-    <div class="container pt-5 pb-5">
-        <div class="card min-vh-100 vh-100">
+    <div class="container">
+        <div class="card m-5 min-vh-100 vh-100">
             <div class="card-body">
                 <form method="post">
                     {% if error %}
                         <div class="alert alert-danger"
                              role="alert">{{ error.messageKey | trans(error.messageData, 'security') }}</div>
                     {% endif %}
-                    <h1 class="h3 mb-3 font-weight-normal">{{ 'security.login.authentication' | trans }}</h1>
+                    <h1 class="h3 m-3 font-weight-normal">{{ 'security.login.authentication' | trans }}</h1>
                     <div class="form-group">
-                        <div class="row">
-                            <div class="col">
+                        <div class="row m-3">
+                            <div class="col-12">
                                 <label for="inputEmail">{{ 'security.login.email' | trans }}</label>
                                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                        class="form-control"
@@ -25,21 +25,21 @@
                                        autofocus>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row m-3">
+                            <div class="col-12">
                                 <label for="inputPassword">{{ 'security.login.password' | trans }}</label>
                                 <input type="password" name="password" id="inputPassword" class="form-control" required>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row m-3">
+                            <div class="col-12">
                                 <input type="hidden" name="_csrf_token"
                                        value="{{ csrf_token('authenticate') }}">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="checkbox mb-3">
+                        <div class="row m-3">
+                            <div class="col-12">
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox"
                                                name="_remember_me">{{ 'security.login.remember' | trans }}
@@ -48,33 +48,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn" type="button" data-toggle="modal"
-                                    data-target="#passwordForgottenModal">TODO ?
+                    <div class="row m-3">
+                        <div class="col-12">
+                            <button class="btn btn-link" type="button" data-toggle="modal"
+                                    data-target="#login-forgotten">
+                                {{ 'security.login.forgotten' | trans }}
                             </button>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col">
+                    <div class="row m-3">
+                        <div class="col-12">
                             <button class="btn btn-lg btn-primary" type="submit">
                                 {{ 'security.login.submit' | trans }}
                             </button>
-                            <a href="{{ path('security_register') }}" class="btn btn-lg btn-secondary">
+                            <a class="btn btn-lg btn-secondary" href="{{ path('security_register') }}">
                                 {{ 'security.login.register' | trans }}
                             </a>
                         </div>
                     </div>
                 </form>
-                <div class="modal fade" id="passwordForgottenModal" tabindex="-1" role="dialog"
-                     aria-labelledby="passwordForgottenModalTitle" aria-hidden="true">
+                <div class="modal fade" id="login-forgotten" tabindex="-1" role="dialog"
+                     aria-labelledby="login-forgotten-title" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
+                            {{ form_start(passwordForgottenForm) }}
                             <div class="modal-header">
                                 <h5 class="modal-title"
-                                    id="passwordForgottenModalTitle">TODO</h5>
+                                    id="login-forgotten-title">{{ 'security.login.forgotten' | trans }}</h5>
                             </div>
-                            <div class="modal-body"></div>
+                            <div class="modal-body">
+                                {{ 'security.login.forgotten_detail' | trans }}
+                                <div class="row">
+                                    <div class="col-12">
+                                        {{ form_label(passwordForgottenForm.email) }}
+                                        {{ form_widget(passwordForgottenForm.email, {
+                                            'attr': {
+                                                'class': 'form-control'
+                                            }
+                                        }) }}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                                     {{ 'security.login.cancel' | trans }}
@@ -83,12 +97,8 @@
                                     {{ 'security.login.submit' | trans }}
                                 </button>
                             </div>
+                            {{ form_end(passwordForgottenForm) }}
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-
                     </div>
                 </div>
             </div>

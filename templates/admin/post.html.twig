@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav id="admin-navigation" aria-label="TODO">
+        {% include 'navigation.html.twig' %}
+    </nav>
+    <div class="container-fluid">
+        {{ form_start(articleForm) }}
+        <div class="row m-5">
+            <div class="col-12 p-3 text-white">
+                {{ form_label(articleForm.title) }}
+                {{ form_widget(articleForm.title, {
+                    'attr': {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
+            <div class="col-12 p-3 text-white" hidden>
+
+                {{ form_label(articleForm.content) }}
+                {{ form_widget(articleForm.content) }}
+            </div>
+            <div class="col-12 p-3 text-white">
+                <fieldset class="m-1 border border-info">
+                    <button class="btn btn-secondary" type="button"
+                            onclick="window.changeStyle('bold')">
+                        <i class="fa fa-bold"></i></button>
+                    <button class="btn btn-secondary" type="button"
+                            onclick="window.changeStyle('italic')">
+                        <i class="fa fa-italic"></i></button>
+                    <button class="btn btn-secondary" type="button"
+                            onclick="window.changeStyle('underline')">
+                        <i class="fa fa-underline"></i>
+                    </button>
+                    <button class="btn btn-secondary" type="button"
+                            onclick="window.changeStyle('formatBlock', '<h1>')">
+                        <i class="fa fa-heading"></i>
+                    </button>
+                    <button class="btn btn-secondary" type="button"
+                            onclick="window.changeStyle('formatBlock', '<blockquote>')">
+                        <i class="fa fa-code"></i>
+                    </button>
+                </fieldset>
+                <pre id="post-content" class="m-1 p-3 bg-white" onkeydown="window.updateArticleAreaContent()"
+                     contenteditable="true" autofocus></pre>
+            </div>
+            <div class="col-12 p-3">
+                <button class="btn btn-primary" type="submit">
+                    {{ 'admin.post.submit' | trans }}
+                </button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(articleForm) }}
+    </div>
+{% endblock %}

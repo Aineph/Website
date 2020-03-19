@@ -4,11 +4,99 @@
     {{ 'admin.index.title' | trans }}
 {% endblock %}
 {% block body %}
-    <!-- TODO: Add Labels -->
-    <nav id="website-navigation" aria-label="TODO">
-        {% include 'website/navigation.html.twig' %}
+    <nav id="admin-navigation">
+        {% include 'navigation.html.twig' %}
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid pt-5 pb-5">
+        <div class="row pt-5 pb-5 border-bottom">
+            <div class="col-10">
+                <div class="h1 text-white">
+                    {{ user.firstName }}
+                    {{ user.lastName }}
+                </div>
+            </div>
+            <div class="col-2">
+                <a class="btn btn-warning" href="mailto:{{ user.email }}">{{ 'admin.user.contact' | trans }}</a>
+            </div>
+        </div>
+        <div class="row p-5">
+            <div class="col-12">
+                <div class="text-white">
+                    <p>
+                        {{ 'admin.user.company' | trans }}:
+                        {{ user.company }}
+                    </p>
+                    <p>
+                        {{ 'admin.user.address' | trans }}:
+                        {{ user.address }},
+                        {{ user.city }}
+                        {{ user.zip }}
+                        {{ user.country }}
+                    </p>
+                    <p>
+                        {{ 'admin.user.email' | trans }}:
+                        <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                    </p>
+                    <p>
+                        {{ 'admin.user.phone' | trans }}:
+                        {{ user.phoneNumber }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row p-5">
+            <div class="col-12 col-md-6">
+                <h3 class="h3 text-white">{{ 'admin.user.missions' | trans }}</h3>
+                {% if user.missions | length == 0 %}
+                    <p class="text-white">{{ 'admin.user.missions_empty' | trans }}</p>
+                {% else %}
+                    <table class="table text-center text-white">
+                        <thead>
+                        <th scope="col">{{ 'admin.user.mission_title' | trans }}</th>
+                        <th scope="col">{{ 'admin.user.mission_status' | trans }}</th>
+                        </thead>
+                        <tbody>
+                        {% for missions in user.missions %}
+                            <tr>
+                                <td>{{ mission.title }}</td>
+                                <td>{{ mission.done }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-6">
+                <h3 class="h3 text-white">{{ 'admin.user.articles' | trans }}</h3>
+                {% if user.articles | length == 0 %}
+                    <p class="text-white">{{ 'admin.user.articles_empty' | trans }}</p>
+                {% else %}
+                    <table class="table text-center text-white">
+                        <thead>
+                        <th scope="col">{{ 'admin.user.article_title' | trans }}</th>
+                        <th scope="col">{{ 'admin.user.article_date' | trans }}</th>
+                        <th scope="col">{{ 'admin.user.article_actions' | trans }}</th>
+                        </thead>
+                        <tbody>
+                        {% for article in user.articles %}
+                            <tr>
+                                <td>{{ article.title }}</td>
+                                <td>{{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}</td>
+                                <td>
+                                    <a class="btn btn-primary">
+                                        {{ 'admin.user.article_view' | trans }}
+                                    </a>
+                                    <a class="btn btn-danger">
+                                        {{ 'admin.user.article_delete' | trans }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
     </div>
-
 {% endblock %}
+

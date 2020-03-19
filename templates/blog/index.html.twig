@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+{% block body %}
+    <nav id="blog-navigation">
+        {% include 'navigation.html.twig' %}
+    </nav>
+    <div class="container-fluid">
+        <div class="row m-5">
+            <div class="col-12">
+                <h1 class="h1 text-white">{{ 'blog.index.blog' | trans }}</h1>
+            </div>
+        </div>
+    </div>
+    <section id="index-articles">
+        {% include 'blog/articles.html.twig' %}
+    </section>
+{% endblock %}

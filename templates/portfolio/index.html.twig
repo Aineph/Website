@@ -1,17 +1,134 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'portfolio.index.title' | trans }}{% endblock %}
+{% block title %}{{ 'portfolio.index.name' | trans }}{% endblock %}
 {% block body %}
-    <div class="container-fluid min-vh-100 vh-100">
+    <nav id="portfolio-navigation">
+        {% include 'navigation.html.twig' %}
+    </nav>
+    <div class="container-fluid">
+        <div class="row m-5">
+            <div class="col-12">
+                <h1 class="h1 text-right text-white element-fade-in-right">{{ 'portfolio.index.name' | trans }}</h1>
+            </div>
+            <div class="col-12">
+                <h2 class="h2 text-right text-white element-fade-in-right">{{ 'portfolio.index.job' | trans }}</h2>
+            </div>
+            <div class="col-12">
+                <h3 class="h3 text-left text-white element-fade-in-left">
+                    <i class="fa fa-map-marker"></i>
+                    {{ 'portfolio.index.address' | trans }}
+                </h3>
+            </div>
+            <div class="col-12">
+                <h3 class="h3 text-left text-white element-fade-in-left">
+                    <i class="fa fa-envelope"></i>
+                    {{ 'portfolio.index.email' | trans }}
+                </h3>
+            </div>
+            <div class="col-12">
+                <h3 class="h3 text-left text-white element-fade-in-left">
+                    <i class="fa fa-phone-alt"></i>
+                    {{ 'portfolio.index.phone' | trans }}
+                </h3>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
-                <div>{{ 'portfolio.index.title' | trans }}</div>
-                <ul class="dropdown">
-                    <li><a href="#">{{ 'portfolio.index.projects' | trans }}</a></li>
-                    <li><a href="#">{{ 'portfolio.index.resume' | trans }}</a></li>
-                    <li><a href="#">{{ 'portfolio.index.about' | trans }}</a></li>
-                </ul>
+                <div class="timeline">
+                    <div class="timeline-container timeline-container-left">
+                        <div class="timeline-content element-fade-in-left element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.birth_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.birth' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-left">
+                        <div class="timeline-content element-fade-in-left element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.epitech_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.epitech' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-right">
+                        <div class="timeline-content element-fade-in-right element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.orchestra_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.orchestra' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-right">
+                        <div class="timeline-content element-fade-in-right element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.cadageo_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.cadageo' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-left">
+                        <div class="timeline-content element-fade-in-left element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.abroad_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.abroad' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-right">
+                        <div class="timeline-content element-fade-in-right element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.webacademie_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.webacademie' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-right">
+                        <div class="timeline-content element-fade-in-right element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.sopra_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.sopra' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-left">
+                        <div class="timeline-content element-fade-in-left element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.graduation_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.graduation' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-right">
+                        <div class="timeline-content element-fade-in-right element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.capgemini_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.capgemini' | trans }}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container timeline-container-right">
+                        <div class="timeline-content element-fade-in-right element-grow">
+                            <h2 class="h2">{{ 'portfolio.index.freelance_date' | trans }}</h2>
+                            <p>{{ 'portfolio.index.freelance' | trans }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="row m-5">
+            <div class="col-12">
+                <h3 class="h3 text-white element-fade-in-bottom">
+                    {{ 'portfolio.index.projects' | trans }}
+                </h3>
+            </div>
+            {% if projects | length == 0 %}
+                <div class="col-12">
+                    <p class="text-white element-fade-in-left">
+                        {{ 'portfolio.index.projects_empty' | trans }}
+                    </p>
+                </div>
+            {% endif %}
+            {% for project in projects %}
+                <div class="col-12 col-md-6 p-5">
+                    <div class="card h-100 text-center element-fade-in-bottom element-grow">
+                        <div class="card-body">
+                            <p class="card-text">{{ project.name }}</p>
+                            <p class="card-text text-muted small">{{ project.description }}</p>
+                            {% if project.type == 1 %}
+                                <a class="stretched-link"
+                                   href="{{ project.link }}">{{ 'portfolio.index.link' | trans }}</a>
+                            {% else %}
+                                <audio class="w-100" controls preload="none">
+                                    <source src="{{ project.link }}" type="audio/mp4"/>
+                                </audio>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
