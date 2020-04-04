@@ -33,6 +33,7 @@ class MessageRepository extends ServiceEntityRepository
     }
 
     /**
+     * Finds the latest messages.
      * @param int $page
      * @return Paginator
      */
@@ -40,6 +41,7 @@ class MessageRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('m')->orderBy('m.date', 'DESC');
         $paginator = new Paginator($queryBuilder);
+
         return $paginator->paginate($page);
     }
 }

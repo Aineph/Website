@@ -1,96 +1,45 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'profile.index.title' | trans }}
+{% endblock %}
+{% block header %}
+
+    <!-- Profile Index Header -->
+
+    <header>
+        {% include 'profile/header.html.twig' %}
+    </header>
+{% endblock %}
 {% block body %}
-    <nav id="profile-navigation">
-        {% include 'navigation.html.twig' %}
-    </nav>
-    <div class="container-fluid">
-        <div class="row m-5">
-            <div class="col-12 col-md-12 p-3">
-                <h1 class="h1 text-white">
-                    {{ 'profile.index.welcome' | trans }}
-                    {{ user.firstName }} !
-                </h1>
+
+    <!-- Profile Index Body -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+
+                <!-- Profile Index Availability -->
+
+                <section id="profile-availability">
+                    {% include 'profile/availability.html.twig' %}
+                </section>
             </div>
-            <div class="col-12 col-md-2 p-3">
-                <a class="btn btn-outline-warning"
-                   href="{{ path('security_profile') }}">{{ 'profile.index.edit' | trans }}</a>
-            </div>
-            <div class="col-12 col-md-2 p-3">
-                <a class="btn btn-outline-danger"
-                   href="{{ path('security_logout') }}">{{ 'profile.index.logout' | trans }}</a>
-            </div>
-        </div>
-        <div class="row m-5">
-            <div class="col-12 col-lg-6">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="h3 text-white">
-                            {{ 'profile.index.activity' | trans }}
-                        </h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="text-white">{{ 'profile.index.activity_empty' | trans }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h3 class="h3 text-white">
-                            {{ 'profile.index.tasks' | trans }}
-                        </h3>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <a class="btn btn-outline-info"
-                           href="https://www.malt.fr/project/new?freelanceId=5a9b1632db554c7c4b85124e&
-                           viewId=5e6e39cfda735300078ab37c">
-                            {{ 'profile.index.hire' | trans }}
-                        </a>
-                    </div>
-                    <div class="col-12">
-                        <p class="text-white">
-                            {{ missions | length }}
-                            {% if missions | length <= 1 %}
-                                {{ 'profile.index.accomplished' | trans }}
-                            {% else %}
-                                {{ 'profile.index.accomplished_several' | trans }}
-                            {% endif %}
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        {% if missions | length > 0 %}
-                            <table class="table text-center text-white">
-                                <thead>
-                                <tr>
-                                    <th scope="col">{{ 'profile.index.task' | trans }}</th>
-                                    <th scope="col">{{ 'profile.index.task_detail' | trans }}</th>
-                                    <th scope="col">{{ 'profile.index.task_status' | trans }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for mission in missions %}
-                                    <tr>
-                                        <td>{{ mission.title }}</td>
-                                        <td>{{ mission.description }}</td>
-                                        {% if mission.done %}
-                                            <td>{{ 'profile.index.done' | trans }}</td>
-                                        {% else %}
-                                            <td>{{ 'profile.index.todo' | trans }}</td>
-                                        {% endif %}
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        {% else %}
-                            <p class="text-white">{{ 'profile.index.task_empty' | trans }}</p>
-                        {% endif %}
-                    </div>
-                </div>
+            <div class="col-12 col-md-6">
+
+                <!-- Profile Index Missions -->
+
+                <section id="profile-missions">
+                    {% include 'profile/missions.html.twig' %}
+                </section>
             </div>
         </div>
     </div>
+{% endblock %}
+{% block footer %}
+
+    <!-- Profile Index Footer -->
+
+    <footer>
+        {% include 'profile/footer.html.twig' %}
+    </footer>
 {% endblock %}

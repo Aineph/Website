@@ -61,6 +61,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Checks if a post request is sent to the login route.
      * @param Request $request
      * @return bool
      */
@@ -71,6 +72,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Gets the user credentials.
      * @param Request $request
      * @return array|mixed
      */
@@ -90,6 +92,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Gets the user.
      * @param mixed $credentials
      * @param UserProviderInterface $userProvider
      * @return object|UserInterface|null
@@ -97,10 +100,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
-
         $user = $this->entityManager->getRepository(User::class)->findOneBy([
             'email' => $credentials['email']
         ]);
@@ -112,6 +115,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Checks the user credentials.
      * @param mixed $credentials
      * @param UserInterface $user
      * @return bool
@@ -132,6 +136,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Handles the user login on success.
      * @param Request $request
      * @param TokenInterface $token
      * @param string $providerKey
@@ -147,6 +152,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Gets the login url.
      * @return string
      */
     protected function getLoginUrl()

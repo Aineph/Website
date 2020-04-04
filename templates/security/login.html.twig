@@ -1,99 +1,158 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{ 'security.login.authentication' | trans }}{% endblock %}
-
+{% block title %}
+    {{ 'security.login.authentication' | trans }}
+{% endblock %}
 {% block body %}
-    <nav id="login-navigation">
-        {% include 'navigation.html.twig' %}
-    </nav>
+
+    <!-- Security Login Body -->
+
     <div class="container">
-        <div class="card m-5 min-vh-100 vh-100">
+        <div class="card min-vh-100 mt-5">
+
+            <!-- Security Login Content -->
+
             <div class="card-body">
+
+                <!-- Security Login Title -->
+
+                <h1 class="h1 font-weight-normal">
+                    {{ 'security.login.authentication' | trans }}
+                </h1>
+
+                <!-- Security Login Form -->
+
                 <form method="post">
                     {% if error %}
-                        <div class="alert alert-danger"
-                             role="alert">{{ error.messageKey | trans(error.messageData, 'security') }}</div>
+
+                        <!-- Security Login Form Errors -->
+
+                        <p class="alert alert-danger" role="alert">
+                            {{ error.messageKey | trans(error.messageData, 'security') }}
+                        </p>
+                    {% elseif app.request.get('error') %}
+
+                        <!-- Security Login Form Errors -->
+
+                        <p class="alert alert-danger" role="alert">
+                            {{ app.request.get('error') | trans }}
+                        </p>
+
+                    {% elseif app.request.get('info') %}
+
+                        <!-- Security Login Infos -->
+
+                        <p class="alert alert-info">
+                            {{ app.request.get('info') | trans }}
+                        </p>
                     {% endif %}
-                    <h1 class="h3 m-3 font-weight-normal">{{ 'security.login.authentication' | trans }}</h1>
                     <div class="form-group">
-                        <div class="row m-3">
+                        <div class="row">
+
+                            <!-- Security Login Form E-Mail -->
+
                             <div class="col-12">
-                                <label for="inputEmail">{{ 'security.login.email' | trans }}</label>
-                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
-                                       class="form-control"
-                                       required
-                                       autofocus>
+                                <label id="login-email" for="inputEmail">{{ 'security.login.email' | trans }}</label>
+                                <input id="inputEmail" class="form-control" type="email" value="{{ last_username }}"
+                                       name="email" aria-labelledby="login-email" required autofocus/>
                             </div>
-                        </div>
-                        <div class="row m-3">
+
+                            <!-- Security Login Form Password -->
+
                             <div class="col-12">
-                                <label for="inputPassword">{{ 'security.login.password' | trans }}</label>
-                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                <label id="login-password" for="inputPassword">
+                                    {{ 'security.login.password' | trans }}
+                                </label>
+                                <input id="inputPassword" class="form-control" type="password" name="password"
+                                       aria-labelledby="login-password" required/>
                             </div>
-                        </div>
-                        <div class="row m-3">
+
+                            <!-- Security Login Form Csrf -->
+
                             <div class="col-12">
-                                <input type="hidden" name="_csrf_token"
-                                       value="{{ csrf_token('authenticate') }}">
+                                <input type="hidden" name="_csrf_token" aria-label="{{ 'security.login.csrf' | trans }}"
+                                       value="{{ csrf_token('authenticate') }}"/>
                             </div>
-                        </div>
-                        <div class="row m-3">
+
+                            <!-- Security Login Form Remember -->
+
                             <div class="col-12">
                                 <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"
-                                               name="_remember_me">{{ 'security.login.remember' | trans }}
+                                    <label for="login-remember">
+                                        {{ 'security.login.remember' | trans }}
                                     </label>
+                                    <input id="login-remember" type="checkbox" name="_remember_me"
+                                           aria-labelledby="login-remember"/>
                                 </div>
                             </div>
+
+                            <!-- Security Login Form Password Forgotten -->
+
+                            <div class="col-12">
+                                <button class="btn btn-link" type="button" data-toggle="modal"
+                                        data-target="#login-forgotten">
+                                    {{ 'security.login.forgotten' | trans }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row m-3">
+
+                        <!-- Security Login Form Actions -->
+
                         <div class="col-12">
-                            <button class="btn btn-link" type="button" data-toggle="modal"
-                                    data-target="#login-forgotten">
-                                {{ 'security.login.forgotten' | trans }}
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row m-3">
-                        <div class="col-12">
-                            <button class="btn btn-lg btn-primary" type="submit">
+                            <button class="btn btn-lg btn-outline-primary" type="submit">
                                 {{ 'security.login.submit' | trans }}
                             </button>
-                            <a class="btn btn-lg btn-secondary" href="{{ path('security_register') }}">
+                            <a class="btn btn-lg btn-outline-secondary" href="{{ path('security_register') }}">
                                 {{ 'security.login.register' | trans }}
                             </a>
                         </div>
                     </div>
                 </form>
-                <div class="modal fade" id="login-forgotten" tabindex="-1" role="dialog"
+
+                <!-- Security Login Password Forgotten Modal -->
+
+                <div id="login-forgotten" class="modal fade" tabindex="-1" role="dialog"
                      aria-labelledby="login-forgotten-title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-dialog-centered" role="form">
+
+                        <!-- Security Login Password Forgotten Form -->
+
                         <div class="modal-content">
-                            {{ form_start(passwordForgottenForm) }}
+                            {{ form_start(passwordForgottenForm, {'action': path('security_password_forgotten')}) }}
+
+                            <!-- Security Login Password Forgotten Title -->
+
                             <div class="modal-header">
-                                <h5 class="modal-title"
-                                    id="login-forgotten-title">{{ 'security.login.forgotten' | trans }}</h5>
+                                <h5 id="login-forgotten-title" class="modal-title h5 font-weight-normal">
+                                    {{ 'security.login.forgotten' | trans }}
+                                </h5>
                             </div>
+
+                            <!-- Security Login Password Forgotten E-Mail -->
+
                             <div class="modal-body">
-                                {{ 'security.login.forgotten_detail' | trans }}
+                                <p>
+                                    {{ 'security.login.forgotten_detail' | trans }}
+                                </p>
                                 <div class="row">
                                     <div class="col-12">
                                         {{ form_label(passwordForgottenForm.email) }}
                                         {{ form_widget(passwordForgottenForm.email, {
                                             'attr': {
-                                                'class': 'form-control'
+                                                'class': 'form-control',
+                                                'aria-label': 'security.login.email' | trans
                                             }
                                         }) }}
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Security Login Password Forgotten Actions -->
+
                             <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
                                     {{ 'security.login.cancel' | trans }}
                                 </button>
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-outline-primary" type="submit">
                                     {{ 'security.login.submit' | trans }}
                                 </button>
                             </div>

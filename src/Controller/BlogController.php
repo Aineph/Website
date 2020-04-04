@@ -8,9 +8,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
 use App\Service\ArticleService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,23 +22,43 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     /**
+     * @var string
+     */
+    const TEMPLATE_BLOG_INDEX = 'blog/index.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_BLOG_ARTICLE = 'blog/article.html.twig';
+
+    /**
+     * The control for the blog index.
      * @param int $page
+     * @param Request $request
      * @param ArticleService $articleService
      * @return Response
-     * @Route("/{page?0}", name="blog_index")
+     * @Route("/{page?0}", name="blog_index", requirements={"page"="\d+"})
      */
-    public function index(int $page, ArticleService $articleService)
+    public function index(int $page, Request $request, ArticleService $articleService)
     {
-        return $this->render('blog/index.html.twig', [
-            'articlePaginator' => $articleService->getPage($page)
+        $search = $request->get('search');
+
+        return $this->render(self::TEMPLATE_BLOG_INDEX, [
+            'articlePaginator' => $articleService->getPage($page, $search)
         ]);
     }
 
     /**
-     * @Route("/comment/{postSlug}/new", name="blog_comment")
+     * The control for the blog article.
+     * @param int $article
+     * @param ArticleService $articleService
+     * @return Response
+     * @Route("/article/{article?0}", name="blog_article", requirements={"article"="\d+"})
      */
-    public function comment()
+    public function article(int $article, ArticleService $articleService)
     {
-        return $this->render('blog/index.html.twig');
+        return $this->render(self::TEMPLATE_BLOG_ARTICLE, [
+            'article' => $articleService->get($article)
+        ]);
     }
 }

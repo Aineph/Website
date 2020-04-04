@@ -24,36 +24,43 @@ use Symfony\Component\Security\Core\Security;
 class ContactFormType extends AbstractType
 {
     /**
+     * The contact name field.
      * @var string
      */
     public const NAME_FIELD = "name";
 
     /**
+     * The contact e-mail field.
      * @var string
      */
     public const EMAIL_FIELD = "email";
 
     /**
+     * The contact object field.
      * @var string
      */
     public const OBJECT_FIELD = "object";
 
     /**
+     * The contact content field.
      * @var string
      */
     public const CONTENT_FIELD = "content";
 
     /**
+     * The user authentication status.
      * @var bool
      */
     private $isAuthenticated;
 
     /**
+     * The user name.
      * @var string
      */
     private $name;
 
     /**
+     * The user e-mail.
      * @var string
      */
     private $email;
@@ -77,6 +84,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * Builds the contact form.
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -107,6 +115,10 @@ class ContactFormType extends AbstractType
             ]);
     }
 
+    /**
+     * Sets the contact form's default attributes.
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -115,6 +127,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * The getter for the user authentication status.
      * @return bool
      */
     public function isAuthenticated(): bool
@@ -123,6 +136,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * The setter for the user authentication status.
      * @param bool $isAuthenticated
      */
     public function setIsAuthenticated(bool $isAuthenticated): void
@@ -131,6 +145,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * The getter for the user name.
      * @return string
      */
     public function getName(): string
@@ -139,6 +154,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * The setter for the user name.
      * @param string $name
      */
     public function setName(string $name): void
@@ -147,6 +163,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * The getter for the user e-mail.
      * @return string
      */
     public function getEmail(): string
@@ -155,6 +172,7 @@ class ContactFormType extends AbstractType
     }
 
     /**
+     * The setter for the user e-mail.
      * @param string $email
      */
     public function setEmail(string $email): void

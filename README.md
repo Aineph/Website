@@ -1,95 +1,70 @@
 # Website
+
 This is the source code for my personal website, written in PHP using the framework Symfony.
 
 # Summary
+
 * Build system
-* Code conventions
-    * HTML
-        * Files
-        * Bootstrap
-        * Identifiers
-        * Classes
-        * Translations
-    * CSS
-    * JS
-    * PHP
+* User Manual
+* Specifications
 * Testing
 
 # Build system
-This section is not yet completed.
-It will be available in a future release.
 
-# Code conventions
-This section indicated the rules that have been followed for the integration of this website.
-
-## HTML
-### Files
-As this project runs with Symfony, the template engine used for this application is Twig.
-Every integration file is located in the folder named "**template**".
-The files have to be named under the following syntax:
+The project uses symfony.
+Before being able to run it on your machine, you need to replace this line in your "*.env*" file by your database
+configuration.
 
 ```
-[controller_name]/[section_name].html.twig
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7
 ```
 
-Here, *controller_name* corresponds to the name of the controller (for example **blog** or **security**) and
-*section_name* corresponds to the section name (such as **header** or **footer**).
-
-### Bootstrap
-Every element should be wrapped into containers, rows and columns.
-Final text elements have to be declared under final tags (for example *<p>* or *<a>*, and not *<div>*).
-
-### Identifiers
-Every identifier has to be prefixed by the name of the twig file.
-For example, if we want to give an identifier for a link that redirects to the homepage in a file named
-"**navigation.twig.html**", a good identifier would be declared like the following example:
+Now, you can run the following commands to install all the dependencies.
 
 ```
-<a id="navigation-home">Home</a>
+$> composer install
+$> yarn install
 ```
 
-### Classes
-The naming rules that applies to identifiers also applies to custom classes.
-
-For each element, the order of classes assignment have to follow the following order:
-* Purpose
-* Sizing
-* Colours
-* Positioning
-* Custom classes
-
-The custom classes have to appear at the end of the class attribute.
-If we take a simple button element, a correct way to declare it will look similar as:
+Depending on the *db_name* you will use, you will need to create the database manually.
+If you also use mysql, you can run the following command in the interpreter:
 
 ```
-<div class="btn btn-lg btn-primary p-5 navigation-button">Button</div>
+mysql> CREATE DATABASE db_name;
 ```
 
-### Translations
-The translation files can be found in the folder named "**translations**".
-It contains every translation for a specific language, following the XML format.
-
-Every translation name has to follow this naming syntax:
+To fill this database, you need to create a migration. Run the following commands:
 
 ```
-[controller_name].[section_name].[name]
+$> php bin/console make:migration
+$> php bin/console doctrine:migrations:migrate
 ```
 
-Here, *controller_name* corresponds to the name of the controller, *section_name* corresponds to the name of the
-section, and name will be the chosen name for the translation.
+Now you can finally launch the server.
 
-## CSS
-This section is not yet completed.
-It will be available in a future release.
+```
+$> symfony serve
+```
 
-## JS
-This section is not yet completed.
-It will be available in a future release.
+# User Manual
 
-## PHP
-This section is not yet completed.
-It will be available in a future release.
+This website contains several sections:
+
+* Home page
+* Blog
+* Portfolio
+* Client space
+* Administration
+
+In order to become an administrator, your user account must possess the role "ROLE_ADMIN".
+Once it's done you can create articles on the blog, add some projects to the portfolio and read all the messages
+created from the administration interface.
+
+# Specifications
+
+This website has been created using Symfony 4. For the frontend part, the webpack-encore.js has been used. This
+webpack provides some features to dynamically load frameworks such as bootstrap, font-awesome and so forth.
 
 # Testing
-This section is not yet completed.
-It will be available in a future release.
+
+This section is not yet completed. It will be available in a future release.

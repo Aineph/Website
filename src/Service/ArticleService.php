@@ -9,6 +9,7 @@
 namespace App\Service;
 
 use App\Entity\Article;
+use App\Entity\Message;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -21,26 +22,28 @@ use Symfony\Component\Security\Core\Security;
 class ArticleService extends AbstractService implements ServiceInterface
 {
     /**
+     * The current article.
      * @var Article
      */
     private $article;
 
     /**
      * ArticleService constructor.
+     * @param string $uploadDirectory
      * @param Security $security
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(Security $security, EntityManagerInterface $entityManager)
+    public function __construct(string $uploadDirectory, Security $security, EntityManagerInterface $entityManager)
     {
-        parent::__construct($security, $entityManager);
+        parent::__construct($uploadDirectory, $security, $entityManager);
         $this->setObjectRepository($this->getEntityManager()->getRepository(Article::class));
         $this->setArticle(new Article());
     }
 
     /**
-     *
+     * Updates the current article.
      */
-    public function create()
+    public function update(): void
     {
         $this->getArticle()->setUser($this->getUser());
         try {
@@ -53,17 +56,30 @@ class ArticleService extends AbstractService implements ServiceInterface
     }
 
     /**
-     * @return Article
+     * Deletes the current article.
      */
-    public function getArticle(): Article
+    public function delete(): void
+    {
+        if ($this->getArticle()) {
+            $this->getEntityManager()->remove($this->getArticle());
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    /**
+     * Gets the current article.
+     * @return Article|null
+     */
+    public function getArticle(): ?Article
     {
         return $this->article;
     }
 
     /**
-     * @param Article $article
+     * Sets the current article.
+     * @param Article|null $article
      */
-    public function setArticle(Article $article): void
+    public function setArticle(?Article $article): void
     {
         $this->article = $article;
     }

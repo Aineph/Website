@@ -1,31 +1,46 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}
-    {{ 'admin.index.title' | trans }}
+    {{ user }}
 {% endblock %}
 {% block body %}
-    <nav id="admin-navigation">
-        {% include 'navigation.html.twig' %}
-    </nav>
-    <div class="container-fluid pt-5 pb-5">
-        <div class="row pt-5 pb-5 border-bottom">
-            <div class="col-10">
-                <div class="h1 text-white">
-                    {{ user.firstName }}
-                    {{ user.lastName }}
+
+    <!-- Admin User Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5 border-bottom">
+
+            <!-- Admin User Title -->
+
+            <div class="col-10 pt-5">
+                <div class="h1 font-weight-normal text-white">
+                    {{ user }}
                 </div>
             </div>
-            <div class="col-2">
-                <a class="btn btn-warning" href="mailto:{{ user.email }}">{{ 'admin.user.contact' | trans }}</a>
+
+            <!-- Admin User Contact -->
+
+            <div class="col-2 pt-5">
+                <a class="btn btn-lg btn-outline-light" href="mailto:{{ user.email }}">
+                    {{ 'admin.user.contact' | trans }}
+                </a>
             </div>
         </div>
-        <div class="row p-5">
+        <div class="row mt-5">
+
+            <!-- Admin User Information -->
+
             <div class="col-12">
                 <div class="text-white">
+
+                    <!-- Admin User Company -->
+
                     <p>
                         {{ 'admin.user.company' | trans }}:
                         {{ user.company }}
                     </p>
+
+                    <!-- Admin User Address -->
+
                     <p>
                         {{ 'admin.user.address' | trans }}:
                         {{ user.address }},
@@ -33,10 +48,18 @@
                         {{ user.zip }}
                         {{ user.country }}
                     </p>
+
+                    <!-- Admin User E-Mail -->
+
                     <p>
                         {{ 'admin.user.email' | trans }}:
-                        <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                        <a href="mailto:{{ user.email }}">
+                            {{ user.email }}
+                        </a>
                     </p>
+
+                    <!-- Admin User Phone -->
+
                     <p>
                         {{ 'admin.user.phone' | trans }}:
                         {{ user.phoneNumber }}
@@ -44,49 +67,133 @@
                 </div>
             </div>
         </div>
-        <div class="row p-5">
+        <div class="row mt-5">
+
+            <!-- Admin User Missions -->
+
             <div class="col-12 col-md-6">
-                <h3 class="h3 text-white">{{ 'admin.user.missions' | trans }}</h3>
+
+                <!-- Admin User Missions Title -->
+
+                <h3 class="h3 text-white">
+                    {{ 'admin.user.missions' | trans }}
+                </h3>
                 {% if user.missions | length == 0 %}
+
+                    <!-- Admin User Missions Empty -->
+
                     <p class="text-white">{{ 'admin.user.missions_empty' | trans }}</p>
                 {% else %}
+
+                    <!-- Admin User Missions Table -->
+
                     <table class="table text-center text-white">
+
+                        <!-- Admin User Missions Table Head -->
+
                         <thead>
-                        <th scope="col">{{ 'admin.user.mission_title' | trans }}</th>
-                        <th scope="col">{{ 'admin.user.mission_status' | trans }}</th>
+                        <tr>
+                            <th scope="col">
+                                {{ 'admin.user.mission_title' | trans }}
+                            </th>
+                            <th scope="col">
+                                {{ 'admin.user.mission_status' | trans }}
+                            </th>
+                            <th scope="col">
+                                {{ 'admin.user.mission_actions' | trans }}
+                            </th>
+                        </tr>
                         </thead>
+
+                        <!-- Admin User Missions Table Body -->
+
                         <tbody>
-                        {% for missions in user.missions %}
+                        {% for mission in user.missions %}
                             <tr>
-                                <td>{{ mission.title }}</td>
-                                <td>{{ mission.done }}</td>
+                                <td>
+                                    {{ mission.title }}
+                                </td>
+                                {% if mission.done %}
+                                    <td>
+                                        {{ 'admin.user.mission_done' | trans }}
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        {{ 'admin.user.mission_todo' | trans }}
+                                    </td>
+                                {% endif %}
+                                <td>
+                                    <a class="btn btn-outline-primary"
+                                       href="{{ path('admin_mission', {'mission': mission.id}) }}">
+                                        {{ 'admin.user.mission_view' | trans }}
+                                    </a>
+                                    <a class="btn btn-outline-danger"
+                                       href="{{ path('admin_mission_delete', {'mission': mission.id}) }}">
+                                        {{ 'admin.user.mission_delete' | trans }}
+                                    </a>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 {% endif %}
             </div>
+
+            <!-- Admin User Articles -->
+
             <div class="col-12 col-md-6">
-                <h3 class="h3 text-white">{{ 'admin.user.articles' | trans }}</h3>
+
+                <!-- Admin User Articles Title -->
+
+                <h3 class="h3 text-white">
+                    {{ 'admin.user.articles' | trans }}
+                </h3>
                 {% if user.articles | length == 0 %}
-                    <p class="text-white">{{ 'admin.user.articles_empty' | trans }}</p>
+
+                    <!-- Admin User Articles Empty -->
+
+                    <p class="text-white">
+                        {{ 'admin.user.articles_empty' | trans }}
+                    </p>
                 {% else %}
+
+                    <!-- Admin User Articles Table -->
+
                     <table class="table text-center text-white">
+
+                        <!-- Admin User Articles Table Head -->
+
                         <thead>
-                        <th scope="col">{{ 'admin.user.article_title' | trans }}</th>
-                        <th scope="col">{{ 'admin.user.article_date' | trans }}</th>
-                        <th scope="col">{{ 'admin.user.article_actions' | trans }}</th>
+                        <tr>
+                            <th scope="col">
+                                {{ 'admin.user.article_title' | trans }}
+                            </th>
+                            <th scope="col">
+                                {{ 'admin.user.article_date' | trans }}
+                            </th>
+                            <th scope="col">
+                                {{ 'admin.user.article_actions' | trans }}
+                            </th>
+                        </tr>
                         </thead>
+
+                        <!-- Admin User Articles Table Body -->
+
                         <tbody>
                         {% for article in user.articles %}
                             <tr>
-                                <td>{{ article.title }}</td>
-                                <td>{{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}</td>
                                 <td>
-                                    <a class="btn btn-primary">
+                                    {{ article.title }}</td>
+                                <td>
+                                    {{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary"
+                                       href="{{ path('admin_article', {'article': article.id}) }}">
                                         {{ 'admin.user.article_view' | trans }}
                                     </a>
-                                    <a class="btn btn-danger">
+                                    <a class="btn btn-outline-danger"
+                                       href="{{ path('admin_article_delete', {'article': article.id}) }}">
                                         {{ 'admin.user.article_delete' | trans }}
                                     </a>
                                 </td>

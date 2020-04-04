@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Project
 {
     /**
+     * The project id.
      * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -26,30 +27,49 @@ class Project
     private $id;
 
     /**
+     * The project name.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * The project description.
      * @var string
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
-     * @var string
-     * @ORM\Column(type="string", length=255)
-     */
-    private $link;
-
-    /**
+     * The project type.
      * @var int
      * @ORM\Column(type="integer")
      */
     private $type;
 
     /**
+     * The project link.
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $link;
+
+    /**
+     * The project image.
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
+     * The project file.
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $file;
+
+    /**
+     * Gets the project id.
      * @return int|null
      */
     public function getId(): ?int
@@ -58,6 +78,7 @@ class Project
     }
 
     /**
+     * Gets the project name.
      * @return string|null
      */
     public function getName(): ?string
@@ -66,6 +87,7 @@ class Project
     }
 
     /**
+     * Sets the project name.
      * @param string $name
      * @return $this
      */
@@ -77,6 +99,7 @@ class Project
     }
 
     /**
+     * Gets the project description.
      * @return string|null
      */
     public function getDescription(): ?string
@@ -85,6 +108,7 @@ class Project
     }
 
     /**
+     * Sets the project description.
      * @param string $description
      * @return $this
      */
@@ -96,6 +120,28 @@ class Project
     }
 
     /**
+     * Gets the project type.
+     * @return int|null
+     */
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    /**
+     * Sets the project type.
+     * @param int $type
+     * @return $this
+     */
+    public function setType(int $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets the project link.
      * @return string|null
      */
     public function getLink(): ?string
@@ -104,6 +150,7 @@ class Project
     }
 
     /**
+     * Sets the project link.
      * @param string $link
      * @return $this
      */
@@ -115,20 +162,43 @@ class Project
     }
 
     /**
-     * @return int|null
+     * Gets the project image.
+     * @return string|null
      */
-    public function getType(): ?int
+    public function getImage(): ?string
     {
-        return $this->type;
+        return $this->image;
     }
 
     /**
-     * @param int $type
+     * Sets the project image.
+     * @param string|null $image
      * @return $this
      */
-    public function setType(int $type): self
+    public function setImage(?string $image): self
     {
-        $this->type = $type;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets the project file.
+     * @return string|null
+     */
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    /**
+     * Sets the project file.
+     * @param string|null $file
+     * @return $this
+     */
+    public function setFile(?string $file): self
+    {
+        $this->file = $file;
 
         return $this;
     }

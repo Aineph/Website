@@ -1,23 +1,39 @@
-{% block prestation %}
+{% block website_services %}
+
+    <!-- Website Services -->
+
     <div class="container-fluid">
-        <div class="row m-3">
-            <div class="col-12">
-                <h1 class="h1 text-white">
+
+        <!-- Website Services Title -->
+
+        <div class="row">
+            <div class="col-12 pt-3">
+                <h1 class="h1 font-weight-normal text-white">
                     {{ 'website.prestation.services' | trans }}
                 </h1>
             </div>
         </div>
-        <div class="row m-3">
-            <div class="col-12 col-lg-8 col-xl-9 p-3">
+
+        <!-- Website Services List -->
+
+        <div class="row">
+
+            <!-- Website Services Software -->
+
+            <div class="col-12 col-lg-8 col-xl-9">
                 <div class="container align-items-center">
-                    <div class="row m-3">
+
+                    <!-- Website Services Software Title -->
+
+                    <div class="row">
                         <div class="col-12 text-center">
-                            <h3 class="h3 text-white element-fade-in-fix">
+                            <h3 class="h3 font-weight-normal text-white element-fade-in-fix">
                                 {{ 'website.prestation.software' | trans }}
                             </h3>
                         </div>
-                    </div>
-                    <div class="row m-3">
+
+                        <!-- Website Services Software System -->
+
                         <div class="col-12 col-md-6 col-xl-4 p-3">
                             <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
@@ -27,15 +43,17 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.system_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.system' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.system' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Website Services Software Embedded -->
+
                         <div class="col-12 col-md-6 col-xl-4 p-3">
                             <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
@@ -45,15 +63,17 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.embedded_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.embedded' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.embedded' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Website Services Software Security -->
+
                         <div class="col-12 col-md-6 col-xl-4 p-3">
                             <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
@@ -63,15 +83,17 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.security_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.security' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.security' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Website Services Software Website -->
+
                         <div class="col-12 col-md-6 col-xl-4 p-3">
                             <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
@@ -81,16 +103,17 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.website_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link"
-                                       href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.website' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.website' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Website Services Software Mobile -->
+
                         <div class="col-12 col-md-6 col-xl-4 p-3">
                             <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
@@ -100,15 +123,17 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.mobile_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.mobile' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.mobile' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Website Services Software Database -->
+
                         <div class="col-12 col-md-6 col-xl-4 p-3">
                             <div class="card h-100 text-center element-fade-in-left element-grow">
                                 <div class="card-body">
@@ -118,28 +143,34 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.database_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.database' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.database' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-xl-3 p-3">
+
+            <!-- Website Services Music -->
+
+            <div class="col-12 col-lg-4 col-xl-3">
                 <div class="container align-items-center">
-                    <div class="row m-3">
+
+                    <!-- Website Services Music Title -->
+
+                    <div class="row">
                         <div class="col-12 text-center">
-                            <div class="h3 text-white element-fade-in-fix">
+                            <div class="h3 font-weight-normal text-white element-fade-in-fix">
                                 {{ 'website.prestation.music' | trans }}
                             </div>
                         </div>
-                    </div>
-                    <div class="row m-3">
+
+                        <!-- Website Services Music Audio -->
+
                         <div class="col-12 p-3">
                             <div class="card h-100 text-center element-fade-in-right element-grow">
                                 <div class="card-body">
@@ -149,15 +180,17 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.audio_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.audio' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.audio' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Website Services Music Score -->
+
                         <div class="col-12 p-3">
                             <div class="card h-100 text-center element-fade-in-right element-grow">
                                 <div class="card-body">
@@ -167,12 +200,11 @@
                                     <p class="card-text text-muted">
                                         {{ 'website.prestation.score_detail' | trans }}
                                     </p>
-                                    <a class="stretched-link" href="{{ path('website_index') }}">
-                                        {{ 'website.prestation.more' | trans }}
-                                    </a>
                                 </div>
                                 <div class="card-footer">
-                                    {{ 'website.prestation.score' | trans }}
+                                    <p class="card-text">
+                                        {{ 'website.prestation.score' | trans }}
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -19,39 +19,59 @@ use Doctrine\Persistence\ObjectRepository;
 interface ServiceInterface
 {
     /**
+     * Retrieves the entity which is associated to the given id.
      * @param int $id
-     * @return object
+     * @return object|null
      */
-    public function get(int $id): object;
+    public function get(int $id): ?object;
 
     /**
+     * Retrieves all entities.
      * @return array
      */
     public function getAll(): array;
 
     /**
+     * Gets a page of entities matching the given page number and the optional criteria.
      * @param int $page
+     * @param string|null $search
      * @return Paginator
      */
-    public function getPage(int $page): Paginator;
+    public function getPage(int $page, ?string $search): Paginator;
 
     /**
+     * Gets the current user.
      * @return User|null
      */
     public function getUser(): ?User;
 
     /**
-     * @param User|null $user
+     * Sets the current user.
+     * @param object|null $user
      */
-    public function setUser(?User $user): void;
+    public function setUser(?object $user): void;
 
     /**
+     * Gets the object repository.
      * @return ObjectRepository
      */
     public function getObjectRepository(): ObjectRepository;
 
     /**
+     * Sets the object repository.
      * @param ObjectRepository $objectRepository
      */
     public function setObjectRepository(ObjectRepository $objectRepository): void;
+
+    /**
+     * Gets the upload directory.
+     * @return string
+     */
+    public function getUploadDirectory(): string;
+
+    /**
+     * Sets the upload directory.
+     * @param string $uploadDirectory
+     */
+    public function setUploadDirectory(string $uploadDirectory): void;
 }

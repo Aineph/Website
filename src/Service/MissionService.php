@@ -14,31 +14,36 @@ use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * Class MissionService
+ * @package App\Service
+ */
 class MissionService extends AbstractService implements ServiceInterface
 {
     /**
+     * The current mission.
      * @var Mission
      */
     private $mission;
 
     /**
      * MissionService constructor.
+     * @param string $uploadDirectory
      * @param Security $security
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(Security $security, EntityManagerInterface $entityManager)
+    public function __construct(string $uploadDirectory, Security $security, EntityManagerInterface $entityManager)
     {
-        parent::__construct($security, $entityManager);
+        parent::__construct($uploadDirectory, $security, $entityManager);
         $this->setObjectRepository($this->getEntityManager()->getRepository(Mission::class));
         $this->setMission(new Mission());
     }
 
     /**
-     *
+     * Updates the current mission.
      */
-    public function create()
+    public function update(): void
     {
-        $this->getMission()->setDone(false);
         try {
             $this->getMission()->setDate(new DateTime('now'));
         } catch (Exception $e) {
@@ -49,6 +54,18 @@ class MissionService extends AbstractService implements ServiceInterface
     }
 
     /**
+     * Deletes the current mission.
+     */
+    public function delete(): void
+    {
+        if ($this->getMission()) {
+            $this->getEntityManager()->remove($this->getMission());
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    /**
+     * Retrieve the latest missions.
      * @return array
      */
     public function getLatestMissions()
@@ -62,17 +79,37 @@ class MissionService extends AbstractService implements ServiceInterface
     }
 
     /**
-     * @return Mission
+     * Retrieves the number of missions.
+     * @return mixed
      */
-    public function getMission(): Mission
+    public function getMissionsCount()
+    {
+        return $this->getObjectRepository()->countFor($this->getUser()->getId());
+    }
+
+    /**
+     * Returns the availability depending on the current missions.
+     * @return mixed
+     */
+    public function getAvailability()
+    {
+        return $this->getObjectRepository()->getAvailability();
+    }
+
+    /**
+     * Gets the current mission.
+     * @return Mission|null
+     */
+    public function getMission(): ?Mission
     {
         return $this->mission;
     }
 
     /**
-     * @param Mission $mission
+     * Sets the current mission.
+     * @param Mission|null $mission
      */
-    public function setMission(Mission $mission): void
+    public function setMission(?Mission $mission): void
     {
         $this->mission = $mission;
     }

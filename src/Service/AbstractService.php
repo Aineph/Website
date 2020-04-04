@@ -17,35 +17,46 @@ use Symfony\Component\Security\Core\Security;
 abstract class AbstractService implements ServiceInterface
 {
     /**
+     * The current user.
      * @var User
      */
     private $user;
 
     /**
+     * The object repository.
      * @var ObjectRepository
      */
     private $objectRepository;
 
     /**
+     * The upload directory.
+     * @var string
+     */
+    private $uploadDirectory;
+
+    /**
+     * The entity manager.
      * @var EntityManagerInterface
      */
     private $entityManager;
 
     /**
      * AbstractService constructor.
+     * @param string $uploadDirectory
      * @param Security $security
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(Security $security, EntityManagerInterface $entityManager)
+    public function __construct(string $uploadDirectory, Security $security, EntityManagerInterface $entityManager)
     {
         $this->setUser($security->getUser());
+        $this->setUploadDirectory($uploadDirectory);
         $this->setEntityManager($entityManager);
     }
 
     /**
      * @inheritDoc
      */
-    public function get(int $id): object
+    public function get(int $id): ?object
     {
         return $this->getObjectRepository()->find($id);
     }
@@ -61,9 +72,9 @@ abstract class AbstractService implements ServiceInterface
     /**
      * @inheritDoc
      */
-    public function getPage(int $page): Paginator
+    public function getPage(int $page, ?string $search = null): Paginator
     {
-        return $this->getObjectRepository()->findLatest($page);
+        return $this->getObjectRepository()->findLatest($page, $search);
     }
 
     /**
@@ -77,7 +88,7 @@ abstract class AbstractService implements ServiceInterface
     /**
      * @inheritDoc
      */
-    public function setUser(?User $user): void
+    public function setUser(?object $user): void
     {
         $this->user = $user;
     }
@@ -99,6 +110,23 @@ abstract class AbstractService implements ServiceInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function getUploadDirectory(): string
+    {
+        return $this->uploadDirectory;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUploadDirectory(string $uploadDirectory): void
+    {
+        $this->uploadDirectory = $uploadDirectory;
+    }
+
+    /**
+     * Gets the entity manager.
      * @return EntityManagerInterface
      */
     public function getEntityManager(): EntityManagerInterface
@@ -107,6 +135,7 @@ abstract class AbstractService implements ServiceInterface
     }
 
     /**
+     * Sets the entity manager.
      * @param EntityManagerInterface $entityManager
      */
     public function setEntityManager(EntityManagerInterface $entityManager): void

@@ -14,13 +14,23 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PasswordForgottenType extends AbstractType
+/**
+ * Class PasswordForgottenFormType
+ * @package App\Form
+ */
+class PasswordForgottenFormType extends AbstractType
 {
     /**
+     * The password forgotten e-mail field.
      * @var string
      */
     const EMAIL_FIELD = 'email';
 
+    /**
+     * Builds the password forgotten form.
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -30,10 +40,12 @@ class PasswordForgottenType extends AbstractType
             ]);
     }
 
+    /**
+     * Sets the password forgotten form's default attributes.
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => User::class,
-        ]);
+        $resolver->setDefaults([]);
     }
 }

@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Message
 {
     /**
+     * The message id.
      * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -27,42 +28,49 @@ class Message
     private $id;
 
     /**
+     * The message name.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * The message e-mail.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * The message object.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $object;
 
     /**
+     * The message content.
      * @var string
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
-     * @var string
-     * @ORM\Column(type="integer", nullable=true)
+     * The message user.
+     * @var User
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="messages")
      */
     private $user;
 
     /**
+     * The message date.
      * @var DateTimeInterface
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $date;
 
     /**
+     * Gets the message id.
      * @return int|null
      */
     public function getId(): ?int
@@ -71,6 +79,7 @@ class Message
     }
 
     /**
+     * Gets the message name.
      * @return string|null
      */
     public function getName(): ?string
@@ -79,6 +88,7 @@ class Message
     }
 
     /**
+     * Sets the message name.
      * @param string $name
      * @return $this
      */
@@ -90,6 +100,7 @@ class Message
     }
 
     /**
+     * Gets the message e-mail.
      * @return string|null
      */
     public function getEmail(): ?string
@@ -98,6 +109,7 @@ class Message
     }
 
     /**
+     * Sets the message e-mail.
      * @param string $email
      * @return $this
      */
@@ -109,6 +121,7 @@ class Message
     }
 
     /**
+     * Gets the message Object.
      * @return string|null
      */
     public function getObject(): ?string
@@ -117,6 +130,7 @@ class Message
     }
 
     /**
+     * Sets the message Object.
      * @param string $object
      * @return $this
      */
@@ -128,6 +142,7 @@ class Message
     }
 
     /**
+     * Gets the message content.
      * @return string|null
      */
     public function getContent(): ?string
@@ -136,6 +151,7 @@ class Message
     }
 
     /**
+     * Sets the message content.
      * @param string $content
      * @return $this
      */
@@ -147,18 +163,20 @@ class Message
     }
 
     /**
-     * @return int|null
+     * Gets the message user.
+     * @return User|null
      */
-    public function getUser(): ?int
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
-     * @param int|null $user
+     * Sets the message user.
+     * @param User|null $user
      * @return $this
      */
-    public function setUser(?int $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
@@ -166,6 +184,7 @@ class Message
     }
 
     /**
+     * Gets the message date.
      * @return DateTimeInterface|null
      */
     public function getDate(): ?DateTimeInterface
@@ -174,6 +193,7 @@ class Message
     }
 
     /**
+     * Sets the message date.
      * @param DateTimeInterface $date
      * @return $this
      */

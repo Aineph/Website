@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ mission.title }}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Mission Body -->
+
+    <div class="container">
+
+        <!-- Admin Mission Form -->
+
+        {{ form_start(missionForm, {'action': path('admin_mission_create',
+            {'mission': app.request.attributes.get('mission')})}) }}
+        <div class="row mt-5">
+
+            <!-- Admin Mission Form Title -->
+
+            <div class="col-12 pt-3 text-white">
+                {{ form_label(missionForm.title) }}
+                {{ form_widget(missionForm.title, {
+                    'attr': {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
+
+            <!-- Admin Mission Form Description -->
+
+            <div class="col-12 pt-3 text-white">
+                {{ form_label(missionForm.description) }}
+                {{ form_widget(missionForm.description, {
+                    'attr': {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
+
+            <!-- Admin Mission Form Done -->
+
+            <div class="col-12 pt-3 text-white">
+                {{ form_label(missionForm.done) }}
+                {{ form_widget(missionForm.done, {
+                    'attr': {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
+
+            <!-- Admin Mission Form User -->
+
+            <div class="col-12 pt-3 text-white">
+                {{ form_label(missionForm.user) }}
+                {{ form_widget(missionForm.user, {
+                    'attr': {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
+
+            <!-- Admin Mission Form Link -->
+
+            <div class="col-12 pt-3 text-white">
+                {{ form_label(missionForm.link) }}
+                {{ form_widget(missionForm.link, {
+                    'attr': {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
+
+            <!-- Admin Mission Form Submit -->
+
+            <div class="col-12 pt-3">
+                <button class="btn btn-outline-primary" type="submit">
+                    {{ 'admin.mission.submit' | trans }}
+                </button>
+            </div>
+        </div>
+        {{ form_end(missionForm) }}
+
+        <!-- Admin Mission Actions -->
+
+        <div class="row mt-5">
+
+            <!-- Admin Mission Contact -->
+
+            <div class="col-12 col-md-6 pt-3 text-center">
+                <a class="btn btn-lg btn-outline-light" href="mailto:{{ mission.user.email }}">
+                    {{ 'admin.mission.contact' | trans }}
+                </a>
+            </div>
+
+            <!-- Admin Mission Delete -->
+
+            <div class="col-12 col-md-2 pt-3 text-center">
+                <a class="btn btn-lg btn-outline-danger"
+                   href="{{ path('admin_mission_delete', {'mission': mission.id}) }}">
+                    {{ 'admin.mission.delete' | trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

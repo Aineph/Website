@@ -1,1 +1,305 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'profile.edit.title' | trans }}
+{% endblock %}
+{% block body %}
+
+    <!-- Profile Edit Body -->
+
+    <div class="container">
+        <div class="card min-vh-100 mt-5">
+
+            <!-- Profile Edit Content -->
+
+            <div class="card-body">
+                {% if app.request.get('error') %}
+
+                    <!-- Profile Edit Errors -->
+
+                    <p class="alert alert-danger">
+                        {{ app.request.get('error') | trans }}
+                    </p>
+                {% elseif app.request.get('info') %}
+
+                    <!-- Profile Edit Infos -->
+
+                    <p class="alert alert-info">
+                        {{ app.request.get('info') | trans }}
+                    </p>
+                {% endif %}
+
+                <!-- Profile Edit Title -->
+
+                <h1 class="h1 font-weight-normal">
+                    {{ 'profile.edit.title' | trans }}
+                </h1>
+
+                <!-- Profile Edit Form -->
+
+                {{ form_start(profileForm, {'action': path('profile_update')}) }}
+                <div class="form-group">
+                    <div class="row">
+
+                        <!-- Profile Edit Form First Name -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.firstName) }}
+                            {{ form_widget(profileForm.firstName, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form Last Name -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.lastName) }}
+                            {{ form_widget(profileForm.lastName, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form Company -->
+
+                        <div class="col-12">
+                            {{ form_label(profileForm.company) }}
+                            {{ form_widget(profileForm.company, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form Address -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.address) }}
+                            {{ form_widget(profileForm.address, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form City -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.city) }}
+                            {{ form_widget(profileForm.city, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form Zip -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.zip) }}
+                            {{ form_widget(profileForm.zip, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form Country -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(profileForm.country) }}
+                            {{ form_widget(profileForm.country, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Profile Edit Form Phone -->
+
+                        <div class="col-12">
+                            {{ form_label(profileForm.phoneNumber) }}
+                            {{ form_widget(profileForm.phoneNumber, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Edit Form Submit -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-lg btn-outline-primary" type="submit">
+                            {{ 'profile.edit.submit' | trans }}
+                        </button>
+                    </div>
+                </div>
+                {{ form_end(profileForm) }}
+            </div>
+
+            <!-- Profile Edit Password Modal -->
+
+            <div class="modal fade" id="edit-password-modal" tabindex="-1" role="dialog"
+                 aria-labelledby="edit-password-modal-title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+
+                    <!-- Profile Edit Password Modal Content -->
+
+                    <div class="modal-content">
+
+                        <!-- Profile Edit Password Modal Form -->
+
+                        {{ form_start(passwordForm, {'action': path('profile_update')}) }}
+                        <div class="modal-header">
+
+                            <!-- Profile Edit Password Modal Title -->
+
+                            <h5 id="edit-password-modal-title" class="modal-title h5 font-weight-normal">
+                                {{ 'profile.edit.edit_password' | trans }}
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+
+                                <!-- Profile Edit Password Modal Old Password -->
+
+                                <div class="col-12">
+                                    {{ form_label(passwordForm.oldPassword) }}
+                                    {{ form_widget(passwordForm.oldPassword, {
+                                        'attr': {
+                                            'class': 'form-control'
+                                        }
+                                    }) }}
+                                </div>
+
+                                <!-- Profile Edit Password Modal Password -->
+
+                                <div class="col-12">
+                                    {{ form_label(passwordForm.plainPassword.first) }}
+                                    {{ form_widget(passwordForm.plainPassword.first, {
+                                        'attr': {
+                                            'class': 'form-control'
+                                        }
+                                    }) }}
+                                </div>
+
+                                <!-- Profile Edit Password Modal Password Confirmation -->
+
+                                <div class="col-12">
+                                    {{ form_label(passwordForm.plainPassword.second) }}
+                                    {{ form_widget(passwordForm.plainPassword.second, {
+                                        'attr': {
+                                            'class': 'form-control'
+                                        }
+                                    }) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Edit Password Modal Actions -->
+
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                                {{ 'profile.edit.cancel' | trans }}
+                            </button>
+                            <button class="btn btn-outline-primary" type="submit">
+                                {{ 'profile.edit.submit' | trans }}
+                            </button>
+                        </div>
+                        {{ form_end(passwordForm) }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Edit Actions -->
+
+            <div class="card-footer">
+                <div class="row">
+
+                    <!-- Profile Edit Password -->
+
+                    <div class="col-4 m-auto text-center">
+                        <button class="btn btn-outline-danger" type="button" data-toggle="modal"
+                                data-target="#edit-password-modal">
+                            {{ 'profile.edit.edit_password' | trans }}
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Delete Account Modal -->
+
+                <div class="modal fade" id="edit-delete-modal" tabindex="-1" role="dialog"
+                     aria-labelledby="edit-delete-modal-title" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+
+                        <!-- Profile Delete Account Modal Content -->
+
+                        <div class="modal-content">
+
+                            <!-- Profile Delete Account Modal Form -->
+
+                            {{ form_start(accountDeletionForm, {'action': path('profile_update')}) }}
+                            <div class="modal-header">
+
+                                <!-- Profile Delete Account Modal Title -->
+
+                                <h5 id="edit-delete-modal-title" class="modal-title h5 font-weight-normal">
+                                    {{ 'profile.edit.delete' | trans }}
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+
+                                    <!-- Profile Delete Account Modal Warning -->
+
+                                    <div class="col-12">
+                                        <p class="text-danger">{{ 'profile.edit.delete_warning' | trans }}</p>
+                                    </div>
+
+                                    <!-- Profile Delete Account Modal Password -->
+
+                                    <div class="col-12">
+                                        {{ form_label(accountDeletionForm.password) }}
+                                        {{ form_widget(accountDeletionForm.password, {
+                                            'attr': {
+                                                'class': 'form-control'
+                                            }
+                                        }) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Profile Delete Account Modal Actions -->
+
+                            <div class="modal-footer">
+                                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                                    {{ 'profile.edit.cancel' | trans }}
+                                </button>
+                                <button class="btn btn-outline-primary" type="submit">
+                                    {{ 'profile.edit.submit' | trans }}
+                                </button>
+                            </div>
+                            {{ form_end(accountDeletionForm) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+
+                    <!-- Profile Delete Account -->
+
+                    <div class="col-12">
+                        <button class="btn btn-block btn-danger" type="button" data-toggle="modal"
+                                data-target="#edit-delete-modal">
+                            {{ 'profile.edit.delete' | trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

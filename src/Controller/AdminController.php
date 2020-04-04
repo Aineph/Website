@@ -8,9 +8,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Entity\Message;
-use App\Entity\User;
 use App\Form\ArticleFormType;
 use App\Form\MissionFormType;
 use App\Form\ProjectFormType;
@@ -33,15 +30,92 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_INDEX = 'admin/index.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_USERS = 'admin/users.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_ADMIN_USERS = 'admin_users';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_USER = 'admin/user.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_MESSAGES = 'admin/messages.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_ADMIN_MESSAGES = 'admin_messages';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_MESSAGE = 'admin/message.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_ARTICLES = 'admin/articles.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_ADMIN_ARTICLES = 'admin_articles';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_ARTICLE = 'admin/article.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_MISSIONS = 'admin/missions.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_ADMIN_MISSIONS = 'admin_missions';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_MISSION = 'admin/mission.html.twig';
+
+    /**
+     * @var string
+     */
+    const TEMPLATE_ADMIN_PROJECTS = 'admin/projects.html.twig';
+
+    /**
+     * @var string
+     */
+    const ROUTE_ADMIN_PROJECTS = 'admin_projects';
+
+    /**
+     * The control for the admin index.
      * @return Response
      * @Route("/", methods="GET", name="admin_index")
      */
     public function index()
     {
-        return $this->render('admin/index.html.twig');
+        return $this->render(self::TEMPLATE_ADMIN_INDEX);
     }
 
     /**
+     * The control for the admin users.
      * @param int $page
      * @param UserService $userService
      * @return Response
@@ -49,12 +123,13 @@ class AdminController extends AbstractController
      */
     public function users(int $page, UserService $userService)
     {
-        return $this->render('admin/users.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_USERS, [
             'userPaginator' => $userService->getPage($page)
         ]);
     }
 
     /**
+     * The control for the admin user.
      * @param int $user
      * @param UserService $userService
      * @return Response
@@ -62,23 +137,27 @@ class AdminController extends AbstractController
      */
     public function user(int $user, UserService $userService)
     {
-        return $this->render('admin/user.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_USER, [
             'user' => $userService->get($user)
         ]);
     }
 
     /**
+     * The control for the admin user delete.
      * @param int $user
      * @param UserService $userService
      * @return RedirectResponse
-     * @Route("/user_delete/{user?0}", methods="GET", name="admin_user_delete", requirements={"user"="\d+"})
+     * @Route("/user/delete/{user?0}", methods="GET", name="admin_user_delete", requirements={"user"="\d+"})
      */
     public function user_delete(int $user, UserService $userService)
     {
-        return $this->redirectToRoute('admin_users');
+        $userService->setUser($userService->get($user));
+        $userService->delete();
+        return $this->redirectToRoute(self::ROUTE_ADMIN_USERS);
     }
 
     /**
+     * The control for the admin messages.
      * @param int $page
      * @param MessageService $messageService
      * @return Response
@@ -86,12 +165,13 @@ class AdminController extends AbstractController
      */
     public function messages(int $page, MessageService $messageService)
     {
-        return $this->render('admin/messages.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_MESSAGES, [
             'messagePaginator' => $messageService->getPage($page)
         ]);
     }
 
     /**
+     * The control for the admin message.
      * @param int $message
      * @param MessageService $messageService
      * @return Response
@@ -99,24 +179,27 @@ class AdminController extends AbstractController
      */
     public function message(int $message, MessageService $messageService)
     {
-        return $this->render('admin/message.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_MESSAGE, [
             'message' => $messageService->get($message)
         ]);
     }
 
     /**
+     * The control for the admin message delete.
      * @param int $message
      * @param MessageService $messageService
      * @return RedirectResponse
-     * @Route("/message_delete/{message?0}", methods="GET", name="admin_message_delete", requirements={"message"="\d+"})
+     * @Route("/message/delete/{message?0}", methods="GET", name="admin_message_delete", requirements={"message"="\d+"})
      */
     public function message_delete(int $message, MessageService $messageService)
     {
-        $messageService->delete($message);
-        return $this->redirectToRoute('admin_messages');
+        $messageService->setMessage($messageService->get($message));
+        $messageService->delete();
+        return $this->redirectToRoute(self::ROUTE_ADMIN_MESSAGES);
     }
 
     /**
+     * The control for the admin articles.
      * @param int $page
      * @param ArticleService $articleService
      * @return Response
@@ -124,12 +207,13 @@ class AdminController extends AbstractController
      */
     public function articles(int $page, ArticleService $articleService)
     {
-        return $this->render('admin/articles.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_ARTICLES, [
             'articlePaginator' => $articleService->getPage($page)
         ]);
     }
 
     /**
+     * The control for the admin article.
      * @param int $article
      * @param ArticleService $articleService
      * @return Response
@@ -137,23 +221,59 @@ class AdminController extends AbstractController
      */
     public function article(int $article, ArticleService $articleService)
     {
-        return $this->render('admin/article.html.twig', [
-            'article' => ''
+        $articleEntity = $articleService->get($article);
+
+        if ($articleEntity) {
+            $articleService->setArticle($articleEntity);
+        }
+        $articleForm = $this->createForm(ArticleFormType::class, $articleService->getArticle());
+
+        return $this->render(self::TEMPLATE_ADMIN_ARTICLE, [
+            'articleForm' => $articleForm->createView(),
+            'article' => $articleService->getArticle()
         ]);
     }
 
     /**
+     * The control for the admin article create.
      * @param int $article
+     * @param Request $request
      * @param ArticleService $articleService
      * @return RedirectResponse
-     * @Route("/article_delete/{article?0}", methods="GET", name="admin_article_delete", requirements={"article"="\d+"})
+     * @Route("/article/create/{article?0}", methods="POST", name="admin_article_create", requirements={"article"="\d+"})
      */
-    public function article_delete(int $article, ArticleService $articleService)
+    public function article_create(int $article, Request $request, ArticleService $articleService)
     {
-        return $this->redirectToRoute('admin_articles');
+        $articleEntity = $articleService->get($article);
+
+        if ($articleEntity) {
+            $articleService->setArticle($articleEntity);
+        }
+        $articleForm = $this->createForm(ArticleFormType::class, $articleService->getArticle());
+
+        $articleForm->handleRequest($request);
+        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
+            $articleService->update();
+        }
+        return $this->redirectToRoute(self::ROUTE_ADMIN_ARTICLES);
     }
 
     /**
+     * The control for the admin article delete.
+     * @param int $article
+     * @param ArticleService $articleService
+     * @return RedirectResponse
+     * @Route("/article/delete/{article?0}", methods="GET", name="admin_article_delete", requirements={"article"="\d+"})
+     */
+    public function article_delete(int $article, ArticleService $articleService)
+    {
+        $articleService->setArticle($articleService->get($article));
+        $articleService->delete();
+        return $this->redirectToRoute(self::ROUTE_ADMIN_ARTICLES);
+    }
+
+    /**
+     * The control for the admin missions.
      * @param int $page
      * @param MissionService $missionService
      * @return Response
@@ -163,39 +283,74 @@ class AdminController extends AbstractController
     {
         $missionForm = $this->createForm(MissionFormType::class, $missionService->getMission());
 
-        return $this->render('admin/missions.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_MISSIONS, [
             'missionPaginator' => $missionService->getPage($page),
             'missionForm' => $missionForm->createView()
         ]);
     }
 
     /**
+     * The control for the admin mission.
      * @param int $mission
-     * @return void
+     * @param MissionService $missionService
+     * @return Response
      * @Route("/mission/{mission?0}", methods="GET", name="admin_mission", requirements={"mission"="\d+"})
      */
-    public function mission(int $mission)
+    public function mission(int $mission, MissionService $missionService)
     {
+        $missionEntity = $missionService->get($mission);
+
+        if ($missionEntity) {
+            $missionService->setMission($missionEntity);
+        }
+        $missionForm = $this->createForm(MissionFormType::class, $missionService->getMission());
+
+        return $this->render(self::TEMPLATE_ADMIN_MISSION, [
+            'missionForm' => $missionForm->createView(),
+            'mission' => $missionService->getMission()
+        ]);
     }
 
     /**
+     * The control for the admin mission create.
+     * @param int $mission
      * @param Request $request
      * @param MissionService $missionService
      * @return RedirectResponse
-     * @Route("/missions/create", methods="POST", name="admin_mission_create")
+     * @Route("/missions/create/{mission?0}", methods="POST", name="admin_mission_create", requirements={"mission"="\d+"})
      */
-    public function mission_create(Request $request, MissionService $missionService)
+    public function mission_create(int $mission, Request $request, MissionService $missionService)
     {
+        $missionEntity = $missionService->get($mission);
+
+        if ($missionEntity) {
+            $missionService->setMission($missionEntity);
+        }
         $missionForm = $this->createForm(MissionFormType::class, $missionService->getMission());
 
         $missionForm->handleRequest($request);
         if ($missionForm->isSubmitted() && $missionForm->isValid()) {
-            $missionService->create();
+            $missionService->update();
         }
-        return $this->redirectToRoute('admin_missions');
+        return $this->redirectToRoute(self::ROUTE_ADMIN_MISSIONS);
     }
 
     /**
+     * The control for the admin mission delete.
+     * @param int $mission
+     * @param MissionService $missionService
+     * @return Response
+     * @Route("/mission/delete/{mission?0}", methods="GET", name="admin_mission_delete", requirements={"mission"="\d+"})
+     */
+    public function mission_delete(int $mission, MissionService $missionService)
+    {
+        $missionService->setMission($missionService->get($mission));
+        $missionService->delete();
+        return $this->redirectToRoute(self::ROUTE_ADMIN_MISSIONS);
+    }
+
+    /**
+     * The control for the admin projects.
      * @param int $page
      * @param ProjectService $projectService
      * @return Response
@@ -205,45 +360,47 @@ class AdminController extends AbstractController
     {
         $projectForm = $this->createForm(ProjectFormType::class, $projectService->getProject());
 
-        return $this->render('admin/projects.html.twig', [
+        return $this->render(self::TEMPLATE_ADMIN_PROJECTS, [
             'projectPaginator' => $projectService->getPage($page),
             'projectForm' => $projectForm->createView()
         ]);
     }
 
     /**
+     * The control for the admin project create.
+     * @param int $project
      * @param Request $request
      * @param ProjectService $projectService
      * @return RedirectResponse
-     * @Route("/projects/create", methods="POST", name="admin_project_create", requirements={"page"="\d+"})
+     * @Route("/projects/create/{project?0}", methods="POST", name="admin_project_create", requirements={"project"="\d+"})
      */
-    public function project_create(Request $request, ProjectService $projectService)
+    public function project_create(int $project, Request $request, ProjectService $projectService)
     {
+        $projectEntity = $projectService->get($project);
+
+        if ($projectEntity) {
+            $projectService->setProject($projectEntity);
+        }
         $projectForm = $this->createForm(ProjectFormType::class, $projectService->getProject());
 
         $projectForm->handleRequest($request);
         if ($projectForm->isSubmitted() && $projectForm->isValid()) {
-            $projectService->create();
+            $projectService->create($projectForm);
         }
-        return $this->redirectToRoute('admin_projects');
+        return $this->redirectToRoute(self::ROUTE_ADMIN_PROJECTS);
     }
 
     /**
-     * @param Request $request
-     * @param ArticleService $articleService
-     * @return Response
-     * @Route("/article/new", methods="GET|POST", name="admin_post")
+     * The control for the admin project delete.
+     * @param int $project
+     * @param ProjectService $projectService
+     * @return RedirectResponse
+     * @Route("/project_delete/{project?0}", methods="GET", name="admin_project_delete", requirements={"project"="\d+"})
      */
-    public function post(Request $request, ArticleService $articleService)
+    public function project_delete(int $project, ProjectService $projectService)
     {
-        $articleForm = $this->createForm(ArticleFormType::class, $articleService->getArticle());
-
-        $articleForm->handleRequest($request);
-        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-            $articleService->create();
-        }
-        return $this->render('admin/post.html.twig', [
-            'articleForm' => $articleForm->createView()
-        ]);
+        $projectService->setProject($projectService->get($project));
+        $projectService->delete();
+        return $this->redirectToRoute(self::ROUTE_ADMIN_PROJECTS);
     }
 }

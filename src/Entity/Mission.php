@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Mission
 {
     /**
+     * The mission id.
      * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -27,42 +28,49 @@ class Mission
     private $id;
 
     /**
+     * The mission title.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * The mission description.
      * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
+     * The mission done.
      * @var bool
      * @ORM\Column(type="boolean")
      */
     private $done;
 
     /**
+     * The mission user.
      * @var User
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="missions")
      */
     private $user;
 
     /**
+     * The mission link.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $link;
 
     /**
+     * The mission date.
      * @var DateTimeInterface
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $date;
 
     /**
+     * Gets the mission id.
      * @return int|null
      */
     public function getId(): ?int
@@ -71,6 +79,7 @@ class Mission
     }
 
     /**
+     * Gets the mission title.
      * @return string|null
      */
     public function getTitle(): ?string
@@ -79,6 +88,7 @@ class Mission
     }
 
     /**
+     * Sets the mission title.
      * @param string $title
      * @return $this
      */
@@ -90,6 +100,7 @@ class Mission
     }
 
     /**
+     * Gets the mission description.
      * @return string|null
      */
     public function getDescription(): ?string
@@ -98,6 +109,7 @@ class Mission
     }
 
     /**
+     * Sets the message description.
      * @param string|null $description
      * @return $this
      */
@@ -109,6 +121,7 @@ class Mission
     }
 
     /**
+     * Gets the mission done.
      * @return bool|null
      */
     public function getDone(): ?bool
@@ -117,6 +130,7 @@ class Mission
     }
 
     /**
+     * Sets the mission done.
      * @param bool $done
      * @return $this
      */
@@ -128,6 +142,7 @@ class Mission
     }
 
     /**
+     * Gets the mission user.
      * @return User|null
      */
     public function getUser(): ?User
@@ -136,6 +151,7 @@ class Mission
     }
 
     /**
+     * Sets the mission user.
      * @param User|null $user
      * @return $this
      */
@@ -147,6 +163,7 @@ class Mission
     }
 
     /**
+     * Gets the mission link.
      * @return string|null
      */
     public function getLink(): ?string
@@ -155,6 +172,7 @@ class Mission
     }
 
     /**
+     * Sets the mission link.
      * @param string $link
      * @return $this
      */
@@ -166,6 +184,7 @@ class Mission
     }
 
     /**
+     * Gets the mission date.
      * @return DateTimeInterface|null
      */
     public function getDate(): ?DateTimeInterface
@@ -174,6 +193,7 @@ class Mission
     }
 
     /**
+     * Sets the mission date.
      * @param DateTimeInterface|null $date
      * @return $this
      */

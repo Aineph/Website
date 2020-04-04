@@ -33,6 +33,7 @@ class ProjectRepository extends ServiceEntityRepository
     }
 
     /**
+     * Finds the latest projects.
      * @param int $page
      * @return Paginator
      */

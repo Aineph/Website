@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Message;
 use App\Form\ContactFormType;
 use App\Service\MessageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,16 +24,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class WebsiteController extends AbstractController
 {
     /**
+     * The website index route.
      * @var string
      */
     const ROUTE_WEBSITE_INDEX = 'website_index';
 
     /**
+     * The website index template.
      * @var string
      */
     const TEMPLATE_WEBSITE_INDEX = 'website/index.html.twig';
 
     /**
+     * The contact form parameter.
+     * @var string
+     */
+    const CONTACT_FORM_PARAMETER = 'contactForm';
+
+    /**
+     * The control for the website index.
      * @param MessageService $messageService
      * @return Response
      * @Route("/", methods="GET", name="website_index")
@@ -44,17 +52,18 @@ class WebsiteController extends AbstractController
         $contactForm = $this->createForm(ContactFormType::class, $messageService->getMessage());
 
         return $this->render(self::TEMPLATE_WEBSITE_INDEX, [
-            'contactForm' => $contactForm->createView()
+            self::CONTACT_FORM_PARAMETER => $contactForm->createView()
         ]);
     }
 
     /**
+     * The control for the website contact.
      * @param Request $request
      * @param MessageService $messageService
      * @return RedirectResponse
      * @Route("/contact", methods="POST", name="website_contact")
      */
-    public function contact(Request $request, MessageService $messageService)
+    public function contact(Request $request, MessageService $messageService): RedirectResponse
     {
         $contactForm = $this->createForm(ContactFormType::class, $messageService->getMessage());
 

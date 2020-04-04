@@ -1,0 +1,95 @@
+{% block profile_missions %}
+    <!-- Profile Missions -->
+    <div class="container">
+        <div class="row">
+
+            <!-- Profile Index Missions Title -->
+
+            <div class="col-12 col-md-6 text-center">
+                <h3 class="h3 font-weight-normal text-white">
+                    {{ 'profile.missions.title' | trans }}
+                </h3>
+            </div>
+
+            <!-- Profile Index Missions Proposal -->
+
+            <div class="col-12 col-md-6 text-center">
+                <a class="btn btn-outline-light"
+                   href="https://www.malt.fr/project/new?q=Nicolas+FEZ&searchid=5e775c844e9f6800060c9438&freelanceId=5a9b1632db554c7c4b85124e&viewId=5e775c862570370006987b4b">
+                    {{ 'profile.missions.hire' | trans }}
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Profile Index Missions Status -->
+
+            <div class="col-12">
+                <p class="text-white">
+                    {{ missionsCount }}
+                    {% if missionsCount <= 1 %}
+                        {{ 'profile.missions.accomplished' | trans }}
+                    {% else %}
+                        {{ 'profile.missions.accomplished_several' | trans }}
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Profile Index Missions Table -->
+
+            <div class="col-12">
+                {% if missions | length > 0 %}
+                    <table class="table text-center text-white">
+
+                        <!-- Profile Index Missions Table Head -->
+
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                {{ 'profile.missions.task' | trans }}
+                            </th>
+                            <th scope="col">
+                                {{ 'profile.missions.task_detail' | trans }}
+                            </th>
+                            <th scope="col">
+                                {{ 'profile.missions.task_status' | trans }}
+                            </th>
+                        </tr>
+                        </thead>
+
+                        <!-- Profile Index Missions Table Body -->
+
+                        <tbody>
+                        {% for mission in missions %}
+                            <tr>
+                                <td>
+                                    {{ mission.title }}
+                                </td>
+                                <td>
+                                    {{ mission.description }}
+                                </td>
+                                {% if mission.done %}
+                                    <td>
+                                        {{ 'profile.missions.done' | trans }}
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        {{ 'profile.missions.todo' | trans }}
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+
+                    <!-- Profile Index Missions Empty -->
+
+                    <p class="text-white">
+                        {{ 'profile.missions.task_empty' | trans }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

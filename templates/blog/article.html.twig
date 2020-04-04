@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+{% block body %}
+
+    <!-- Article Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5">
+
+            <!-- Article Heading -->
+
+            <div class="col-12 col-md-10">
+                <div class="row justify-content-around">
+                    <div class="col-12">
+
+                        <!-- Article Title -->
+
+                        <h1 class="h1 text-white">
+                            {{ article.title }}
+                        </h1>
+
+                        <!-- Article Information -->
+
+                        <p class="text-white">
+                            {{ 'blog.article.author' | trans }}
+                            {{ article.user }}
+                            {{ 'blog.article.date' | trans }}
+                            {{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}
+                        </p>
+                    </div>
+                    {% if article.video %}
+
+                        <!-- Article Video -->
+
+                        <div class="col-8 text-center">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="{{ article.video }}"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Article Content -->
+
+                    <div class="col-12">
+                        <pre class="text-white">
+                            {{ article.content | raw }}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article About -->
+
+            <div class="col-12 col-md-2">
+                <section id="article-about" class="bg-light">
+                    {% include 'blog/about.html.twig' %}
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+
+    <!-- Article Footer -->
+
+    <footer>
+        {% include 'blog/footer.html.twig' %}
+    </footer>
+{% endblock %}

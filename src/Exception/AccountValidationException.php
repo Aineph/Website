@@ -18,6 +18,7 @@ use Throwable;
 class AccountValidationException extends AccountStatusException
 {
     /**
+     * The message key.
      * @var string
      */
     private $messageKey;
@@ -35,6 +36,7 @@ class AccountValidationException extends AccountStatusException
     }
 
     /**
+     * Gets the message key.
      * @return string
      */
     public function getMessageKey()
@@ -43,6 +45,7 @@ class AccountValidationException extends AccountStatusException
     }
 
     /**
+     * Sets the message key.
      * @param string $messageKey
      */
     public function setMessageKey(string $messageKey): void

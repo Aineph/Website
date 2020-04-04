@@ -1,0 +1,150 @@
+{% block portfolio_projects %}
+
+    <!-- Portfolio Projects -->
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Portfolio Projects Title -->
+
+            <div class="col-12 pt-3">
+                <h1 class="h1 font-weight-normal element-fade-in-left">
+                    {{ 'portfolio.projects.title' | trans }}
+                </h1>
+            </div>
+
+            <!-- Portfolio Projects Empty -->
+
+            {% if projects | length == 0 %}
+                <div class="col-12">
+                    <p class="text-white element-fade-in-left">
+                        {{ 'portfolio.projects.projects_empty' | trans }}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-5">
+
+            <!-- Portfolio Projects Carousel -->
+
+            <div class="col-12">
+                <div id="projects-carousel" class="carousel slide element-fade-in-top" data-ride="carousel"
+                     data-interval="5000">
+
+                    <!-- Portfolio Projects Carousel Content -->
+
+                    <div class="carousel-inner text-center">
+                        {% for project in projects %}
+                            <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+
+                                <!-- Portfolio Projects Carousel Image -->
+
+                                <img class="img-fluid" src="{{ asset('uploads/projects/' ~ project.image) }}"
+                                     alt="{{ 'portfolio.projects.image' | trans }}"/>
+
+                                <!-- Portfolio Projects Carousel Text -->
+
+                                <div class="carousel-caption">
+                                    <div class="row">
+
+                                        <!-- Portfolio Projects Carousel Name -->
+
+                                        <div class="col-12">
+                                            <h3 class="h3 font-weight-normal">
+                                                {{ project.name }}
+                                            </h3>
+                                        </div>
+
+                                        <!-- Portfolio Projects Carousel Description -->
+
+                                        <div class="col-12">
+                                            <p>
+                                                {{ project.description }}
+                                            </p>
+                                        </div>
+
+                                        <!-- Portfolio Projects Carousel Link -->
+
+                                        <div class="col-12">
+                                            <a class="btn btn-link" href="{{ project.link }}">
+                                                {{ 'portfolio.projects.link' | trans }}
+                                            </a>
+                                        </div>
+
+                                        <!-- Portfolio Projects Carousel Audio -->
+
+                                        {% if project.type != 1 %}
+                                            <div class="col-12">
+                                                <audio controls preload="none">
+                                                    <source src="{{ asset('uploads/projects/' ~ project.file) }}"
+                                                            type="audio/mp4"/>
+                                                </audio>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Portfolio Projects Carousel Controls -->
+
+                    <a class="carousel-control-prev" href="#projects-carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">
+                            {{ 'portfolio.projects.previous' | trans }}
+                        </span>
+                    </a>
+                    <a class="carousel-control-next" href="#projects-carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">
+                            {{ 'portfolio.projects.next' | trans }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Portfolio Projects List -->
+
+            {% for project in projects %}
+                <div class="col-12 col-md-6 p-3">
+
+                    <!-- Portfolio Projects Card -->
+
+                    <div class="card h-100 text-center element-grow element-fade-in-bottom">
+
+                        <!-- Portfolio Projects Card Image -->
+
+                        <div class="card-img-top">
+                            <img class="img-fluid" src="{{ asset('uploads/projects/' ~ project.image) }}"
+                                 alt="{{ 'portfolio.projects.image' | trans }}"/>
+                        </div>
+
+                        <!-- Portfolio Projects Card Body -->
+
+                        <div class="card-body">
+
+                            <!-- Portfolio Projects Card Name -->
+
+                            <h3 class="card-title h3 font-weight-normal">
+                                {{ project.name }}
+                            </h3>
+
+                            <!-- Portfolio Projects Card Description -->
+
+                            <p class="card-text">
+                                {{ project.description }}
+                            </p>
+
+                            <!-- Portfolio Projects Card Link -->
+
+                            <a class="stretched-link" href="{{ project.link }}"></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

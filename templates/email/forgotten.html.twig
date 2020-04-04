@@ -1,0 +1,34 @@
+{% block email_forgotten %}
+
+    <!-- E-Mail Forgotten Introduction -->
+
+    <p>
+        {{ 'email.forgotten.introduction' | trans }},
+    </p>
+
+    <!-- E-Mail Forgotten Message -->
+
+    <p>
+        {{ 'email.forgotten.message' | trans }}
+    </p>
+
+    <!-- E-Mail Forgotten Url -->
+
+    <p>
+        <a href="{{ resetPasswordUrl }}">
+            {{ resetPasswordUrl }}
+        </a>
+    </p>
+
+    <!-- E-Mail Forgotten Signature -->
+
+    <p>
+        {{ 'email.forgotten.signature' | trans }}
+    </p>
+
+    <!-- E-Mail Forgotten Name -->
+
+    <p>
+        {{ 'email.forgotten.name' | trans }}
+    </p>
+{% endblock %}

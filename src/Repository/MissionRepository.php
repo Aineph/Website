@@ -33,6 +33,7 @@ class MissionRepository extends ServiceEntityRepository
     }
 
     /**
+     * Finds the latest missions.
      * @param int $page
      * @return Paginator
      */
@@ -45,6 +46,7 @@ class MissionRepository extends ServiceEntityRepository
     }
 
     /**
+     * Find the latest missions for the given user.
      * @param int $user
      * @return array
      */
@@ -58,5 +60,31 @@ class MissionRepository extends ServiceEntityRepository
             ->setMaxResults(Paginator::PAGE_SIZE);
 
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
+     * Counts the number of entries for a given user.
+     * @param int $user
+     * @return int
+     */
+    public function countFor(int $user): int
+    {
+        $queryBuilder = $this->createQueryBuilder('m')
+            ->leftJoin('m.user', 'u')
+            ->where('u = :user')
+            ->setParameter('user', $user);
+
+        return count($queryBuilder->getQuery()->getResult());
+    }
+
+    /**
+     * Returns the availability depending on the current missions.
+     * @return bool
+     */
+    public function getAvailability(): bool
+    {
+        $queryBuilder = $this->createQueryBuilder('m')
+            ->where('m.done = 0');
+        return count($queryBuilder->getQuery()->getResult()) === 0;
     }
 }

@@ -1,5 +1,16 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+* {
+  font-family: "Georgia", sans-serif;
+}
+
+blockquote {
+  font-family: "Courier New", sans-serif;
+  background-color: #343a40;
+  color: lightgray;
+  padding: 15px;
+}
+
 /**
  * @mixin keyframes
  * @param name
@@ -77,10 +88,6 @@ body {
   background-color: black;
 }
 
-section:nth-of-type(2n) {
-  background-color: white;
-}
-
 /*
  * HTML Classes Custom Style
  */
@@ -93,6 +100,10 @@ section:nth-of-type(2n) {
 
 .navbar:hover {
   opacity: 1 !important;
+}
+
+.element-inverted {
+  filter: invert(100%);
 }
 
 .element-grow {
@@ -175,6 +186,6 @@ section:nth-of-type(2n) {
   }
 
   .timeline-container-right {
-    left: 0%;
+    left: 0;
   }
 }

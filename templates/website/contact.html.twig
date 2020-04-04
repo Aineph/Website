@@ -1,63 +1,86 @@
-{% block contact %}
+{% block website_contact %}
+
+    <!-- Website Contact -->
+
     <div class="container-fluid">
-        <div class="row m-3">
-            <div class="col-12">
-                <h1 class="h1">
+
+        <!-- Website Contact Title -->
+
+        <div class="row">
+            <div class="col-12 pt-3">
+                <h1 class="h1 font-weight-normal">
                     {{ 'website.contact.contact' | trans }}
                 </h1>
             </div>
         </div>
+
+        <!-- Website Contact Form -->
+
         <div class="container">
             {{ form_start(contactForm, {'action': path('website_contact')}) }}
             <div class="form-group">
-                <div class="row m-3">
+                <div class="row">
+
+                    <!-- Website Contact Name -->
+
                     <div class="col-12">
                         {{ form_label(contactForm.name) }}
                         {{ form_widget(contactForm.name, {
                             'attr': {
-                                'class': 'form-control element-fade-in-left'
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.name' | trans
                             }
                         }) }}
                     </div>
-                </div>
-                <div class="row m-3">
+
+                    <!-- Website Contact E-Mail -->
+
                     <div class="col-12">
                         {{ form_label(contactForm.email) }}
                         {{ form_widget(contactForm.email, {
                             'attr': {
-                                'class': 'form-control element-fade-in-left'
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.email' | trans
                             }
                         }) }}
                     </div>
-                </div>
-                <div class="row m-3">
+
+                    <!-- Website Contact Object -->
+
                     <div class="col-12">
                         {{ form_label(contactForm.object) }}
                         {{ form_widget(contactForm.object, {
                             'attr': {
-                                'class': 'form-control element-fade-in-left'}
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.object' | trans
+                            }
                         }) }}
                     </div>
-                </div>
-                <div class="row m-3">
+
+                    <!-- Website Contact Content -->
+
                     <div class="col-12">
                         {{ form_label(contactForm.content) }}
                         {{ form_widget(contactForm.content, {
                             'attr': {
-                                'class': 'form-control element-fade-in-left'
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.content' | trans
                             }
                         }) }}
                     </div>
                 </div>
-                <div class="row m-3">
-                    <div class="col-12 p-3">
-                        <button class="btn btn-lg btn-primary element-fade-in-fix" type="submit">
-                            {{ 'website.contact.submit' | trans }}
-                        </button>
-                    </div>
-                </div>
-                {{ form_end(contactForm) }}
             </div>
+            <div class="row">
+
+                <!-- Website Contact Submit -->
+
+                <div class="col-12 pb-3">
+                    <button class="btn btn-lg btn-outline-primary element-fade-in-fix" type="submit">
+                        {{ 'website.contact.submit' | trans }}
+                    </button>
+                </div>
+            </div>
+            {{ form_end(contactForm) }}
         </div>
     </div>
 {% endblock %}

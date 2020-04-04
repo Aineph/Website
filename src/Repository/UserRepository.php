@@ -49,13 +49,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
-
         $user->setPassword($newEncodedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
     }
 
     /**
+     * Finds the latest users.
      * @param int $page
      * @return Paginator
      */
@@ -63,6 +63,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         $queryBuilder = $this->createQueryBuilder('u');
         $paginator = new Paginator($queryBuilder);
+
         return $paginator->paginate($page);
     }
 }

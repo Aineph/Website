@@ -6,6 +6,7 @@
 parameters:
   locale: 'en'
   app_locales: en|fr
+  upload_directory: '%kernel.project_dir%/public/uploads'
 
 services:
   # default configuration for services in *this* file
@@ -30,3 +31,22 @@ services:
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
+  App\Service\ArticleService:
+    arguments:
+      $uploadDirectory: '%upload_directory%/articles'
+
+  App\Service\MessageService:
+    arguments:
+      $uploadDirectory: '%upload_directory%/messages'
+
+  App\Service\MissionService:
+    arguments:
+      $uploadDirectory: '%upload_directory%/missions'
+
+  App\Service\ProjectService:
+    arguments:
+      $uploadDirectory: '%upload_directory%/projects'
+
+  App\Service\UserService:
+    arguments:
+      $uploadDirectory: '%upload_directory%/users'

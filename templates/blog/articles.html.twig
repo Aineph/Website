@@ -1,25 +1,32 @@
-{% block articles %}
+{% block blog_articles %}
+
+    <!-- Blog Articles -->
+
     <div class="container-fluid">
-        <div class="row m-3">
-            <div class="col-10">
-                {% if app.user %}
-                    <button class="btn btn-info">{{ 'blog.articles.create' | trans }}</button>
-                {% endif %}
-            </div>
-            <div class="col-2">
-                <!-- TODO: Add Pagination -->
-            </div>
-        </div>
-        <div class="row m-3">
+        <div class="row mt-5 min-vh-100">
             <div class="col-12">
+
+                <!-- Blog Articles Empty -->
+
                 {% if articlePaginator.resultsCount <= 0 %}
                     <p class="text-white">{{ 'blog.articles.empty' | trans }}</p>
                 {% endif %}
+
+                <!-- Blog Articles List -->
+
                 {% for article in articlePaginator.results %}
                     <article>
                         <div class="row">
-                            <div class="col-12 col-md-8">
-                                <h2 class="h2 text-white">{{ article.title }}</h2>
+                            <div class="col-12 col-md-9">
+
+                                <!-- Blog Articles Title  -->
+
+                                <h2 class="h2 text-white">
+                                    {{ article.title }}
+                                </h2>
+
+                                <!-- Blog Articles Information -->
+
                                 <p class="text-small text-white">
                                     {{ 'blog.articles.author' | trans }}
                                     {{ article.user }}
@@ -27,14 +34,58 @@
                                     {{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}
                                 </p>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <a class="btn btn-primary">
+                            <div class="col-12 col-md-3">
+
+                                <!-- Blog Articles Read -->
+
+                                <a class="btn btn-lg btn-outline-light"
+                                   href="{{ path('blog_article', {'article': article.id}) }}">
                                     {{ 'blog.articles.read' | trans }}
                                 </a>
                             </div>
                         </div>
                     </article>
                 {% endfor %}
+            </div>
+        </div>
+
+        <!-- Blog Articles Pagination -->
+
+        <div class="row justify-content-around">
+            <div class="col-auto">
+                <nav aria-label="{{ 'blog.articles.pagination' }}">
+                    <ul class="pagination">
+
+                        <!-- Blog Articles Previous Page -->
+
+                        <li class="page-item {% if not articlePaginator.hasPreviousPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('blog_index', {'page': articlePaginator.getPreviousPage}) }}"
+                               aria-label="{{ 'blog.articles.previous' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-left"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'blog.articles.previous' | trans }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- Blog Articles Next Page -->
+
+                        <li class="page-item {% if not articlePaginator.hasNextPage %}disabled{% endif %}">
+                            <a class="page-link" href="{{ path('blog_index', {'page': articlePaginator.getNextPage}) }}"
+                               aria-label="{{ 'blog.articles.next' | trans }}">
+                            <span aria-hidden="true">
+                                <i class="fa fa-chevron-right"></i>
+                            </span>
+                                <span class="sr-only">
+                                {{ 'blog.articles.next' | trans }}
+                            </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

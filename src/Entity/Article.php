@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     /**
+     * The article id.
      * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -27,30 +28,42 @@ class Article
     private $id;
 
     /**
+     * The article title.
      * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * The article content.
      * @var string
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * The article video.
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $video;
+
+    /**
+     * The article user.
      * @var User
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
      */
     private $user;
 
     /**
+     * The article date.
      * @var DateTimeInterface
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $date;
 
     /**
+     * Gets the article id.
      * @return int|null
      */
     public function getId(): ?int
@@ -59,6 +72,7 @@ class Article
     }
 
     /**
+     * Gets the article title.
      * @return string|null
      */
     public function getTitle(): ?string
@@ -67,6 +81,7 @@ class Article
     }
 
     /**
+     * Sets the article title.
      * @param string $title
      * @return $this
      */
@@ -78,6 +93,7 @@ class Article
     }
 
     /**
+     * Gets the article content.
      * @return string|null
      */
     public function getContent(): ?string
@@ -86,6 +102,7 @@ class Article
     }
 
     /**
+     * Sets the article content.
      * @param string $content
      * @return $this
      */
@@ -97,6 +114,28 @@ class Article
     }
 
     /**
+     * Gets the article video.
+     * @return string|null
+     */
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    /**
+     * Sets the article video.
+     * @param string|null $video
+     * @return $this
+     */
+    public function setVideo(?string $video): self
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Gets the article user.
      * @return User|null
      */
     public function getUser(): ?User
@@ -105,6 +144,7 @@ class Article
     }
 
     /**
+     * Sets the article user.
      * @param User|null $user
      * @return $this
      */
@@ -116,6 +156,7 @@ class Article
     }
 
     /**
+     * Gets the article date.
      * @return DateTimeInterface|null
      */
     public function getDate(): ?DateTimeInterface
@@ -124,6 +165,7 @@ class Article
     }
 
     /**
+     * Sets the article date.
      * @param DateTimeInterface|null $date
      * @return $this
      */

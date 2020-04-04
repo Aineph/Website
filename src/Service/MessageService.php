@@ -14,34 +14,40 @@ use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * Class MessageService
+ * @package App\Service
+ */
 class MessageService extends AbstractService implements ServiceInterface
 {
     /**
+     * The current message.
      * @var Message
      */
     private $message;
 
     /**
      * MessageManager constructor.
+     * @param string $uploadDirectory
      * @param Security $security
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(Security $security, EntityManagerInterface $entityManager)
+    public function __construct(string $uploadDirectory, Security $security, EntityManagerInterface $entityManager)
     {
-        parent::__construct($security, $entityManager);
+        parent::__construct($uploadDirectory, $security, $entityManager);
         $this->setObjectRepository($this->getEntityManager()->getRepository(Message::class));
         $this->setMessage(new Message());
     }
 
     /**
-     *
+     * Creates the current message.
      */
-    public function create()
+    public function create(): void
     {
         if ($this->getUser()) {
             $this->getMessage()->setName($this->getUser()->getFirstName() . ' ' . $this->getUser()->getLastName());
             $this->getMessage()->setEmail($this->getUser()->getEmail());
-            $this->getMessage()->setUser($this->getUser()->getId());
+            $this->getMessage()->setUser($this->getUser());
         }
         try {
             $this->getMessage()->setDate(new DateTime('now'));
@@ -53,31 +59,30 @@ class MessageService extends AbstractService implements ServiceInterface
     }
 
     /**
-     * @param int $message
+     * Deletes the current message.
      */
-    public function delete(int $message)
+    public function delete(): void
     {
-        $messageRepository = $this->getEntityManager()->getRepository(Message::class);
-        $messageEntity = $messageRepository->find($message);
-
-        if ($messageEntity) {
-            $this->getEntityManager()->remove($messageRepository->find($messageEntity));
+        if ($this->getMessage()) {
+            $this->getEntityManager()->remove($this->getMessage());
             $this->getEntityManager()->flush();
         }
     }
 
     /**
-     * @return Message
+     * Gets the current message.
+     * @return Message|null
      */
-    public function getMessage(): Message
+    public function getMessage(): ?Message
     {
         return $this->message;
     }
 
     /**
-     * @param Message $message
+     * Sets the current message.
+     * @param Message|null $message
      */
-    public function setMessage(Message $message): void
+    public function setMessage(?Message $message): void
     {
         $this->message = $message;
     }
