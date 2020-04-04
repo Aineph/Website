@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {% if article.title %}
+        {{ article.title }}
+    {% else %}
+        {{ 'admin.article.new' | trans }}
+    {% endif %}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Article Body -->
+
+    <div class="container">
+
+        <!-- Admin Article Form -->
+
+        {{ form_start(articleForm, {'action': path('admin_article_create',
+            {'article': app.request.attributes.get('article')})}) }}
+        <div class="form-group">
+            <div class="row mt-5">
+
+                <!-- Admin Article Form Title -->
+
+                <div class="col-12 pt-3 text-white">
+                    {{ form_label(articleForm.title) }}
+                    {{ form_widget(articleForm.title, {
+                        'attr': {
+                            'class': 'form-control'
+                        }
+                    }) }}
+                </div>
+
+                <!-- Admin Article Form Content -->
+
+                <div class="col-12 pt-3 text-white" hidden>
+                    {{ form_label(articleForm.content) }}
+                    {{ form_widget(articleForm.content) }}
+                </div>
+
+                <!-- Admin Article Form Video -->
+
+                <div class="col-12 pt-3 text-white">
+                    {{ form_label(articleForm.video) }}
+                    {{ form_widget(articleForm.video, {
+                        'attr': {
+                            'class': 'form-control'
+                        }
+                    }) }}
+                </div>
+
+                <!-- Admin Article Form Editor -->
+
+                <div class="col-12 pt-3 text-white">
+
+                    <!-- Admin Article Form Editor Tools -->
+
+                    <fieldset class="m-1 border border-light">
+
+                        <!-- Admin Article Form Editor Tools Bold -->
+
+                        <button class="btn btn-secondary" type="button" onclick="window.changeStyle('bold')">
+                            <i class="fa fa-bold"></i>
+                        </button>
+
+                        <!-- Admin Article Form Editor Tools Italic -->
+
+                        <button class="btn btn-secondary" type="button" onclick="window.changeStyle('italic')">
+                            <i class="fa fa-italic"></i>
+                        </button>
+
+                        <!-- Admin Article Form Editor Tools Underline -->
+
+                        <button class="btn btn-secondary" type="button" onclick="window.changeStyle('underline')">
+                            <i class="fa fa-underline"></i>
+                        </button>
+
+                        <!-- Admin Article Form Editor Tools Heading -->
+
+                        <button class="btn btn-secondary" type="button"
+                                onclick="window.changeStyle('formatBlock', '<h1>')">
+                            <i class="fa fa-heading"></i>
+                        </button>
+
+                        <!-- Admin Article Form Editor Tools Code Block -->
+
+                        <button class="btn btn-secondary" type="button"
+                                onclick="window.changeStyle('formatBlock', '<blockquote>')">
+                            <i class="fa fa-code"></i>
+                        </button>
+                    </fieldset>
+
+                    <!-- Admin Article Form Editor Content -->
+
+                    <pre id="post-content" class="m-1 p-3 bg-white" onkeypress="window.updateArticleAreaContent()"
+                         onmouseover="window.updateArticleAreaContent()" contenteditable="true"
+                         autofocus>{% if article %}{{ article.content | raw }}{% endif %}</pre>
+                </div>
+
+                <!-- Admin Article Form Submit -->
+
+                <div class="col-12 pt-3">
+                    <button class="btn btn-outline-primary" type="submit">
+                        {{ 'admin.article.submit' | trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(articleForm) }}
+    </div>
+{% endblock %}

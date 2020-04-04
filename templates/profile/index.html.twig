@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'profile.index.title' | trans }}
+{% endblock %}
+{% block header %}
+
+    <!-- Profile Index Header -->
+
+    <header>
+        {% include 'profile/header.html.twig' %}
+    </header>
+{% endblock %}
+{% block body %}
+
+    <!-- Profile Index Body -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+
+                <!-- Profile Index Availability -->
+
+                <section id="profile-availability">
+                    {% include 'profile/availability.html.twig' %}
+                </section>
+            </div>
+            <div class="col-12 col-md-6">
+
+                <!-- Profile Index Missions -->
+
+                <section id="profile-missions">
+                    {% include 'profile/missions.html.twig' %}
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+
+    <!-- Profile Index Footer -->
+
+    <footer>
+        {% include 'profile/footer.html.twig' %}
+    </footer>
+{% endblock %}

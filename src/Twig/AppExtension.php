@@ -20,11 +20,13 @@ use Twig\TwigFunction;
 class AppExtension extends AbstractExtension
 {
     /**
+     * The locales list.
      * @var array
      */
     private $locales;
 
     /**
+     * The locale codes list.
      * @var array
      */
     private $localeCodes;

@@ -25,24 +25,28 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class PasswordFormType extends AbstractType
 {
     /**
+     * The password old password field.
      * @var string
      */
     public const OLD_PASSWORD_FIELD = 'oldPassword';
 
     /**
+     * The password password field.
      * @var string
      */
     public const PASSWORD_FIELD = 'plainPassword';
 
     /**
+     * Builds the password form.
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // TODO: Add Translation.
         $builder
             ->add(self::OLD_PASSWORD_FIELD, PasswordType::class, [
-                'label' => 'account.old_password',
+                'label' => 'profile.edit.old_password',
                 'translation_domain' => 'messages',
                 'mapped' => false,
                 'constraints' => [
@@ -52,11 +56,11 @@ class PasswordFormType extends AbstractType
             ->add(self::PASSWORD_FIELD, RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
-                    'label' => 'account.new_password',
+                    'label' => 'profile.edit.new_password',
                     'translation_domain' => 'messages'
                 ],
                 'second_options' => [
-                    'label' => 'account.password_confirmation',
+                    'label' => 'profile.edit.confirm_password',
                     'translation_domain' => 'messages'
                 ],
                 'mapped' => false,
@@ -74,6 +78,7 @@ class PasswordFormType extends AbstractType
     }
 
     /**
+     * Sets the password form's default attributes.
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)

@@ -1,27 +1,188 @@
 <!DOCTYPE html>
+
+<!-- Base HTML -->
+
 <html lang="{{ app.request.locale }}">
+
+<!-- Base Head -->
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="{{ 'base.description' | trans }}"/>
+    <meta name="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+    <meta name="og:title" content="{{ 'base.title' | trans }}"/>
+    <meta name="og:type" content="website">
+    <meta name="og:locale" content="{{ app.request.locale }}_{{ app.request.locale | upper }}"/>
+    <meta name="og:url" content="{{ app.request.uri }}"/>
     <title>
         {% block title %}
             {{ 'base.title' | trans }}
         {% endblock %}
     </title>
     {% block stylesheets %}
+
+        <!-- Base StyleSheets -->
+
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
+
+<!-- Base Body -->
+
 <body>
 {% block header %}
+
+    <!-- Base Header -->
+
     <header></header>
 {% endblock %}
+{% block navigation %}
+
+    <!-- Navigation Bar -->
+
+    <nav id="base-navigation" class="navbar navbar-dark navbar-expand-lg fixed-top">
+
+        <!-- Navigation Home -->
+
+        <a class="navbar-brand" href="{{ path('website_index') }}">
+            {{ 'navigation.home' | trans }}
+        </a>
+
+        <!-- Navigation Toggler (Small Screens) -->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-navbar"
+                aria-controls="navigation-navbar" aria-expanded="false"
+                aria-label="{{ 'navigation.toggle' | trans }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Content -->
+
+        <div id="navigation-navbar" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                {% block navigation_content %}
+
+                    <!-- Customisable Navigation Content -->
+
+                {% endblock %}
+
+                <!-- Global Links -->
+                <!-- Blog Link -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('blog_index') }}">
+                        {{ 'navigation.blog' | trans }}
+                    </a>
+                </li>
+
+                <!-- Portfolio Link -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('portfolio_index') }}">
+                        {{ 'navigation.portfolio' | trans }}
+                    </a>
+                </li>
+
+                {% if app.user %}
+
+                    <!-- Profile Link -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('profile_index') }}">
+                            {{ 'navigation.profile' | trans }}
+                        </a>
+                    </li>
+
+                    <!-- Administration Link -->
+
+                    {% for role in app.user.roles %}
+                        {% if role is same as('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('admin_index') }}">
+                                    {{ 'navigation.admin' | trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Language Switch -->
+
+                <li class="nav-item dropdown">
+
+                    <!-- Language Button -->
+
+                    <a id="navigation-dropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'navigation.language' | trans }}
+                    </a>
+
+                    <!-- Language Dropdown -->
+
+                    <div class="dropdown-menu" aria-labelledby="navigation-dropdown">
+                        {% for locale in locales() %}
+                            {% if app.request.locale == locale.code %}
+
+                                <!-- Current Language -->
+
+                                <a class="dropdown-item"
+                                   aria-checked="true"
+                                   href="{{ path(app.request.get('_route', 'website_index'),
+                                       app.request.get('_route_params', []) | merge({_locale: locale.code})) }}">
+                                    {{ locale.name | capitalize }}
+                                </a>
+                            {% else %}
+
+                                <!-- Other Languages -->
+
+                                <a class="dropdown-item"
+                                   aria-checked="false"
+                                   href="{{ path(app.request.get('_route', 'website_index'),
+                                       app.request.get('_route_params', []) | merge({_locale: locale.code})) }}">
+                                    {{ locale.name | capitalize }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Blog Search -->
+
+            <form class="form-inline my-2 my-lg-0" method="get" action="{{ path('blog_index') }}">
+
+                <!-- Search Input -->
+
+                <input class="form-control mr-sm-2" type="search" name="search"
+                       placeholder="{{ 'navigation.search' | trans }}"
+                       aria-label="{{ 'navigation.search' | trans }}"/>
+
+                <!-- Search Button -->
+
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                    {{ 'navigation.search' | trans }}
+                </button>
+            </form>
+        </div>
+    </nav>
+{% endblock %}
 {% block body %}
+
+    <!-- Base Body -->
+
     <div></div>
 {% endblock %}
 {% block footer %}
+
+    <!-- Base Footer -->
+
     <footer></footer>
 {% endblock %}
 {% block javascripts %}
+
+    <!-- Base JavaScripts -->
+
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 </body>

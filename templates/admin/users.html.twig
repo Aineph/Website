@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'admin.users.title' | trans }}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Users Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5">
+
+            <!-- Admin Users Title -->
+
+            <div class="col-12">
+                <h1 class="h1 font-weight-normal text-white">
+                    {{ 'admin.users.title' | trans }}
+                </h1>
+            </div>
+        </div>
+
+        <!-- Admin Users Content -->
+
+        <div class="row mt-5">
+
+            <!-- Admin Users Table -->
+
+            <div class="col-12">
+                <table class="table text-center text-white">
+
+                    <!-- Admin Users Table Head -->
+
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            {{ 'admin.users.first_name' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.users.last_name' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.users.email' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.users.actions' | trans }}
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <!-- Admin Users Table Body -->
+
+                    <tbody>
+                    {% for user in userPaginator.results %}
+                        <tr>
+                            <td>
+                                {{ user.firstname }}
+                            </td>
+                            <td>
+                                {{ user.lastName }}
+                            </td>
+                            <td>
+                                <a href="mailto:{{ user.email }}">
+                                    {{ user.email }}
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary" href="{{ path('admin_user', {'user': user.id}) }}">
+                                    {{ 'admin.users.view' | trans }}
+                                </a>
+                                <a class="btn btn-outline-danger"
+                                   href="{{ path('admin_user_delete', {'user': user.id}) }}">
+                                    {{ 'admin.users.delete' | trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Admin Users Pagination -->
+
+        <div class="row justify-content-around">
+            <div class="col-12">
+                <p class="text-white">
+                    {{ userPaginator.firstResult }}-{{ userPaginator.lastResult }}
+                    {{ 'admin.users.on' | trans }}
+                    {{ userPaginator.resultsCount }}
+                </p>
+            </div>
+            <div class="col-auto">
+                <nav aria-label="{{ 'admin.users.pagination' | trans }}">
+                    <ul class="pagination">
+
+                        <!-- Admin Users Previous Page -->
+
+                        <li class="page-item {% if not userPaginator.hasPreviousPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_users', {'page': userPaginator.getPreviousPage}) }}"
+                               aria-label="{{ 'admin.users.previous' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-left"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.users.previous' | trans }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- Admin Users Next Page -->
+
+                        <li class="page-item {% if not userPaginator.hasNextPage %}disabled{% endif %}">
+                            <a class="page-link" href="{{ path('admin_users', {'page': userPaginator.getNextPage}) }}"
+                               aria-label="{{ 'admin.users.next' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.users.next' | trans }}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -8,6 +8,8 @@
 
 namespace App\Security;
 
+use App\Controller\SecurityController;
+use App\Controller\WebsiteController;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -48,7 +50,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator,
+                                CsrfTokenManagerInterface $csrfTokenManager,
+                                UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
@@ -57,16 +61,18 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Checks if a post request is sent to the login route.
      * @param Request $request
      * @return bool
      */
     public function supports(Request $request)
     {
-        return 'app_login' === $request->attributes->get('_route')
+        return SecurityController::ROUTE_SECURITY_LOGIN === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
     /**
+     * Gets the user credentials.
      * @param Request $request
      * @return array|mixed
      */
@@ -86,6 +92,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Gets the user.
      * @param mixed $credentials
      * @param UserProviderInterface $userProvider
      * @return object|UserInterface|null
@@ -93,11 +100,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
-
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy([
+            'email' => $credentials['email']
+        ]);
 
         if (!$user) {
             throw new CustomUserMessageAuthenticationException('Email could not be found.');
@@ -106,6 +115,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Checks the user credentials.
      * @param mixed $credentials
      * @param UserInterface $user
      * @return bool
@@ -126,6 +136,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     }
 
     /**
+     * Handles the user login on success.
      * @param Request $request
      * @param TokenInterface $token
      * @param string $providerKey
@@ -137,14 +148,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-        return new RedirectResponse($this->urlGenerator->generate('website_index'));
+        return new RedirectResponse($this->urlGenerator->generate(WebsiteController::ROUTE_WEBSITE_INDEX));
     }
 
     /**
+     * Gets the login url.
      * @return string
      */
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('app_login');
+        return $this->urlGenerator->generate(SecurityController::ROUTE_SECURITY_LOGIN);
     }
 }

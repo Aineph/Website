@@ -15,11 +15,13 @@ namespace App\Service;
 class KeyManager
 {
     /**
+     * The default key size.
      * @var int
      */
     const DEFAULT_ACTIVATION_KEY_SIZE = 32;
 
     /**
+     * Generates a random key with an optional key size.
      * @param int $keySize
      * @return string
      */
@@ -35,11 +37,12 @@ class KeyManager
     }
 
     /**
+     * Checks if an input key matches a generated key.
      * @param string $inputActivationKey
      * @param string $activationKey
      * @return bool
      */
-    public static function verify(string $inputActivationKey, string $activationKey): bool
+    public static function verify(?string $inputActivationKey, ?string $activationKey): bool
     {
         return !strcmp($inputActivationKey, $activationKey);
     }

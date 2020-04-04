@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'admin.messages.title' | trans }}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Messages Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5">
+
+            <!-- Admin Messages Title -->
+
+            <div class="col-12">
+                <h1 class="h1 font-weight-normal text-white">
+                    {{ 'admin.messages.title' | trans }}
+                </h1>
+            </div>
+        </div>
+
+        <!-- Admin Messages Content -->
+
+        <div class="row mt-5">
+
+            <!-- Admin Messages Table -->
+
+            <div class="col-12">
+                <table class="table text-center text-white">
+
+                    <!-- Admin Messages Table Head -->
+
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            {{ 'admin.messages.sent_by' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.messages.object' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.messages.sent_at' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.messages.actions' | trans }}
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <!-- Admin Messages Table Body -->
+
+                    <tbody>
+                    {% for message in messagePaginator.results %}
+                        <tr>
+                            <td>
+                                <a href="mailto:{{ message.email }}">
+                                    {{ message.email }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ message.object }}
+                            </td>
+                            <td>{{ message.date | date('d/m/Y H:i:s', 'Europe/Paris') }}</td>
+                            <td>
+                                <a class="btn btn-outline-primary"
+                                   href="{{ path('admin_message', {'message': message.id}) }}">
+                                    {{ 'admin.messages.view' | trans }}
+                                </a>
+                                <a class="btn btn-outline-danger"
+                                   href="{{ path('admin_message_delete', {'message': message.id}) }}">
+                                    {{ 'admin.messages.delete' | trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Admin Messages Pagination -->
+
+        <div class="row justify-content-around">
+            <div class="col-12">
+                <p class="text-white">
+                    {{ messagePaginator.firstResult }}-{{ messagePaginator.lastResult }}
+                    {{ 'admin.messages.on' | trans }}
+                    {{ messagePaginator.resultsCount }}
+                </p>
+            </div>
+            <div class="col-auto">
+                <nav aria-label="{{ 'admin.messages.pagination' | trans }}">
+                    <ul class="pagination">
+
+                        <!-- Admin Messages Previous Page -->
+
+                        <li class="page-item {% if not messagePaginator.hasPreviousPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_messages', {'page': messagePaginator.getPreviousPage}) }}"
+                               aria-label="{{ 'admin.messages.previous' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-left"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.messages.previous' | trans }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- Admin Messages Next Page -->
+
+                        <li class="page-item {% if not messagePaginator.hasNextPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_messages', {'page': messagePaginator.getNextPage}) }}"
+                               aria-label="{{ 'admin.messages.next' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.messages.next' | trans }}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+{% endblock %}

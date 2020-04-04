@@ -1,30 +1,191 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-body {
-  background-color: white;
-  color: black;
+* {
+  font-family: "Georgia", sans-serif;
 }
 
-header {
-  background-color: white;
-}
-
-section {
-  background-color: green;
+blockquote {
+  font-family: "Courier New", sans-serif;
+  background-color: #343a40;
+  color: lightgray;
+  padding: 15px;
 }
 
 /**
+ * @mixin keyframes
+ * @param name
+ */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content
+  }
+  @-moz-keyframes #{$name} {
+    @content
+  }
+  @-ms-keyframes #{$name} {
+    @content
+  }
+  @keyframes #{$name} {
+    @content
+  }
+}
+
+/**
+ * @mixin fade-in-animation
+ * @param direction
+ * @param distance
+ */
+@mixin fade-in-animation($direction, $distance) {
+  0% {
+    opacity: 0;
+    @if ($direction == "fix") {
+      transform: translateY(0px);
+    } @else if ($direction == "top") {
+      transform: translateY(- $distance);
+    } @else if ($direction == "right") {
+      transform: translateX($distance);
+    } @else if ($direction == "left") {
+      transform: translateX(- $distance);
+    } @else if ("bottom") {
+      transform: translateY($distance);
+    }
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/*
+ * CSS Animations
+ */
+
+$directions: "fix", "top", "right", "bottom", "left";
+$defaultDistance: 50px;
+
+@each $direction in $directions {
+  @include keyframes(fade-in-#{$direction}) {
+    @include fade-in-animation($direction, $defaultDistance);
+  }
+  .element-fade-in-#{$direction}:not(.element-animated) {
+    opacity: 0;
+  }
+  .element-fade-in-#{$direction}.element-animated {
+    animation: fade-in-#{$direction};
+    animation-duration: 1s;
+  }
+}
+
+/*
+ * HTML Tags Custom Style
+ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+}
+
+/*
  * HTML Classes Custom Style
  */
 
 .navbar {
-  background-color: red;
   opacity: 0;
-  transition: all .5s;
+  transition: opacity .5s;
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .navbar:hover {
-  background-color: blue;
-  opacity: 1;
-  transition: all .5s;
+  opacity: 1 !important;
+}
+
+.element-inverted {
+  filter: invert(100%);
+}
+
+.element-grow {
+  transition: transform .3s;
+}
+
+.element-grow:hover {
+  transform: scale(1.1);
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timeline-container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -13px;
+  background-color: white;
+  border: 4px solid black;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-container-left {
+  left: 0;
+}
+
+.timeline-container-right {
+  left: 50.25%;
+}
+
+.timeline-container-right::after {
+  left: -15px;
+}
+
+.timeline-content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timeline-container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timeline-container-left::after, .timeline-container-right::after {
+    left: 18px;
+  }
+
+  .timeline-container-right {
+    left: 0;
+  }
 }

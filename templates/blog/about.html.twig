@@ -1,0 +1,29 @@
+{% block blog_about %}
+
+    <!-- Blog About -->
+
+    <div class="container">
+        <div class="row min-vh-100">
+
+            <!-- Blog About Title -->
+
+            <div class="col-12 text-center">
+                <h1 class="h1">
+                    {{ 'blog.about.title' | trans }}
+                </h1>
+            </div>
+
+            <!-- Blog About Photo -->
+
+            <div class="col-12 text-center">
+                <img src="{{ asset('/build/blog/photograph.jpg') }}" alt="{{ 'blog.about.photograph' | trans }}"/>
+            </div>
+
+            <!-- Blog About Description -->
+
+            <div class="col-12 text-center">
+                <p>{{ 'blog.about.description' | trans }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

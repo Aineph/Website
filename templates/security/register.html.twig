@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'security.register.registration' | trans }}
+{% endblock %}
+{% block body %}
+
+    <!-- Security Register Body -->
+
+    <div class="container">
+        <div class="card min-vh-100 mt-5">
+
+            <!-- Security Register Content -->
+
+            <div class="card-body">
+
+                <!-- Security Register Title -->
+
+                <h1 class="h1 font-weight-normal">
+                    {{ 'security.register.registration' | trans }}
+                </h1>
+
+                {% if app.request.get('error') %}
+
+                    <!-- Security Register Errors -->
+
+                    <p class="alert alert-danger">
+                        {{ app.request.get('error') | trans }}
+                    </p>
+                {% endif %}
+
+                <!-- Security Register Form -->
+
+                {{ form_start(registrationForm, {'action': path('security_registration')}) }}
+                <div class="form-group">
+                    <div class="row">
+
+                        <!-- Security Register Form First Name -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.firstName) }}
+                            {{ form_widget(registrationForm.firstName, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Last Name -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.lastName) }}
+                            {{ form_widget(registrationForm.lastName, {
+                                'attr': {'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form E-Mail -->
+
+                        <div class="col-12">
+                            {{ form_label(registrationForm.email) }}
+                            {{ form_widget(registrationForm.email, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Password -->
+
+                        <div class="col-12">
+                            {{ form_label(registrationForm.plainPassword.first) }}
+                            {{ form_widget(registrationForm.plainPassword.first, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Password Confirmation -->
+
+                        <div class="col-12">
+                            {{ form_label(registrationForm.plainPassword.second) }}
+                            {{ form_widget(registrationForm.plainPassword.second, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Company -->
+
+                        <div class="col-12">
+                            {{ form_label(registrationForm.company) }}
+                            {{ form_widget(registrationForm.company, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Address -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.address) }}
+                            {{ form_widget(registrationForm.address, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form City -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.city) }}
+                            {{ form_widget(registrationForm.city, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Zip -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.zip) }}
+                            {{ form_widget(registrationForm.zip, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Country -->
+
+                        <div class="col-12 col-md-6">
+                            {{ form_label(registrationForm.country) }}
+                            {{ form_widget(registrationForm.country, {
+                                'attr': {
+                                    'class': 'form-control'
+                                }
+                            }) }}
+                        </div>
+
+                        <!-- Security Register Form Phone -->
+
+                        <div class="col-12">
+                            {{ form_label(registrationForm.phoneNumber) }}
+                            {{ form_widget(registrationForm.phoneNumber, {
+                                'attr': {
+                                    'class': 'form-control'}
+                            }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Register Form Actions -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-lg btn-outline-primary" type="submit">
+                            {{ 'security.register.submit' | trans }}
+                        </button>
+                        <a class="btn btn-lg btn-outline-secondary" href="{{ path('security_login') }}">
+                            {{ 'security.register.login' | trans }}
+                        </a>
+                    </div>
+                </div>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

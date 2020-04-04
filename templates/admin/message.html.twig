@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ message.object }}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Message Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5 border-bottom">
+
+            <!-- Admin Message Title -->
+
+            <div class="col-10 pt-5">
+                <div class="h1 font-weight-normal text-white">
+                    {{ message.object }}
+                </div>
+            </div>
+
+            <!-- Admin Message Contact -->
+
+            <div class="col-2 pt-5">
+                <a class="btn btn-lg btn-outline-light" href="mailto:{{ message.email }}">
+                    {{ 'admin.message.reply' | trans }}
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5 border-bottom">
+
+            <!-- Admin Message Content -->
+
+            <div class="col-12">
+                <div class="h5 text-white">
+                    {{ message.content | nl2br }}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Admin Message Information -->
+
+            <div class="col-12">
+                <div class="text-white">
+                    <p>
+                        {{ 'admin.message.sent_by' | trans }}
+                        {% if message.user %}
+                            <a href="{{ path('admin_user', {'user': message.user.id}) }}">
+                                {{ message.user }}
+                            </a>
+                        {% else %}
+                            {{ message.name }}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

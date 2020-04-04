@@ -10,8 +10,9 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,66 +25,97 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ProfileFormType extends AbstractType
 {
     /**
+     * The profile first name field.
      * @var string
      */
-    public const EMAIL_FIELD = 'email';
+    const FIRST_NAME_FIELD = 'firstName';
 
     /**
+     * The profile last name field.
      * @var string
      */
-    public const FIRST_NAME_FIELD = 'firstName';
+    const LAST_NAME_FIELD = 'lastName';
 
     /**
+     * The profile company field.
      * @var string
      */
-    public const LAST_NAME = 'lastName';
+    const COMPANY_FIELD = 'company';
 
     /**
+     * The profile address field.
      * @var string
      */
-    public const COUNTRY_FIELD = 'country';
+    const ADDRESS_FIELD = 'address';
 
     /**
+     * The profile city field.
      * @var string
      */
-    public const PHONE_NUMBER_FIELD = 'phoneNumber';
+    const CITY_FIELD = 'city';
 
     /**
+     * The profile country field.
+     * @var string
+     */
+    const COUNTRY_FIELD = 'country';
+
+    /**
+     * The profile zip field.
+     * @var string
+     */
+    const ZIP_FIELD = 'zip';
+
+    /**
+     * The profile phone field.
+     * @var string
+     */
+    const PHONE_NUMBER_FIELD = 'phoneNumber';
+
+    /**
+     * Builds the profile form.
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(self::EMAIL_FIELD, EmailType::class, [
-                'label' => 'account.email',
-                'translation_domain' => 'messages'
-            ])
             ->add(self::FIRST_NAME_FIELD, TextType::class, [
-                'label' => 'account.first_name',
+                'label' => 'profile.edit.first_name',
                 'translation_domain' => 'messages'
             ])
-            ->add(self::LAST_NAME, TextType::class, [
-                'label' => 'account.last_name',
+            ->add(self::LAST_NAME_FIELD, TextType::class, [
+                'label' => 'profile.edit.last_name',
                 'translation_domain' => 'messages'
             ])
-            ->add(self::COUNTRY_FIELD, ChoiceType::class, [
-                'choices' => [
-                    'France' => 'France',
-                    'Germany' => 'Germany',
-                    'United Kingdom' => 'United Kingdom',
-                    'United States' => 'United States'
-                ],
-                'label' => 'account.country',
+            ->add(self::COMPANY_FIELD, TextType::class, [
+                'label' => 'profile.edit.company',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::ADDRESS_FIELD, TextType::class, [
+                'label' => 'profile.edit.address',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::CITY_FIELD, TextType::class, [
+                'label' => 'profile.edit.city',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::ZIP_FIELD, NumberType::class, [
+                'label' => 'profile.edit.zip',
+                'translation_domain' => 'messages'
+            ])
+            ->add(self::COUNTRY_FIELD, CountryType::class, [
+                'label' => 'profile.edit.country',
                 'translation_domain' => 'messages'
             ])
             ->add(self::PHONE_NUMBER_FIELD, TelType::class, [
-                'label' => 'account.phone_number',
+                'label' => 'profile.edit.phone',
                 'translation_domain' => 'messages'
             ]);
     }
 
     /**
+     * Sets the profile form's default attributes.
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)

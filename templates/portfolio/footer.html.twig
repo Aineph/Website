@@ -1,0 +1,67 @@
+{% block portfolio_footer %}
+
+    <!-- Portfolio Footer -->
+
+    <div class="container-fluid">
+        <div class="row mt-3">
+
+            <!-- Portfolio Footer Social Github -->
+
+            <div class="col-3 text-center">
+                <a class="element-fade-in-fix" href="https://github.com/Aineph">
+                    <img class="d-inline-block"
+                         src="{{ asset('build/website/footer/GitHub-Mark-Light-120px-plus.png') }}"
+                         alt="{{ 'portfolio.footer.github_alt' | trans }}" width="25px" height="25px"/>
+                    <p class="d-inline-block text-white">
+                        {{ 'portfolio.footer.github' | trans }}
+                    </p>
+                </a>
+            </div>
+
+            <!-- Portfolio Footer Social Linkedin -->
+
+            <div class="col-3 text-center">
+                <a class="element-fade-in-fix" href="https://www.linkedin.com/in/nicolas-fez/">
+                    <img class="d-inline-block" src="{{ asset('build/website/footer/LI-In-Bug.png') }}"
+                         alt="{{ 'portfolio.footer.linkedin_alt' | trans }}" width="25px" height="25px"/>
+                    <p class="d-inline-block text-white">
+                        {{ 'portfolio.footer.linkedin' | trans }}
+                    </p>
+                </a>
+            </div>
+
+            <!-- Portfolio Footer Social Soundcloud -->
+
+            <div class="col-3 text-center">
+                <a class="element-fade-in-fix" href="https://soundcloud.com/nicolas-fez">
+                    <img class="d-inline-block"
+                         src="{{ asset('build/website/footer/orange_white_64-94fc761.png') }}"
+                         alt="{{ 'portfolio.footer.soundcloud_alt' | trans }}" width="25px" height="25px"/>
+                    <p class="d-inline-block text-white">
+                        {{ 'portfolio.footer.soundcloud' | trans }}
+                    </p>
+                </a>
+            </div>
+
+            <!-- Portfolio Footer Social Malt -->
+
+            <div class="col-3 text-center">
+                <a class="element-fade-in-fix" href="https://www.malt.fr/profile/nicolasfez">
+                    <img class="d-inline-block" src="{{ asset('build/website/footer/malt_picto_color.png') }}"
+                         alt="{{ 'portfolio.footer.malt_alt' | trans }}" width="25px" height="25px"/>
+                    <p class="d-inline-block text-white">
+                        {{ 'portfolio.footer.malt' | trans }}
+                    </p>
+                </a>
+            </div>
+
+            <!-- Portfolio Footer Copyright -->
+
+            <div class="col-12">
+                <p class="text-white element-fade-in-fix">
+                    {{ 'portfolio.footer.copyright' | trans }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

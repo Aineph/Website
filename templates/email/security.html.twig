@@ -1,1 +1,26 @@
-<p>Your password has been updated</p>
+{% block email_security %}
+
+    <!-- E-Mail Security Introduction -->
+
+    <p>
+        {{ 'email.security.introduction' | trans }},
+    </p>
+
+    <!-- E-Mail Security Message -->
+
+    <p>
+        {{ 'email.security.message' | trans }}
+    </p>
+
+    <!-- E-Mail Security Signature -->
+
+    <p>
+        {{ 'email.security.signature' | trans }}
+    </p>
+
+    <!-- E-Mail Security Name -->
+
+    <p>
+        {{ 'email.security.name' | trans }}
+    </p>
+{% endblock %}

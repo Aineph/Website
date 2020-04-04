@@ -1,0 +1,43 @@
+{% block profile_availability %}
+
+    <!-- Profile Availability -->
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Profile Index Availability Title -->
+
+            <div class="col-12 text-center">
+                <h3 class="h3 font-weight-normal text-white">
+                    {{ 'profile.availability.title' | trans }}
+                </h3>
+            </div>
+        </div>
+
+        <!-- Profile Index Availability Content -->
+
+        <div class="row mt-5">
+            {% if not availability %}
+                <div class="col-12 text-center text-danger">
+                    <i class="fa fa-calendar-times display-4"></i>
+                    <p>
+                        {{ 'profile.availability.unavailable' | trans }}
+                    </p>
+                    <p class="small">
+                        {{ 'profile.availability.unavailable_detail' | trans }}
+                    </p>
+                </div>
+            {% else %}
+                <div class="col-12 text-center text-success">
+                    <i class="fa fa-calendar-check display-4"></i>
+                    <p>
+                        {{ 'profile.availability.available' | trans }}
+                    </p>
+                    <p class="small">
+                        {{ 'profile.availability.available_detail' | trans }}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

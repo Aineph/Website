@@ -20,6 +20,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserChecker implements UserCheckerInterface
 {
     /**
+     * Performs extra checks before authentication.
      * @param UserInterface $user
      * @throws \Exception
      */
@@ -32,6 +33,7 @@ class UserChecker implements UserCheckerInterface
     }
 
     /**
+     * Performs extra checks after authentication.
      * @param UserInterface $user
      */
     public function checkPostAuth(UserInterface $user)

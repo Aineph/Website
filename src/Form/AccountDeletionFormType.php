@@ -22,11 +22,13 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 class AccountDeletionFormType extends AbstractType
 {
     /**
+     * The account deletion password field.
      * @var string
      */
     public const PASSWORD_FIELD = 'password';
 
     /**
+     * Builds the account deletion form.
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -34,7 +36,7 @@ class AccountDeletionFormType extends AbstractType
     {
         $builder
             ->add(self::PASSWORD_FIELD, PasswordType::class, [
-                'label' => 'account.password',
+                'label' => 'profile.edit.password',
                 'translation_domain' => 'messages',
                 'mapped' => false,
                 'constraints' => [
@@ -44,6 +46,7 @@ class AccountDeletionFormType extends AbstractType
     }
 
     /**
+     * Sets the account deletion form's default attributes.
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)

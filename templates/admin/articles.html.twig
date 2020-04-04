@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'admin.articles.title' | trans }}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Articles Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5">
+
+            <!-- Admin Articles Title -->
+
+            <div class="col-12">
+                <h1 class="h1 font-weight-normal text-white">
+                    {{ 'admin.articles.title' | trans }}
+                </h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Admin Articles Create -->
+
+            <div class="col-12">
+                <a class="btn btn-lg btn-outline-light" href="{{ path('admin_article') }}">
+                    {{ 'admin.articles.create' | trans }}
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Admin Articles Table -->
+
+            <div class="col-12">
+                <table class="table text-center text-white">
+
+                    <!-- Admin Articles Table Head -->
+
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            {{ 'admin.articles.author' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.articles.article' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.articles.date' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.articles.actions' | trans }}
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <!-- Admin Articles Table Body -->
+
+                    <tbody>
+                    {% for article in articlePaginator.results %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('admin_user', {'user': article.user.id}) }}">
+                                    {{ article.user }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ article.title }}
+                            </td>
+                            <td>
+                                {{ article.date | date('d/m/Y H:i:s', 'Europe/Paris') }}
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary"
+                                   href="{{ path('admin_article', {'article': article.id}) }}">
+                                    {{ 'admin.articles.view' | trans }}
+                                </a>
+                                <a class="btn btn-outline-danger"
+                                   href="{{ path('admin_article_delete', {'article': article.id}) }}">
+                                    {{ 'admin.articles.delete' | trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Admin Articles Pagination -->
+
+        <div class="row justify-content-around">
+            <div class="col-12">
+                <p class="text-white">
+                    {{ articlePaginator.firstResult }}-{{ articlePaginator.lastResult }}
+                    {{ 'admin.articles.on' | trans }}
+                    {{ articlePaginator.resultsCount }}
+                </p>
+            </div>
+            <div class="col-auto">
+                <nav aria-label="{{ 'admin.articles.pagination' | trans }}">
+                    <ul class="pagination">
+
+                        <!-- Admin Articles Previous Page -->
+
+                        <li class="page-item {% if not articlePaginator.hasPreviousPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_articles', {'page': articlePaginator.getPreviousPage}) }}"
+                               aria-label="{{ 'admin.articles.previous' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-left"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.articles.previous' | trans }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- Admin Articles Next Page -->
+
+                        <li class="page-item {% if not articlePaginator.hasNextPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_articles', {'page': articlePaginator.getNextPage}) }}"
+                               aria-label="{{ 'admin.articles.next' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.articles.next' | trans }}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+{% endblock %}

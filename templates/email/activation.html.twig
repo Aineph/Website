@@ -1,18 +1,36 @@
-<p>
-    {{ 'email.greetings' | trans }}
-    {{ firstName }},
-</p>
-<p>
-    {{ 'email.activation' | trans }}
-</p>
-<p>
-    <a href="https://localhost:8000/{{ app.request.locale }}/activate/{{ userID }}?key={{ activationKey }}">
-        https://localhost:8000/{{ app.request.locale }}/activate/{{ userID }}?key={{ activationKey }}
-    </a>
-</p>
-<p>
-    {{ 'email.politeness' | trans }}
-</p>
-<p>
-    {{ 'email.signature' | trans }}
-</p>
+{% block email_activation %}
+
+    <!-- E-Mail Activation Introduction -->
+
+    <p>
+        {{ 'email.activation.introduction' | trans }}
+        {{ firstName }},
+    </p>
+
+    <!-- E-Mail Activation Message -->
+
+    <p>
+        {{ 'email.activation.message' | trans }}
+    </p>
+
+    <!-- E-Mail Activation Url -->
+
+    <p>
+        <a href="{{ activationUrl }}">
+            {{ activationUrl }}
+        </a>
+    </p>
+
+    <!-- E-Mail Activation Signature -->
+
+    <p>
+        {{ 'email.activation.signature' | trans }}
+    </p>
+
+    <!-- E-mail Activation Name -->
+
+    <p>
+        {{ 'email.activation.name' | trans }}
+    </p>
+
+{% endblock %}

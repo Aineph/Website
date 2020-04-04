@@ -1,0 +1,86 @@
+{% block website_contact %}
+
+    <!-- Website Contact -->
+
+    <div class="container-fluid">
+
+        <!-- Website Contact Title -->
+
+        <div class="row">
+            <div class="col-12 pt-3">
+                <h1 class="h1 font-weight-normal">
+                    {{ 'website.contact.contact' | trans }}
+                </h1>
+            </div>
+        </div>
+
+        <!-- Website Contact Form -->
+
+        <div class="container">
+            {{ form_start(contactForm, {'action': path('website_contact')}) }}
+            <div class="form-group">
+                <div class="row">
+
+                    <!-- Website Contact Name -->
+
+                    <div class="col-12">
+                        {{ form_label(contactForm.name) }}
+                        {{ form_widget(contactForm.name, {
+                            'attr': {
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.name' | trans
+                            }
+                        }) }}
+                    </div>
+
+                    <!-- Website Contact E-Mail -->
+
+                    <div class="col-12">
+                        {{ form_label(contactForm.email) }}
+                        {{ form_widget(contactForm.email, {
+                            'attr': {
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.email' | trans
+                            }
+                        }) }}
+                    </div>
+
+                    <!-- Website Contact Object -->
+
+                    <div class="col-12">
+                        {{ form_label(contactForm.object) }}
+                        {{ form_widget(contactForm.object, {
+                            'attr': {
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.object' | trans
+                            }
+                        }) }}
+                    </div>
+
+                    <!-- Website Contact Content -->
+
+                    <div class="col-12">
+                        {{ form_label(contactForm.content) }}
+                        {{ form_widget(contactForm.content, {
+                            'attr': {
+                                'class': 'form-control element-fade-in-left',
+                                'aria-label': 'website.contact.content' | trans
+                            }
+                        }) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <!-- Website Contact Submit -->
+
+                <div class="col-12 pb-3">
+                    <button class="btn btn-lg btn-outline-primary element-fade-in-fix" type="submit">
+                        {{ 'website.contact.submit' | trans }}
+                    </button>
+                </div>
+            </div>
+            {{ form_end(contactForm) }}
+        </div>
+    </div>
+{% endblock %}

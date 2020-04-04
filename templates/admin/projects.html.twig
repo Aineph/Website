@@ -1,0 +1,240 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'admin.projects.title' | trans }}
+{% endblock %}
+{% block body %}
+
+    <!-- Admin Projects Body -->
+
+    <div class="container-fluid">
+        <div class="row mt-5">
+
+            <!-- Admin Projects Title -->
+
+            <div class="col-12">
+                <h1 class="h1 font-weight-normal text-white">
+                    {{ 'admin.projects.title' | trans }}
+                </h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Admin Projects Create -->
+
+            <div class="col-12">
+                <button class="btn btn-lg btn-outline-light" data-toggle="modal" data-target="#projects-modal">
+                    {{ 'admin.projects.create' | trans }}
+                </button>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Admin Projects Table -->
+
+            <div class="col-12">
+                <table class="table text-center text-white">
+
+                    <!-- Admin Projects Table Head -->
+
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            {{ 'admin.projects.name' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.projects.description' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.projects.type' | trans }}
+                        </th>
+                        <th scope="col">
+                            {{ 'admin.projects.actions' | trans }}
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <!-- Admin Projects Table Body -->
+
+                    <tbody>
+                    {% for project in projectPaginator.results %}
+                        <tr>
+                            <td>
+                                <a href="{{ project.link }}">
+                                    {{ project.name }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ project.description }}
+                            </td>
+                            {% if project.type == 0 %}
+                                <td>
+                                    {{ 'admin.projects.music' | trans }}
+                                </td>
+                            {% else %}
+                                <td>
+                                    {{ 'admin.projects.programming' | trans }}
+                                </td>
+                            {% endif %}
+                            <td>
+                                <a class="btn btn-outline-danger"
+                                   href="{{ path('admin_project_delete', {'project': project.id}) }}">
+                                    {{ 'admin.projects.delete' | trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Admin Projects Pagination -->
+
+        <div class="row justify-content-around">
+            <div class="col-12">
+                <p class="text-white">
+                    {{ projectPaginator.firstResult }}-{{ projectPaginator.lastResult }}
+                    {{ 'admin.projects.on' | trans }}
+                    {{ projectPaginator.resultsCount }}
+                </p>
+            </div>
+            <div class="col-auto">
+                <nav aria-label="{{ 'admin.projects.pagination' | trans }}">
+                    <ul class="pagination">
+
+                        <!-- Admin Projects Previous Page -->
+
+                        <li class="page-item {% if not projectPaginator.hasPreviousPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_projects', {'page': projectPaginator.getPreviousPage}) }}"
+                               aria-label="{{ 'admin.projects.previous' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-left"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.projects.previous' | trans }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- Admin Projects Next Page -->
+
+                        <li class="page-item {% if not projectPaginator.hasNextPage %}disabled{% endif %}">
+                            <a class="page-link"
+                               href="{{ path('admin_projects', {'page': projectPaginator.getNextPage}) }}"
+                               aria-label="{{ 'admin.projects.next' | trans }}">
+                                <span aria-hidden="true">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                                <span class="sr-only">
+                                    {{ 'admin.projects.next' | trans }}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Admin Projects Modal -->
+
+        <div id="projects-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="projects-modal-title"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    {{ form_start(projectForm, {'action': path('admin_project_create')}) }}
+                    <div class="modal-header">
+
+                        <!-- Admin Projects Modal Title -->
+
+                        <h5 id="projects-modal-title" class="modal-title h5 font-weight-normal">
+                            {{ 'admin.projects.create' | trans }}
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <!-- Admin Projects Modal Form Name -->
+
+                            <div class="col-12">
+                                {{ form_label(projectForm.name) }}
+                                {{ form_widget(projectForm.name, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+
+                            <!-- Admin Projects Modal Form Description -->
+
+                            <div class="col-12">
+                                {{ form_label(projectForm.description) }}
+                                {{ form_widget(projectForm.description, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+
+                            <!-- Admin Projects Modal Form Type -->
+
+                            <div class="col-12">
+                                {{ form_label(projectForm.type) }}
+                                {{ form_widget(projectForm.type, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+
+                            <!-- Admin Projects Modal Form Link -->
+
+                            <div class="col-12">
+                                {{ form_label(projectForm.link) }}
+                                {{ form_widget(projectForm.link, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+
+                            <!-- Admin Projects Modal Form File -->
+
+                            <div class="col-12">
+                                {{ form_label(projectForm.file) }}
+                                {{ form_widget(projectForm.file, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+
+                            <!-- Admin Projects Modal Form Image -->
+
+                            <div class="col-12">
+                                {{ form_label(projectForm.image) }}
+                                {{ form_widget(projectForm.image, {
+                                    'attr': {
+                                        'class': 'form-control'
+                                    }
+                                }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <!-- Admin Projects Modal Form Actions -->
+
+                        <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">
+                            {{ 'admin.projects.cancel' | trans }}
+                        </button>
+                        <button class="btn btn-outline-primary" type="submit">
+                            {{ 'admin.projects.submit' | trans }}
+                        </button>
+                    </div>
+                    {{ form_end(projectForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
