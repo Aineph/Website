@@ -24,6 +24,7 @@ Now, you can run the following commands to install all the dependencies.
 ```
 $> composer install
 $> yarn install
+$> yarn encore production
 ```
 
 Depending on the *db_name* you will use, you will need to create the database manually.
