@@ -44,7 +44,7 @@ $> php bin/console doctrine:migrations:migrate
 Now you can finally launch the server.
 
 ```
-$> symfony serve
+$> php bin/console server:run
 ```
 
 # User Manual
