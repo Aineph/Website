@@ -70,13 +70,13 @@ class UserService extends AbstractService implements ServiceInterface
      * The e-mail address for accounts.
      * @var string
      */
-    const ACCOUNT_EMAIL = 'accounts@feznicolas.com';
+    const ACCOUNT_EMAIL = 'accounts@nicolasfez.com';
 
     /**
      * The e-mail address for security.
      * @var string
      */
-    const SECURITY_EMAIL = 'security@feznicolas.com';
+    const SECURITY_EMAIL = 'security@nicolasfez.com';
 
     /**
      * The e-mail activation template.
