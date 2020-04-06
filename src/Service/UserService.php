@@ -73,12 +73,6 @@ class UserService extends AbstractService implements ServiceInterface
     const ACCOUNT_EMAIL = 'accounts@nicolasfez.com';
 
     /**
-     * The e-mail address for security.
-     * @var string
-     */
-    const SECURITY_EMAIL = 'security@nicolasfez.com';
-
-    /**
      * The e-mail activation template.
      * @var string
      */
@@ -239,7 +233,7 @@ class UserService extends AbstractService implements ServiceInterface
         $this->getEntityManager()->persist($this->getUser());
         $this->getEntityManager()->flush();
         $securityMail = (new TemplatedEmail())
-            ->from(self::SECURITY_EMAIL)
+            ->from(self::ACCOUNT_EMAIL)
             ->to($this->getUser()->getEmail())
             ->subject($this->getTranslator()->trans('email.security.subject'))
             ->htmlTemplate(self::TEMPLATE_EMAIL_SECURITY);
