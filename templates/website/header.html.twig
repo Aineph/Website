@@ -2,7 +2,8 @@
 
     <!-- Website Header -->
 
-    <div id="header-carousel" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="false">
+    <div id="header-carousel" class="carousel slide vw-100" data-ride="carousel" data-interval="5000"
+         data-pause="false">
 
         <!-- Header Carousel Inner -->
 
@@ -12,38 +13,33 @@
 
             <div class="carousel-caption">
                 <div class="container">
-                    <div class="row">
+                    <div class="row justify-content-around">
                         <div class="col-12 p-3">
                             <h4 class="h4 font-weight-normal element-fade-in-top">
                                 {{ 'website.header.introduction' | trans }}
                             </h4>
                         </div>
-                    </div>
-
-                    <!-- Header Carousel Buttons -->
-
-                    <div class="row">
 
                         <!-- Header Carousel Authenticate -->
 
-                        <div class="col p-1">
+                        <div class="col-auto p-3">
                             <a class="btn btn-lg btn-outline-light element-fade-in-bottom"
                                href="{{ path('profile_index') }}">
-                                <h3 class="h3 font-weight-normal">
+                                <h4 class="h4 font-weight-normal">
                                     {{ 'website.header.authenticate' | trans }}
-                                </h3>
+                                </h4>
                             </a>
                         </div>
 
                         <!-- Header Carousel Register -->
 
                         {% if not app.user %}
-                            <div class="col p-1">
+                            <div class="col-auto p-3">
                                 <a class="btn btn-lg btn-outline-light element-fade-in-bottom"
                                    href="{{ path('security_register') }}">
-                                    <h3 class="h3 font-weight-normal">
+                                    <h4 class="h4 font-weight-normal">
                                         {{ 'website.header.register' | trans }}
-                                    </h3>
+                                    </h4>
                                 </a>
                             </div>
                         {% endif %}
