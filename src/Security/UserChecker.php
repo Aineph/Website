@@ -29,7 +29,7 @@ class UserChecker implements UserCheckerInterface
         if (!($user instanceof User))
             return;
         if (!$user->getIsActivated())
-            throw new AccountValidationException('Account not yet activated');
+            throw new AccountValidationException('security.login.not_activated');
     }
 
     /**

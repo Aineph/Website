@@ -962,6 +962,10 @@
                 <source>security.login.registered</source>
                 <target>Votre profil a bien été créé. Vérifiez vos e-mails pour l'activer.</target>
             </trans-unit>
+            <trans-unit id="security.login.not_activated">
+                <source>security.login.not_activated</source>
+                <target>Votre profil n'est pas encore activé. Vérifiez vos e-mails pour l'activer.</target>
+            </trans-unit>
             <trans-unit id="security.login.activated">
                 <source>security.login.activated</source>
                 <target>Votre profil a bien été activé. Vous pouvez maintenant vous connecter à votre compte.</target>

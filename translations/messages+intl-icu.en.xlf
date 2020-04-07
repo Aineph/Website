@@ -957,6 +957,10 @@
                 <source>security.login.registered</source>
                 <target>Your profile has been created. Check your e-mails to activate it.</target>
             </trans-unit>
+            <trans-unit id="security.login.not_activated">
+                <source>security.login.not_activated</source>
+                <target>Your profile is not activated yet. Check your e-mails to activate it.</target>
+            </trans-unit>
             <trans-unit id="security.login.activated">
                 <source>security.login.activated</source>
                 <target>Your profile has been activated. You can now connect to your account.</target>
