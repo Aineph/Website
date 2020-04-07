@@ -20,10 +20,23 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.
 ```
 
 Now, you can run the following commands to install all the dependencies.
+Please note that whether you want to install it for a development or a production environment, you need to override the
+APP_ENV variable inside the .env file.
 
 ```
 $> composer install
 $> yarn install
+```
+
+For a development environment, use this command to build the front part of the application:
+
+```
+$> yarn encore dev
+```
+
+Or this one for a production environment:
+
+```
 $> yarn encore production
 ```
 
@@ -37,8 +50,7 @@ mysql> CREATE DATABASE db_name;
 To fill this database, you need to create a migration. Run the following commands:
 
 ```
-$> php bin/console make:migration
-$> php bin/console doctrine:migrations:migrate
+$> php bin/console doctrine:schema:update --force
 ```
 
 Now you can finally launch the server.
