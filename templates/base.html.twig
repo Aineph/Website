@@ -8,6 +8,7 @@
 
 <head>
     <meta charset="UTF-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="{{ 'base.description' | trans }}"/>
     <meta name="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
@@ -15,6 +16,12 @@
     <meta name="og:type" content="website">
     <meta name="og:locale" content="{{ app.request.locale }}_{{ app.request.locale | upper }}"/>
     <meta name="og:url" content="{{ app.request.uri }}"/>
+    <meta name="og:site_name" content="{{ 'base.title' | trans }}"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="{{ 'base.title' | trans }}"/>
+    <meta name="twitter:description" content="{{ 'base.description' | trans }}"/>
+    <meta name="twitter:creator" content="Nicolas Fez"/>
+
     <title>
         {% block title %}
             {{ 'base.title' | trans }}

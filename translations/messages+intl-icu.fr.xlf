@@ -11,21 +11,7 @@
             </trans-unit>
             <trans-unit id="base.description">
                 <source>base.description</source>
-                <target>
-                    Je suis Nicolas FEZ, un ingénieur en développement logiciel diplômé de l'école Epitech à Paris, en
-                    France. J'ai commencé à étudier l'informatique quand j'étais au lycée. À l'époque je réalisais de
-                    petits jeux en Python. J'ai ensuite appris des langages de plus bas niveau tels que le C, le C++ et
-                    l'assembleur x86. Intégrer mon université m'a permis de travailler pour plusieurs entreprises tout
-                    en continuant d'apprendre les notions essentielles du secteur. Lors de ma quatrième année, je suis
-                    parti étudier à San Diego en Californie, où je me suis perfectionné dans la programmation de réseaux
-                    et la sécurité informatique.
-                    Un an après être revenu en France, j'ai débuté mon premier emploi à travailler sur le Rafale F4
-                    pour Dassault Aviation par le biais de l'ESN Capgemini.
-                    Je suis devenu indépendant en 2020. Depuis, je réalise des missions en tant que Freelance.
-                    Au final, J'ai travaillé sur beaucoup de projets, des applications systèmes bas niveau jusqu'à
-                    l'intégration de sites Web, en passant par l'intelligence artificielle et la sécurité.
-                    Si vous recherchez un Développeur Web ou un Développeur Mobile, n'hésitez pas à prendre contact.
-                </target>
+                <target>Je suis Nicolas FEZ, ingénieur logiciel basé à Paris, France. Je travaille sur des projets d'applications, d'intégration de sites web, d'IA et de sécurité. Vous cherchez un développeur web ou mobile ? Contactez-moi !</target>
             </trans-unit>
 
             <!-- navigation.html.twig -->

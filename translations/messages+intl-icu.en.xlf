@@ -11,20 +11,7 @@
             </trans-unit>
             <trans-unit id="base.description">
                 <source>base.description</source>
-                <target>
-                    I'm Nicolas FEZ a Software Engineer graduated from the school Epitech, in France.
-                    I began learning Computer Science when I was in High School. At the time I was creating small
-                    games using python. Then I learned Low-Level languages such as C, C++ or the x86 Assembly. Entering
-                    my university allowed me to work as an intern for several company projects while continuing to learn
-                    the computer theory. During my 4th year, I went to study in San Diego, California where I've mainly
-                    studied computer networks and security.
-                    One year after coming back to France, I started my first job working on the Rafale F4 for Dassault
-                    Aviation, through the services company Capgemini.
-                    I became independent in 2020. Since that time, I'm performing several missions as a freelance.
-                    In the end, I've been working on many projects from Low-Level System Applications Development to
-                    Website Integration passing through Artificial Intelligence and Systems Security.
-                    If you look for a Web Developer or a Mobile Developer, don't hesitate to contact me.
-                </target>
+                <target>I'm Nicolas FEZ a Software Engineer based in Paris, France. I work on many projects from Low-Level System Applications to Website Integration through AI and Security. Looking for a Web or Mobile Developer ? Contact me !</target>
             </trans-unit>
 
             <!-- navigation.html.twig -->
