@@ -53,7 +53,8 @@
         <!-- Navigation Home -->
 
         <a class="navbar-brand" href="{{ path('website_index') }}">
-            {{ 'navigation.home' | trans }}
+            <img class="img-fluid element-inverted" src="{{ asset('build/logo.png') }}"
+                 alt="{{ 'navigation.home' | trans }}" width="50px" height="50px"/>
         </a>
 
         <!-- Navigation Toggler (Small Screens) -->
