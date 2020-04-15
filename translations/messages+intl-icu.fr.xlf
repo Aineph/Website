@@ -452,7 +452,7 @@
             </trans-unit>
             <trans-unit id="portfolio.timeline.capgemini_date">
                 <source>portfolio.timeline.capgemini_date</source>
-                <target>Oct. 2019 - Now</target>
+                <target>Oct. 2019 - Maintenant</target>
             </trans-unit>
             <trans-unit id="portfolio.timeline.capgemini">
                 <source>portfolio.timeline.capgemini</source>
@@ -463,7 +463,7 @@
             </trans-unit>
             <trans-unit id="portfolio.timeline.freelance_date">
                 <source>portfolio.timeline.freelance_date</source>
-                <target>Jun. 2020 - Now</target>
+                <target>Jun. 2020 - Maintenant</target>
             </trans-unit>
             <trans-unit id="portfolio.timeline.freelance">
                 <source>portfolio.timeline.freelance</source>
