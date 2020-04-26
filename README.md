@@ -2,6 +2,8 @@
 
 This is the source code for my personal website, written in PHP using the framework Symfony.
 
+![alt text](https://www.nicolasfez.com/uploads/projects/img_5446-5e8b530453adf.png "Website Illustration")
+
 # Summary
 
 * Build system
