@@ -2,7 +2,7 @@
 
 This is the source code for my personal website, written in PHP using the framework Symfony.
 
-![Website Illustration](https://www.nicolasfez.com/uploads/projects/img_5446-5ea6ab751f190.png "Website Illustration")
+![Website Illustration](https://cloudinary-a.akamaihd.net/hopwork/image/upload/w_2048,c_limit,dpr_2/a69wsmdr3905n5je9k4w.jpeg "Website Illustration")
 
 # Summary
 
