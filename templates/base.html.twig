@@ -38,7 +38,7 @@
     <meta name="twitter:title" content="{{ 'base.title' | trans }}"/>
     <meta name="twitter:description" content="{{ 'base.description' | trans }}"/>
     <meta name="twitter:creator" content="{{ 'base.author' | trans }}"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}{{ 'base.title' | trans }}{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
