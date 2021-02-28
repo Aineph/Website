@@ -54,6 +54,10 @@ $nf-defaultDistance: 50px;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .#{$namespace}-navbar {
   opacity: 0;
   transition: opacity .5s;
