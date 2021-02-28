@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="76.066" height="50.093" viewBox="0 0 76.066 50.093">
+    <g id="Logo" transform="translate(44.066 153)">
+        <g id="Rectangle_242" transform="translate(-44 -153)" stroke="rgba(112,112,112,0)" stroke-width="1">
+            <rect width="10" height="50" stroke="none"/>
+            <rect x="0.5" y="0.5" width="9" height="49" fill="none"/>
+        </g>
+        <g id="Rectangle_243" transform="translate(-44.066 -147.188) rotate(-30)" stroke="rgba(112,112,112,0)"
+           stroke-width="1">
+            <rect width="11.623" height="51.132" stroke="none"/>
+            <rect x="0.5" y="0.5" width="10.623" height="50.132" fill="none"/>
+        </g>
+        <g id="Rectangle_244" transform="translate(-18 -153)" stroke="rgba(112,112,112,0)" stroke-width="1">
+            <rect width="10" height="50" stroke="none"/>
+            <rect x="0.5" y="0.5" width="9" height="49" fill="none"/>
+        </g>
+        <g id="Rectangle_245" transform="translate(32 -153) rotate(90)" stroke="rgba(112,112,112,0)" stroke-width="1">
+            <rect width="10" height="50" stroke="none"/>
+            <rect x="0.5" y="0.5" width="9" height="49" fill="none"/>
+        </g>
+        <g id="Rectangle_246" transform="translate(7 -133) rotate(90)" stroke="rgba(112,112,112,0)" stroke-width="1">
+            <rect width="10" height="25" stroke="none"/>
+            <rect x="0.5" y="0.5" width="9" height="24" fill="none"/>
+        </g>
+    </g>
+</svg>

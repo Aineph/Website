@@ -1,0 +1,91 @@
+@import "~bootstrap/scss/bootstrap";
+
+$namespace: "nf";
+
+@mixin nf-keyframes($nf-name) {
+  @-webkit-keyframes #{$nf-name} {
+    @content
+  }
+  @-moz-keyframes #{$nf-name} {
+    @content
+  }
+  @-ms-keyframes #{$nf-name} {
+    @content
+  }
+  @keyframes #{$nf-name} {
+    @content
+  }
+}
+
+@mixin nf-fade-in-animation($direction, $distance) {
+  0% {
+    opacity: 0;
+    @if ($direction == "fix") {
+      transform: translateY(0px);
+    } @else if ($direction == "top") {
+      transform: translateY(- $distance);
+    } @else if ($direction == "right") {
+      transform: translateX($distance);
+    } @else if ($direction == "left") {
+      transform: translateX(- $distance);
+    } @else if ("bottom") {
+      transform: translateY($distance);
+    }
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+$nf-directions: "fix", "top", "right", "bottom", "left";
+$nf-defaultDistance: 50px;
+
+@each $nf-direction in $nf-directions {
+  @include nf-keyframes(nf-fade-in-#{$nf-direction}) {
+    @include nf-fade-in-animation($nf-direction, $nf-defaultDistance);
+  }
+  .#{$namespace}-fade-in-#{$nf-direction}:not(.#{$namespace}-animated) {
+    opacity: 0;
+  }
+  .#{$namespace}-fade-in-#{$nf-direction}.#{$namespace}-animated {
+    animation: nf-fade-in-#{$nf-direction};
+    animation-duration: 2s;
+  }
+}
+
+.#{$namespace}-navbar {
+  opacity: 0;
+  transition: opacity .5s;
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.#{$namespace}-navbar:hover {
+  opacity: 1;
+}
+
+.#{$namespace}-parallax {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  @supports (-webkit-touch-callout: inherit) {
+    background-attachment: scroll;
+  }
+}
+
+.#{$namespace}-divider {
+  transition: transform 1.5s;
+  border-top: 1px solid white;
+}
+
+.#{$namespace}-divider:not(.nf-animated) {
+  transform: scale(0);
+}
+
+#{$namespace}-divider.nf-animated {
+  transform: scale(1);
+}
+
+.#{$namespace}-footer {
+  background-color: black;
+}

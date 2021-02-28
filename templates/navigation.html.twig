@@ -1,0 +1,83 @@
+{% block navigation %}
+
+    <!-- Navigation Bar -->
+    <nav id="navigation" class="navbar navbar-light navbar-expand-lg fixed-top nf-navbar" data-controller="navigation"
+         data-action="scroll@window->navigation#update">
+
+        <!-- Website Icon -->
+        <div class="navbar-brand p-0">
+            <img class="img-fluid" src="{{ asset('build/logo.svg') }}"
+                 alt="{{ 'navigation.title' | trans }}" width="40px" height="40px"/>
+        </div>
+
+        <!-- Navigation Toggler (Small Screens) -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-navbar"
+                aria-controls="navigation-navbar" aria-expanded="false"
+                aria-label="{{ 'navigation.toggle' | trans }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Content -->
+        <div id="navigation-navbar" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Home Link -->
+                <li>
+                    <a class="nav-link" href="{{ path('home_index') }}">
+                        {{ 'navigation.home' | trans }}
+                    </a>
+                </li>
+
+                <!-- Portfolio Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://portfolio.nicolasfez.com/">
+                        {{ 'navigation.portfolio' | trans }}
+                    </a>
+                </li>
+
+                <!-- Contact Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home_index') }}#home-contact">
+                        {{ 'navigation.contact' | trans }}
+                    </a>
+                </li>
+
+                <!-- Language Switch -->
+                <li class="nav-item dropdown">
+
+                    <!-- Language Button -->
+                    <a id="navigation-dropdown" class="nav-link dropdown-toggle text-info" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ app.request.locale | getLocaleName | capitalize }}
+                    </a>
+
+                    <!-- Language Dropdown -->
+                    <div class="dropdown-menu" aria-labelledby="navigation-dropdown">
+                        {% for locale in getLocales() %}
+                            {% if app.request.locale == locale.code %}
+
+                                <!-- Current Language -->
+                                <a class="dropdown-item"
+                                   aria-checked="true"
+                                   href="{{ path(app.request.get('_route', 'home_index'),
+                                       app.request.get('_route_params', []) | merge({_locale: locale.code})) }}">
+                                    {{ locale.name | capitalize }}
+                                </a>
+                            {% else %}
+
+                                <!-- Other Languages -->
+                                <a class="dropdown-item"
+                                   aria-checked="false"
+                                   href="{{ path(app.request.get('_route', 'home_index'),
+                                       app.request.get('_route_params', []) | merge({_locale: locale.code})) }}">
+                                    {{ locale.name | capitalize }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+

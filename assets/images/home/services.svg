@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3280.911" height="1555.219" viewBox="0 0 3280.911 1555.219">
+    <defs>
+        <clipPath id="clip-path">
+            <rect id="mask" width="1323.116" height="991.872" rx="12.738" fill="#eaf5eb" stroke="rgba(0,0,0,0.1)"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="screen"
+                  d="M335,884H40A39.966,39.966,0,0,1,0,844V112A39.967,39.967,0,0,1,40,72H78a5.007,5.007,0,0,1,5,4.91V80a21.982,21.982,0,0,0,22,22H272a19.984,19.984,0,0,0,20-20V77a5.006,5.006,0,0,1,4.995-5H335a39.967,39.967,0,0,1,40,40V844a39.966,39.966,0,0,1-40,40Z"
+                  transform="translate(270 172)" fill="#dedee4"/>
+        </clipPath>
+    </defs>
+    <g id="Groupe_12" transform="translate(-1597 -1315.781)">
+        <g id="Groupe_11" transform="translate(2160 1159.469)">
+            <g id="Groupe_10" transform="translate(34.216 156.312)">
+                <path id="Tracé_9"
+                      d="M67,0h2058.75a67,67,0,0,1,67,67V1449.653a67,67,0,0,1-67,67H67a67,67,0,0,1-67-67V67A67,67,0,0,1,67,0Z"
+                      transform="translate(245.668)" fill="#fff"/>
+                <path id="Tracé_8"
+                      d="M59.425-2.5H2118.176A61.926,61.926,0,0,1,2180.1,59.425V1442.077A61.927,61.927,0,0,1,2118.176,1504H59.425A61.925,61.925,0,0,1-2.5,1442.077V59.425A61.927,61.927,0,0,1,59.425-2.5ZM7.652,59.425V1442.077a51.769,51.769,0,0,0,51.773,51.773H2118.176a51.771,51.771,0,0,0,51.773-51.773V59.425a51.769,51.769,0,0,0-51.773-51.773H59.425A51.771,51.771,0,0,0,7.652,59.425Z"
+                      transform="translate(253.245 7.575)" fill="#f2f2f5"/>
+                <path id="Tracé_7"
+                      d="M0,67A67,67,0,0,1,67,0h2058.75a67,67,0,0,1,67,67V1449.653a67,67,0,0,1-67,67H67a67,67,0,0,1-67-67Zm10.152,0V1449.653A56.842,56.842,0,0,0,67,1506.5h2058.75a56.842,56.842,0,0,0,56.849-56.849V67a56.849,56.849,0,0,0-56.849-56.849H67A56.845,56.845,0,0,0,10.152,67Z"
+                      transform="translate(245.668)" fill="#f2f2f5"/>
+                <path id="Tracé_5"
+                      d="M0,67A67,67,0,0,1,67,0h2058.75a67,67,0,0,1,67,67V1449.653a67,67,0,0,1-67,67H67a67,67,0,0,1-67-67Zm.406,0V1449.653A66.6,66.6,0,0,0,67,1516.247h2058.75a66.6,66.6,0,0,0,66.6-66.594V67a66.59,66.59,0,0,0-66.6-66.595H67A66.6,66.6,0,0,0,.406,67Z"
+                      transform="translate(245.668)" fill="#f2f2f5"/>
+                <path id="Tracé_6"
+                      d="M0,67A67,67,0,0,1,67,0h2058.75a67,67,0,0,1,67,67V1449.653a67,67,0,0,1-67,67H67a67,67,0,0,1-67-67Zm.406,0V1449.653A66.6,66.6,0,0,0,67,1516.247h2058.75a66.6,66.6,0,0,0,66.6-66.594V67a66.59,66.59,0,0,0-66.6-66.595H67A66.6,66.6,0,0,0,.406,67Z"
+                      transform="translate(245.668)" fill="#dedede"/>
+                <path id="Union_2"
+                      d="M1341.031,51.7c-38.849.048-1175.943,1.441-1232.3,0C51.393,50.225,0,14.092,0,14.092L22.481,0H1036.766l304.265,14.045L1645.3,0H2659.581l22.481,14.092s-51.393,36.133-108.731,37.6c-19.112.489-162.535.652-345.232.652C1872.038,52.346,1366.706,51.727,1341.031,51.7Z"
+                      transform="translate(0 1502.562)" fill="none" stroke="#0c0c0c" stroke-width="0.2" opacity="0.36"/>
+                <g id="Groupe_5" transform="translate(0 1492.289)">
+                    <g id="Groupe_1" transform="translate(0 0)">
+                        <path id="Tracé_2"
+                              d="M643,496.152s51.392,36.132,108.731,37.6,1233.316,0,1233.316,0v-37.6l-305.28-14.093H665.482Z"
+                              transform="translate(-643 -471.788)" fill="#f2f2f5"/>
+                        <path id="Tracé_4" d="M4.061,0H1088.255V24.364H0V4.061A4.061,4.061,0,0,1,4.061,0Z"
+                              fill="#f2f2f5"/>
+                        <path id="Tracé_1" d="M0,0H253.791V24.364H0Z" transform="translate(1088.255)" fill="#dbdbdb"/>
+                    </g>
+                    <g id="Groupe_2" transform="translate(1340.015 0)">
+                        <path id="Tracé_2-2"
+                              d="M1985.046,496.152s-51.392,36.132-108.73,37.6-1233.316,0-1233.316,0v-37.6l305.281-14.093H1962.565Z"
+                              transform="translate(-643 -471.788)" fill="#f2f2f5"/>
+                        <path id="Tracé_10" d="M0,0H1084.194a4.061,4.061,0,0,1,4.061,4.061v20.3H0Z"
+                              transform="translate(253.791)" fill="#f2f2f5"/>
+                        <path id="Tracé_1-2" d="M253.791,0H0V24.364H253.791Z" transform="translate(0)" fill="#dbdbdb"/>
+                    </g>
+                </g>
+                <g id="Union_1" transform="translate(0.014 1494.442)" fill="none" opacity="0.08">
+                    <path d="M1594.769,24.557H1088.913V0H2679.619a4.078,4.078,0,0,1,4.063,4.092V24.557ZM0,24.557V4.092A4.078,4.078,0,0,1,4.063,0H1088.913V24.557Z"
+                          stroke="none"/>
+                    <path d="M 2683.581787109375 24.45661544799805 L 2683.581787109375 4.092615604400635 C 2683.581787109375 1.890948891639709 2681.80419921875 0.09994883090257645 2679.618896484375 0.09994883090257645 L 1594.768432617188 0.09994883090257645 L 1342.85546875 0.09994883090257645 L 1089.01318359375 0.09994883090257645 L 1089.01318359375 24.45661544799805 L 1118.169189453125 24.45661544799805 L 1340.824462890625 24.45661544799805 L 1565.512451171875 24.45661544799805 L 1594.768432617188 24.45661544799805 L 2683.581787109375 24.45661544799805 M 1088.813110351562 24.45661544799805 L 1088.813110351562 0.09994883090257645 L 4.062820434570312 0.09994883090257645 C 1.877820253372192 0.09994883090257645 0.1001536473631859 1.890948891639709 0.1001536473631859 4.092615604400635 L 0.1001536473631859 24.45661544799805 L 1088.813110351562 24.45661544799805 M 2683.681884765625 24.55661582946777 L 1594.768432617188 24.55661582946777 L 1565.512451171875 24.55661582946777 L 1340.824462890625 24.55661582946777 L 1118.169189453125 24.55661582946777 L 1088.913208007812 24.55661582946777 L 1088.913208007812 -5.116780448588543e-05 L 1342.85546875 -5.116780448588543e-05 L 1594.768432617188 -5.116780448588543e-05 L 2679.618896484375 -5.116780448588543e-05 C 2681.862548828125 -5.116780448588543e-05 2683.681884765625 1.832615494728088 2683.681884765625 4.092615604400635 L 2683.681884765625 24.55661582946777 Z M 1088.913208007812 24.55661582946777 L 0.0001536458294140175 24.55661582946777 L 0.0001536458294140175 4.092615604400635 C 0.0001536458294140175 1.832615494728088 1.819153666496277 -5.116780448588543e-05 4.062820434570312 -5.116780448588543e-05 L 1088.913208007812 -5.116780448588543e-05 L 1088.913208007812 24.55661582946777 Z"
+                          stroke="none" fill="#fff"/>
+                </g>
+            </g>
+            <g id="Rectangle_247" transform="translate(345 215.531)" fill="#fff" stroke="#f2f2f5" stroke-width="1">
+                <rect width="2064" height="1390" stroke="none"/>
+                <rect x="0.5" y="0.5" width="2063" height="1389" fill="none"/>
+            </g>
+            <g id="Logo" transform="translate(842.331 582.277)">
+                <g id="Rectangle_242" transform="translate(0.925 0)" stroke="rgba(112,112,112,0)" stroke-width="1">
+                    <rect width="140.334" height="701.67" stroke="none"/>
+                    <rect x="0.5" y="0.5" width="139.334" height="700.67" fill="none"/>
+                </g>
+                <g id="Rectangle_243" transform="translate(0 81.556) rotate(-30)" stroke="rgba(112,112,112,0)"
+                   stroke-width="1">
+                    <rect width="163.112" height="717.554" stroke="none"/>
+                    <rect x="0.5" y="0.5" width="162.112" height="716.554" fill="none"/>
+                </g>
+                <g id="Rectangle_244" transform="translate(365.794 0)" stroke="rgba(112,112,112,0)" stroke-width="1">
+                    <rect width="140.334" height="701.67" stroke="none"/>
+                    <rect x="0.5" y="0.5" width="139.334" height="700.67" fill="none"/>
+                </g>
+                <g id="Rectangle_245" transform="translate(1067.464 0) rotate(90)" stroke="rgba(112,112,112,0)"
+                   stroke-width="1">
+                    <rect width="140.334" height="701.67" stroke="none"/>
+                    <rect x="0.5" y="0.5" width="139.334" height="700.67" fill="none"/>
+                </g>
+                <g id="Rectangle_246" transform="translate(716.629 280.668) rotate(90)" stroke="rgba(112,112,112,0)"
+                   stroke-width="1">
+                    <rect width="140.334" height="350.835" stroke="none"/>
+                    <rect x="0.5" y="0.5" width="139.334" height="349.835" fill="none"/>
+                </g>
+            </g>
+        </g>
+        <g id="Groupe_8" transform="translate(1562 1611.985)">
+            <path id="Combined_Shape"
+                  d="M49.363,1089.7a46.457,46.457,0,0,1-46.457-46.457V128.827H0V67.8H2.906V50.333A46.458,46.458,0,0,1,49.363,3.875H101.7V0h50.368V3.875h10.655V0h50.367V3.875H1375.457a46.457,46.457,0,0,1,46.457,46.458v992.913a46.457,46.457,0,0,1-46.457,46.457Z"
+                  transform="translate(250 169)" fill="#f2f2f5"/>
+            <rect id="mask-2" width="1323.116" height="991.872" rx="12.738" transform="translate(300.368 219.369)"
+                  fill="#fff"/>
+            <g id="Groupe_9" transform="translate(299.092 220.029)">
+                <g id="Logo-2" transform="translate(268.483 247.014)">
+                    <g id="Rectangle_242-2" transform="translate(0.683 0)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="103.525" height="517.627" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="102.525" height="516.627" fill="none"/>
+                    </g>
+                    <g id="Rectangle_243-2" transform="translate(0 60.165) rotate(-30)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="120.329" height="529.345" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="119.329" height="528.345" fill="none"/>
+                    </g>
+                    <g id="Rectangle_244-2" transform="translate(269.849 0)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="103.525" height="517.627" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="102.525" height="516.627" fill="none"/>
+                    </g>
+                    <g id="Rectangle_245-2" transform="translate(787.476 0) rotate(90)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="103.525" height="517.627" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="102.525" height="516.627" fill="none"/>
+                    </g>
+                    <g id="Rectangle_246-2" transform="translate(528.662 207.051) rotate(90)"
+                       stroke="rgba(112,112,112,0)" stroke-width="1">
+                        <rect width="103.525" height="258.814" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="102.525" height="257.814" fill="none"/>
+                    </g>
+                </g>
+                <g id="Status_Bar" transform="translate(0 0)">
+                    <g id="Status_Bars_-_iPad_-_Light" transform="translate(0 0)">
+                        <rect id="Light_background" width="1324.472" height="24" fill="none"/>
+                        <g id="Right" transform="translate(1208.19 6)">
+                            <path id="Combined_Shape-2"
+                                  d="M14.5,10a1,1,0,0,1-1-1V1a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9a1,1,0,0,1-1,1ZM10,10A1,1,0,0,1,9,9V3a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9a1,1,0,0,1-1,1ZM5.5,10a1,1,0,0,1-1-1V5a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9a1,1,0,0,1-1,1ZM1,10A1,1,0,0,1,0,9V6.5a1,1,0,0,1,1-1H2a1,1,0,0,1,1,1V9a1,1,0,0,1-1,1Z"
+                                  transform="translate(0 1)"/>
+                            <path id="Combined_Shape-3"
+                                  d="M6.824,9.915,4.986,8.078A.284.284,0,0,1,5,7.661a3.171,3.171,0,0,1,4.067,0,.285.285,0,0,1,.008.417L7.233,9.915a.29.29,0,0,1-.409,0ZM10.058,6.7A4.544,4.544,0,0,0,4,6.7a.288.288,0,0,1-.4-.006L2.536,5.629a.292.292,0,0,1,0-.418,6.631,6.631,0,0,1,8.974,0,.293.293,0,0,1,0,.418L10.455,6.691a.28.28,0,0,1-.2.083A.3.3,0,0,1,10.058,6.7ZM12.5,4.246a8,8,0,0,0-10.956,0,.286.286,0,0,1-.4,0L.086,3.179a.291.291,0,0,1,0-.416,10.091,10.091,0,0,1,13.875,0,.292.292,0,0,1,0,.416L12.9,4.243a.279.279,0,0,1-.2.083A.292.292,0,0,1,12.5,4.246Z"
+                                  transform="translate(20.972 0.75)"/>
+                            <text id="_100_" transform="translate(71.282 10)" font-size="12" font-family="Helvetica">
+                                <tspan x="-30.391" y="0" letter-spacing="-0.008em">100</tspan>
+                                <tspan y="0">%</tspan>
+                            </text>
+                            <g id="Battery_Icon" transform="translate(74.976)">
+                                <g id="Combined_Shape-4" fill="none" stroke-miterlimit="10" opacity="0.4">
+                                    <path d="M3.25,12A3.25,3.25,0,0,1,0,8.75V3.25A3.25,3.25,0,0,1,3.25,0h17.5A3.25,3.25,0,0,1,24,3.25v5.5A3.25,3.25,0,0,1,20.75,12ZM25,4.063a2,2,0,0,1,0,3.875Z"
+                                          stroke="none"/>
+                                    <path d="M 20.75040054321289 10.99970054626465 C 21.99100112915039 10.99970054626465 23.00030136108398 9.990400314331055 23.00030136108398 8.749800682067871 L 23.00030136108398 3.249900341033936 C 23.00030136108398 2.009300231933594 21.99100112915039 1.000000238418579 20.75040054321289 1.000000238418579 L 3.249900579452515 1.000000238418579 C 2.009300708770752 1.000000238418579 1.000000715255737 2.009300231933594 1.000000715255737 3.249900341033936 L 1.000000715255737 8.749800682067871 C 1.000000715255737 9.990400314331055 2.009300708770752 10.99970054626465 3.249900579452515 10.99970054626465 L 20.75040054321289 10.99970054626465 M 20.75040054321289 11.99970054626465 L 3.249900579452515 11.99970054626465 C 1.455300688743591 11.99970054626465 6.820678777330613e-07 10.54530048370361 6.820678777330613e-07 8.749800682067871 L 6.820678777330613e-07 3.249900341033936 C 6.820678777330613e-07 1.455300331115723 1.455300688743591 2.731323149873788e-07 3.249900579452515 2.731323149873788e-07 L 20.75040054321289 2.731323149873788e-07 C 22.54500007629395 2.731323149873788e-07 24.00030136108398 1.455300331115723 24.00030136108398 3.249900341033936 L 24.00030136108398 8.749800682067871 C 24.00030136108398 10.54530048370361 22.54500007629395 11.99970054626465 20.75040054321289 11.99970054626465 Z M 25.00020027160645 7.937100410461426 L 25.00020027160645 4.062600135803223 C 25.86240005493164 4.284900188446045 26.49960136413574 5.06790018081665 26.49960136413574 6.000300407409668 C 26.49960136413574 6.931800365447998 25.86240005493164 7.714800357818604 25.00020027160645 7.937100410461426 Z"
+                                          stroke="none" fill="#000"/>
+                                </g>
+                                <rect id="Capacity" width="20" height="8" rx="1.5" transform="translate(2 2)"/>
+                            </g>
+                        </g>
+                        <g id="Left" transform="translate(16 2)">
+                            <rect id="Rectangle" width="8" height="20" transform="translate(25)" fill="none"/>
+                            <text id="Date" transform="translate(33 14)" font-size="12" font-family="Helvetica">
+                                <tspan x="0" y="0">Mon Jun 22</tspan>
+                            </text>
+                            <text id="Time" transform="translate(0 14)" font-size="12" font-family="Helvetica"
+                                  letter-spacing="-0.02em">
+                                <tspan x="0" y="0">9:41</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <g id="Home_Indicators_-_iPad" transform="translate(504.525 975.874)">
+                    <rect id="BG" width="315" height="15" transform="translate(0 0)" fill="none"/>
+                    <rect id="Home_Indicator" width="315" height="5.5" rx="2.75" transform="translate(0 2)"/>
+                </g>
+            </g>
+        </g>
+        <g id="white-mockup" transform="translate(1354 1790)">
+            <g id="phone">
+                <path id="body"
+                      d="M64-123A60,60,0,0,1,4-183V-667a4,4,0,0,1-4-4v-54a4,4,0,0,1,4-4v-16a4,4,0,0,1-4-4v-54a4,4,0,0,1,4-4v-30a4,4,0,0,1-4-4v-24a4,4,0,0,1,4-4v-56a60,60,0,0,1,60-60H365a60,60,0,0,1,60,60v139a4,4,0,0,1,4,4v90a4,4,0,0,1-4,4v505a60,60,0,0,1-60,60Z"
+                      transform="translate(243 1204)" fill="#f2f2f5"/>
+                <path id="camera"
+                      d="M114-960a6,6,0,0,1,6-6,6,6,0,0,1,6,6,6,6,0,0,1-6,6A6,6,0,0,1,114-960Zm-64,3a3,3,0,0,1-3-3,3,3,0,0,1,3-3H97a3,3,0,0,1,3,3,3,3,0,0,1-3,3Z"
+                      transform="translate(384 1213)" fill="#dedee4"/>
+            </g>
+            <g id="YOUR_DESIGN" clip-path="url(#clip-path-2)">
+                <rect id="Home_Screen" width="375" height="812" transform="translate(270 244)" fill="#fff"/>
+            </g>
+            <g id="Groupe_3" transform="translate(270 244)">
+                <g id="Logo-3" transform="translate(79.426 458.808)">
+                    <g id="Rectangle_242-3" transform="translate(-43.802 -153)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="40.002" height="200.011" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="39.002" height="199.011" fill="none"/>
+                    </g>
+                    <g id="Rectangle_243-3" transform="translate(-44.066 -129.752) rotate(-30)"
+                       stroke="rgba(112,112,112,0)" stroke-width="1">
+                        <rect width="46.495" height="204.538" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="45.495" height="203.538" fill="none"/>
+                    </g>
+                    <g id="Rectangle_244-3" transform="translate(60.203 -153)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="40.002" height="200.011" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="39.002" height="199.011" fill="none"/>
+                    </g>
+                    <g id="Rectangle_245-3" transform="translate(260.214 -153) rotate(90)" stroke="rgba(112,112,112,0)"
+                       stroke-width="1">
+                        <rect width="40.002" height="200.011" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="39.002" height="199.011" fill="none"/>
+                    </g>
+                    <g id="Rectangle_246-3" transform="translate(160.209 -72.996) rotate(90)"
+                       stroke="rgba(112,112,112,0)" stroke-width="1">
+                        <rect width="40.002" height="100.005" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="39.002" height="99.005" fill="none"/>
+                    </g>
+                </g>
+                <g id="Status_Bars_-_iPhone">
+                    <g id="Status_Bar-2" transform="translate(654 2332)">
+                        <rect id="BG-2" width="375" height="44" transform="translate(-654 -2332)" fill="none"/>
+                        <g id="Status_Bar-3" transform="translate(-654 -2332)">
+                            <rect id="Bars_Status_Bars_iPhone_Light_background" width="375" height="44" fill="none"/>
+                            <g id="Battery" transform="translate(336 17)">
+                                <g id="Border" transform="translate(0.333 0.333)" fill="none" stroke="#000"
+                                   stroke-miterlimit="10" stroke-width="1" opacity="0.35">
+                                    <rect width="22" height="11.333" rx="2.667" stroke="none"/>
+                                    <rect x="0.5" y="0.5" width="21" height="10.333" rx="2.167" fill="none"/>
+                                </g>
+                                <path id="Cap" d="M0,0V4A2.17,2.17,0,0,0,1.328,2,2.17,2.17,0,0,0,0,0"
+                                      transform="translate(23.333 4)" opacity="0.4"/>
+                                <rect id="Capacity-2" width="18" height="7.333" rx="1.333"
+                                      transform="translate(2.333 2.333)"/>
+                            </g>
+                            <path id="Wifi"
+                                  d="M7.445,10.907,5.439,8.885a.309.309,0,0,1-.094-.231.314.314,0,0,1,.1-.227,3.437,3.437,0,0,1,4.437,0,.315.315,0,0,1,.009.458L7.889,10.907a.313.313,0,0,1-.445,0Zm3.53-3.542a4.928,4.928,0,0,0-6.612,0,.311.311,0,0,1-.435-.005L2.768,6.189a.322.322,0,0,1,0-.46,7.193,7.193,0,0,1,9.791,0,.322.322,0,0,1,0,.46L11.409,7.36a.311.311,0,0,1-.435.005Zm2.669-2.7a8.68,8.68,0,0,0-11.955,0,.308.308,0,0,1-.435,0L.094,3.5a.323.323,0,0,1,0-.457,10.947,10.947,0,0,1,15.141,0,.323.323,0,0,1,0,.457l-1.161,1.17a.308.308,0,0,1-.435,0Z"
+                                  transform="translate(316 17.331)"/>
+                            <path id="Cellular_Connection"
+                                  d="M15,10.667a1,1,0,0,1-1-1V1a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9.667a1,1,0,0,1-1,1Zm-4.667,0a1,1,0,0,1-1-1V3.334a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9.667a1,1,0,0,1-1,1Zm-4.667,0a1,1,0,0,1-1-1v-4a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1v4a1,1,0,0,1-1,1ZM1,10.667a1,1,0,0,1-1-1v-2a1,1,0,0,1,1-1H2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1Z"
+                                  transform="translate(294 17.667)"/>
+                            <g id="Time_-_Light" transform="translate(22 13)">
+                                <g id="Time_-_Light-2">
+                                    <rect id="Time_-_Light_background" width="54" height="21" fill="none"/>
+                                    <text id="Time-2" transform="translate(0 2)" font-size="15" font-family="Helvetica"
+                                          letter-spacing="-0.02em">
+                                        <tspan x="12.853" y="12">9:41</tspan>
+                                    </text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g id="Home_Indicator-2" transform="translate(0 778)">
+                    <g id="Home_Indicators_-_iPhone_-_Light_-_Portrait">
+                        <rect id="Frame" width="375" height="34" fill="#fff" opacity="0"/>
+                        <rect id="Home_Indicator-3" width="134" height="5" rx="2.5" transform="translate(121 21)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

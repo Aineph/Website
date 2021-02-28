@@ -1,0 +1,68 @@
+# Messages definition for base.html.twig
+
+# Messages definition for base.html.twig
+base:
+  title: 'Nicolas FEZ - Freelance - Paris'
+  description: 'I am Nicolas FEZ, a freelance developer specialized in back-end development using PHP along with
+  Symfony. You are in the right place if you need a highly customized web application.'
+  author: 'Nicolas Fez'
+
+# Messages definition for navigation.html.twig
+navigation:
+  title: 'Nicolas FEZ'
+  toggle: 'Toggle navigation'
+  home: 'Home'
+  portfolio: 'Portfolio'
+  contact: 'Contact'
+
+# Messages definition for home/index.html.twig
+home:
+  title: 'Nicolas FEZ'
+  introduction: 'Freelance software developer located in the region of Paris.'
+  services:
+    title: 'Services'
+    description: 'Make your solution become unique and extremely customizable.'
+    applications: 'Web and mobile applications development.'
+    webservices: 'Web services integration.'
+    illustration: 'Services illustration'
+    deployment: 'Applications deployment and maintenance.'
+    referencing: 'Natural referencing through search engine optimization.'
+  skills:
+    title: 'Skills'
+    description: 'A skill set that will make your dream project become a reality.'
+    php: 'PHP'
+    mysql: 'MySQL'
+    symfony: 'Symfony'
+    javascript: 'JavaScript'
+    git: 'Git'
+    bash: 'Bash'
+    radar: 'Back-end oriented software development talents.'
+    backend: 'Back-end development'
+    frontend: 'Front-end development'
+    deployment: 'Application deployment'
+    architecture: 'Software architecture'
+    management: 'Project management'
+    doughnut: 'A versatility to cover every aspect of your project.'
+
+  footer:
+    home: 'Home'
+    portfolio: 'Portfolio'
+    resume: 'Resume'
+    linkedin: 'LinkedIn'
+    malt: 'Malt'
+    github: 'Github'
+    copyright: '© 2020-2021 - Nicolas FEZ'
+  accounts:
+    linkedin: '@nicolas-fez'
+    malt: '@nicolasfez'
+    github: '@Aineph'
+
+# Messages definition for message/create.html.twig
+message:
+  title: 'Contact'
+  description: 'Let''s start building a strategy to bring your ideas to life.'
+  sender: 'Name'
+  sender_email: 'E-Mail'
+  object: 'Object'
+  content: 'Content'
+  send: 'Send'

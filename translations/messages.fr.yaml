@@ -1,0 +1,68 @@
+# Messages definition for base.html.twig
+
+# Messages definition for base.html.twig
+base:
+  title: 'Nicolas FEZ - Freelance - Paris'
+  description: 'Je suis Nicolas FEZ, développeur indépendant spécialisé en développement back-end PHP avec Symfony.
+  Vous êtes au bon endroit si vous cherchez à créer une application web personnalisée.'
+  author: 'Nicolas Fez'
+
+# Messages definition for navigation.html.twig
+navigation:
+  title: 'Nicolas FEZ'
+  toggle: 'Basculer la navigation'
+  home: 'Accueil'
+  portfolio: 'Portfolio'
+  contact: 'Contact'
+
+# Messages definition for home/index.html.twig
+home:
+  title: 'Nicolas FEZ'
+  introduction: 'Développeur indépendant localisé en région parisienne.'
+  services:
+    title: 'Services'
+    description: 'Rendez votre solution unique grâce à un développement sur mesure.'
+    applications: 'Développement d''applications web et mobiles.'
+    webservices: 'Intégration de services web.'
+    illustration: 'Illustration des services'
+    deployment: 'Déploiement et maintenance de vos applications.'
+    referencing: 'Référencement naturel par optimisation pour les moteurs de recherche.'
+  skills:
+    title: 'Compétences'
+    description: 'Un lot de connaissances qui donnera vie à vos projets.'
+    php: 'PHP'
+    mysql: 'MySQL'
+    symfony: 'Symfony'
+    javascript: 'JavaScript'
+    git: 'Git'
+    bash: 'Bash'
+    radar: 'Des talents en développement orientés service.'
+    backend: 'Développement back-end'
+    frontend: 'Développement front-end'
+    deployment: 'Déploiement d''applications'
+    architecture: 'Architecture logicielle'
+    management: 'Gestion de projet'
+    doughnut: 'Une polyvalence pour gérer chaque aspect de votre projet.'
+
+  footer:
+    home: 'Accueil'
+    portfolio: 'Portfolio'
+    resume: 'CV'
+    linkedin: 'LinkedIn'
+    malt: 'Malt'
+    github: 'Github'
+    copyright: '© 2020-2021 - Nicolas FEZ'
+  accounts:
+    linkedin: '@nicolas-fez'
+    malt: '@nicolasfez'
+    github: '@Aineph'
+
+# Messages definition for message/create.html.twig
+message:
+  title: 'Contact'
+  description: 'Établissons une stratégie pour donner vie à vos idées.'
+  sender: 'Nom'
+  sender_email: 'E-Mail'
+  object: 'Objet'
+  content: 'Contenu'
+  send: 'Envoyer'

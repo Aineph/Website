@@ -1,0 +1,301 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'home.title' | trans }}{% endblock %}
+
+{% block body %}
+
+    <!-- Home Jumbotron -->
+    <div class="jumbotron jumbotron-fluid nf-parallax"
+         style="background-image: url({{ asset('build/home/laptop.jpg') }});">
+        <div class="container mt-5 mb-5 text-center">
+
+            <!-- Jumbotron Content -->
+            <div class="row justify-content-around">
+                <div class="col-12 mt-5 mb-5">
+
+                    <!-- Home Title -->
+                    <h1 class="h1 mt-5 mb-5 font-weight-normal display-3 text-white nf-fade-in-fix"
+                        data-controller="animation" data-action="scroll@window->animation#update">
+                        {{ 'home.title' | trans }}
+                    </h1>
+
+                    <!-- Jumbotron Divider -->
+                    <hr class="nf-divider" data-controller="animation" data-action="scroll@window->animation#update"/>
+
+                    <!-- Home Introduction -->
+                    <h2 class="h2 mt-5 mb-5 font-weight-normal text-white nf-fade-in-bottom"
+                        data-controller="animation" data-action="scroll@window->animation#update">
+                        {{ 'home.introduction' | trans }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <!-- Home Services -->
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h1 class="h1 font-weight-normal display-4 text-center text-dark">
+                    {{ 'home.services.title' | trans }}
+                </h1>
+            </div>
+            <div class="col-12 mb-5">
+                <h2 class="h2 font-weight-normal text-center text-black-50">
+                    {{ 'home.services.description' | trans }}
+                </h2>
+            </div>
+        </div>
+
+        <!-- Services Content -->
+        <div class="row">
+            <div class="col-12 col-lg-3 text-center p-3">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-12">
+                        <div class="card m-3 nf-fade-in-left" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <div class="card-body">
+                                <div class="card-img-top">
+                                    <img src="{{ asset('build/home/applications.svg') }}"
+                                         alt="{{ 'home.services.applications' | trans }}" width="50" height="50"/>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-text">
+                                    {{ 'home.services.applications' | trans }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-12">
+                        <div class="card m-3 nf-fade-in-left" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <div class="card-body">
+                                <div class="card-img-top">
+                                    <img src="{{ asset('build/home/deployment.svg') }}"
+                                         alt="{{ 'home.services.deployment' | trans }}" width="50" height="50"/>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-text">
+                                    {{ 'home.services.deployment' | trans }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 text-center m-auto p-3">
+                <img class="img-fluid" src="{{ asset('build/home/services.svg') }}"
+                     alt="{{ 'home.services.illustration' | trans }}"
+                     width="400" height="200">
+            </div>
+            <div class="col-12 col-lg-3 text-center p-3">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-12">
+                        <div class="card m-3 nf-fade-in-right" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <div class="card-body">
+                                <div class="card-img-top">
+                                    <img src="{{ asset('build/home/referencing.svg') }}"
+                                         alt="{{ 'home.services.referencing' | trans }}" width="50" height="50"/>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-text">
+                                    {{ 'home.services.referencing' | trans }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-12">
+                        <div class="card m-3 nf-fade-in-right" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <div class="card-body">
+                                <div class="card-img-top">
+                                    <img src="{{ asset('build/home/webservices.svg') }}"
+                                         alt="{{ 'home.services.webservices' | trans }}" width="50" height="50"/>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-text">
+                                    {{ 'home.services.webservices' | trans }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Skills -->
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h1 class="h1 font-weight-normal display-4 text-center text-dark">
+                    {{ 'home.skills.title' | trans }}
+                </h1>
+            </div>
+            <div class="col-12 mb-5">
+                <h2 class="h2 font-weight-normal text-center text-black-50">
+                    {{ 'home.skills.description' | trans }}
+                </h2>
+            </div>
+        </div>
+
+        <!-- Skills Content -->
+        <div class="row">
+            <div class="col-12 col-md-6 p-3">
+
+                <!-- Skills Radar -->
+                <div class="row">
+                    <div class="col-12">
+                        <canvas width="400" height="200" data-controller="chart"
+                                data-title="{{ 'home.skills.title' | trans }}"
+                                data-type="radar"
+                                data-labels="{{ 'home.skills.php' | trans }};{{ 'home.skills.mysql' | trans }};
+{{ 'home.skills.symfony' | trans }};{{ 'home.skills.javascript' | trans }};{{ 'home.skills.git' | trans }};
+{{ 'home.skills.bash' | trans }}"
+                                data-values="95;80;85;75;90;95" data-colors="rgba(0, 123, 255, 0.2)">
+                        </canvas>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h5 class="h5 font-weight-normal text-center text-black-50">{{ 'home.skills.radar' | trans }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 p-3">
+
+                <!-- Skills Doughnut -->
+                <div class="row">
+                    <div class="col-12">
+                        <canvas width="400" height="200" data-controller="chart" data-type="doughnut"
+                                data-labels="{{ 'home.skills.backend' | trans }};{{ 'home.skills.frontend' | trans }};
+{{ 'home.skills.deployment' | trans }};{{ 'home.skills.architecture' | trans }};{{ 'home.skills.management' | trans }}"
+                                data-values="40;10;20;20;10" data-colors="rgba(0, 123, 255, 0.5);rgba(255, 193, 7, 0.5);
+                        rgba(220, 53, 69, 0.5);rgba(23, 162, 184, 0.5);rgba(40, 167, 69, 0.5)">
+                        </canvas>
+                    </div>
+                    <div class="col-12 p-3">
+                        <h5 class="h5 font-weight-normal text-center text-black-50">{{ 'home.skills.doughnut' | trans }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Contact -->
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h1 class="h1 font-weight-normal display-4 text-center text-dark">
+                    {{ 'message.title' | trans }}
+                </h1>
+            </div>
+            <div class="col-12 mb-5">
+                <h2 class="h2 font-weight-normal text-center text-black-50">
+                    {{ 'message.description' | trans }}
+                </h2>
+            </div>
+        </div>
+
+        <!-- Contact Content -->
+        <div class="row">
+            <div class="col-12">
+                {% include 'message/form.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Footer -->
+    <footer class="nf-footer">
+        <div class="container">
+            <div class="row mt-5">
+
+                <!-- Footer Pages -->
+                <div class="col-12 col-md-6">
+                    <div class="row mt-3 mb-3">
+
+                        <!-- Page Home -->
+                        <div class="col-12 text-center text-md-left p-3">
+                            <a class="text-white" href="{{ path('home_index') }}">
+                                {{ 'home.footer.home' | trans }}
+                            </a>
+                        </div>
+
+                        <!-- Page Portfolio -->
+                        <div class="col-12 text-center text-md-left p-3">
+                            <a class="text-white" href="https://portfolio.nicolasfez.com/">
+                                {{ 'home.footer.portfolio' | trans }}
+                            </a>
+                        </div>
+
+                        <!-- Page Resume -->
+                        <div class="col-12 text-center text-md-left p-3">
+                            <a class="text-white"
+                               href="{{ asset('build/Nicolas_FEZ_CV.pdf') }}">
+                                {{ 'home.footer.resume' | trans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Social -->
+                <div class="col-12 col-md-6">
+                    <div class="row">
+
+                        <!-- Footer divider -->
+                        <div class="col-8 m-auto d-block d-md-none">
+                            <hr class="nf-divider" data-controller="animation"
+                                data-action="scroll@window->animation#update"/>
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-3">
+
+                        <!-- Social Linkedin -->
+                        <div class="col-4 p-3 text-center nf-fade-in-bottom" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <a href="https://www.linkedin.com/in/nicolas-fez/">
+                                <img class="d-inline-block" src="{{ asset('build/home/LI-In-Bug.png') }}"
+                                     alt="{{ 'home.footer.linkedin' | trans }}" width="25px" height="25px"/>
+                                <p class="d-none d-sm-inline-block text-white">
+                                    {{ 'home.accounts.linkedin' | trans }}
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- Social Malt -->
+                        <div class="col-4 p-3 text-center nf-fade-in-bottom" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <a href="https://www.malt.fr/profile/nicolasfez">
+                                <img class="d-inline-block"
+                                     src="{{ asset('build/home/malt_picto_color.png') }}"
+                                     alt="{{ 'home.footer.malt' | trans }}" width="25px" height="25px"/>
+                                <p class="d-none d-sm-inline-block text-white">
+                                    {{ 'home.accounts.malt' | trans }}
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- Social Github -->
+                        <div class="col-4 p-3 text-center nf-fade-in-bottom" data-controller="animation"
+                             data-action="scroll@window->animation#update">
+                            <a href="https://github.com/Aineph">
+                                <img class="d-inline-block"
+                                     src="{{ asset('build/home/GitHub-Mark-Light-120px-plus.png') }}"
+                                     alt="{{ 'home.footer.github' | trans }}" width="25px" height="25px"/>
+                                <p class="d-none d-sm-inline-block text-white">
+                                    {{ 'home.accounts.github' | trans }}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Copyright -->
+                <div class="col-12 pt-2 pb-2">
+                    <p class="text-white">
+                        {{ 'home.footer.copyright' | trans }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

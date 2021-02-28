@@ -1,0 +1,68 @@
+<!-- Message Form -->
+{{ form_start(messageForm, {'action': path('message_store')}) }}
+<div class="form-group">
+    <div class="container">
+        <div class="row">
+
+            <!-- Message Sender -->
+            <div class="col-12">
+                {{ form_label(messageForm.sender) }}
+                {{ form_widget(messageForm.sender, {
+                    'attr': {
+                        'class': 'form-control element-fade-in-left'
+                    }
+                }) }}
+            </div>
+
+            <!-- Message Sender Email -->
+            <div class="col-12">
+                {{ form_label(messageForm.sender_email) }}
+                {{ form_widget(messageForm.sender_email, {
+                    'attr': {
+                        'class': 'form-control element-fade-in-left'
+                    }
+                }) }}
+            </div>
+
+            <!-- Message Object -->
+            <div class="col-12">
+                {{ form_label(messageForm.object) }}
+                {{ form_widget(messageForm.object, {
+                    'attr': {
+                        'class': 'form-control element-fade-in-left'
+                    }
+                }) }}
+            </div>
+
+            <!-- Message Content -->
+            <div class="col-12">
+                {{ form_label(messageForm.content) }}
+                {{ form_widget(messageForm.content, {
+                    'attr': {
+                        'class': 'form-control element-fade-in-left'
+                    }
+                }) }}
+            </div>
+
+            <!-- Message Honeypot -->
+            <div class="col-12">
+                {{ form_widget(messageForm.honeypot, {
+                    'attr': {
+                        'class': 'form-control element-fade-in-left d-none',
+                        'aria-label': 'message.honeypot'
+                    }
+                }) }}
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <!-- Message Submit -->
+            <div class="col-12">
+                <button class="btn btn-lg btn-outline-primary element-fade-in-fix" type="submit">
+                    {{ 'message.send' | trans }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(messageForm) }}
