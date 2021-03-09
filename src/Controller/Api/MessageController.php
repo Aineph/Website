@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
 use App\Entity\Message;
 use App\Form\MessageType;
@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class MessageController
  * @package App\Controller
- * @Route("/api/message")
+ * @Route("/message")
  */
 class MessageController extends AbstractController
 {
