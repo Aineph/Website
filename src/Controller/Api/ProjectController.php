@@ -25,10 +25,7 @@ class ProjectController extends AbstractController
         $response = $this->json($projectList);
 
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Headers',
-            'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method');
-        $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-        $response->headers->set('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+        $response->headers->set('Access-Control-Allow-Methods', 'GET');
         return $response;
     }
 }
