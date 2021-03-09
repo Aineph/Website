@@ -16,16 +16,17 @@ class ProjectController extends AbstractController
 {
     /**
      * @return Response
-     * @Route("/", name="project_index")
+     * @Route("/", methods="GET", name="project_index")
      */
     public function index(): Response
     {
         $projectRepository = $this->getDoctrine()->getRepository(Project::class);
         $projectList = $projectRepository->findAll();
-        $response = $this->json($projectList);
+        $response = new Response();
 
+        $response->setContent($this->json($projectList)->getContent());
+        $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'GET');
         return $response;
     }
 }
