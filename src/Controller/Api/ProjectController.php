@@ -22,11 +22,7 @@ class ProjectController extends AbstractController
     {
         $projectRepository = $this->getDoctrine()->getRepository(Project::class);
         $projectList = $projectRepository->findAll();
-        $response = new Response();
 
-        $response->setContent($this->json($projectList)->getContent());
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        return $response;
+        return $this->json($projectList);
     }
 }
