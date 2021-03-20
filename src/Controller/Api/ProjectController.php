@@ -27,4 +27,19 @@ class ProjectController extends AbstractController
         $response->headers->set('Access-Control-Allow-Origin', '*');
         return $response;
     }
+
+    /**
+     * @param int $id
+     * @return Response
+     * @Route("/{id}", methods="GET", name="project_show")
+     */
+    public function show(int $id): Response
+    {
+        $projectRepository = $this->getDoctrine()->getRepository(Project::class);
+        $project = $projectRepository->find($id);
+        $response = $this->json($project);
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        return $response;
+    }
 }
