@@ -20,7 +20,7 @@ class Message
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $sender;
+    private $sender_name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -38,11 +38,6 @@ class Message
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=1, nullable=true)
-     */
-    private $honeypot;
-
-    /**
      * @return int|null
      */
     public function getId(): ?int
@@ -53,18 +48,18 @@ class Message
     /**
      * @return string|null
      */
-    public function getSender(): ?string
+    public function getSenderName(): ?string
     {
-        return $this->sender;
+        return $this->sender_name;
     }
 
     /**
-     * @param string $sender
+     * @param string $sender_name
      * @return $this
      */
-    public function setSender(string $sender): self
+    public function setSenderName(string $sender_name): self
     {
-        $this->sender = $sender;
+        $this->sender_name = $sender_name;
 
         return $this;
     }
@@ -122,25 +117,6 @@ class Message
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getHoneypot(): ?string
-    {
-        return $this->honeypot;
-    }
-
-    /**
-     * @param string|null $honeypot
-     * @return $this
-     */
-    public function setHoneypot(?string $honeypot): self
-    {
-        $this->honeypot = $honeypot;
 
         return $this;
     }

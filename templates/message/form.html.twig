@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
 
-            <!-- Message Sender -->
+            <!-- Message Sender Name -->
             <div class="col-12">
-                {{ form_label(messageForm.sender) }}
-                {{ form_widget(messageForm.sender, {
+                {{ form_label(messageForm.sender_name) }}
+                {{ form_widget(messageForm.sender_name, {
                     'attr': {
                         'class': 'form-control element-fade-in-left'
                     }
@@ -40,16 +40,6 @@
                 {{ form_widget(messageForm.content, {
                     'attr': {
                         'class': 'form-control element-fade-in-left'
-                    }
-                }) }}
-            </div>
-
-            <!-- Message Honeypot -->
-            <div class="col-12">
-                {{ form_widget(messageForm.honeypot, {
-                    'attr': {
-                        'class': 'form-control element-fade-in-left d-none',
-                        'aria-label': 'message.honeypot'
                     }
                 }) }}
             </div>

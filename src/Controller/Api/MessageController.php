@@ -28,7 +28,7 @@ class MessageController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid() && empty($message->getHoneypot())) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($message);
             $entityManager->flush();
         }

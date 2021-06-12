@@ -23,7 +23,7 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('sender',
+            ->add('sender_name',
                 TextType::class,
                 [
                     'label' => 'message.sender'
@@ -42,11 +42,6 @@ class MessageType extends AbstractType
                 TextareaType::class,
                 [
                     'label' => 'message.content'
-                ])
-            ->add('honeypot',
-                TextType:: class,
-                [
-                    'required' => false
                 ]);
     }
 
